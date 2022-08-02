@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.ieltsspeaking.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_fullTestFragment"
+            app:destination="@id/fullTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullTestFragment"
+        android:name="com.example.ieltsspeaking.FullTestFragment"
+        android:label="fragment_full_test"
+        tools:layout="@layout/fragment_full_test" />
+</navigation>
