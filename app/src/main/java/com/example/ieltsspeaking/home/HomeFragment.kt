@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.ieltsspeaking.FullTestFragment
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
@@ -20,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -29,7 +31,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvHome.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvHome.adapter = HomeAdapter()
+        val adapter = HomeAdapter()
+        binding.rvHome.adapter = adapter
+        adapter.setOnItemClickListener(object : HomeAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                when(position+1){
+                    1 -> navigateToFullTestFragment()
+                    2 -> Toast.makeText(requireContext(), "You clicked #2", Toast.LENGTH_SHORT).show()
+                    3 -> Toast.makeText(requireContext(), "You clicked #3", Toast.LENGTH_SHORT).show()
+                    4 -> Toast.makeText(requireContext(), "You clicked #4", Toast.LENGTH_SHORT).show()
+                    5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT).show()
+                    6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT).show()
+                    7 -> Toast.makeText(requireContext(), "You clicked #7", Toast.LENGTH_SHORT).show()
+                    8 -> Toast.makeText(requireContext(), "You clicked #8", Toast.LENGTH_SHORT).show()
+                    9 -> Toast.makeText(requireContext(), "You clicked #9", Toast.LENGTH_SHORT).show()
+                    10 -> Toast.makeText(requireContext(), "You clicked #10", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+        })
+
 
         toggle = ActionBarDrawerToggle(
             requireActivity(),
@@ -39,8 +61,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
         binding.drawerLayoutHome.addDrawerListener(toggle)
         toggle.syncState()
-
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)    unable to implement. Should be found out
 
         binding.ibMenu.setOnClickListener {
             if (!binding.drawerLayoutHome.isOpen){
@@ -61,5 +81,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun navigateToFullTestFragment(){
+        val fullTestFragment = FullTestFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainerView, fullTestFragment)?.commit()
     }
 }

@@ -8,7 +8,17 @@ import com.example.ieltsspeaking.databinding.ItemsRvHomeBinding
 import com.example.ieltsspeaking.home.model.ModelHome
 
 class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
-    lateinit var listener: (ModelHome) -> Unit
+//    lateinit var listener: (ModelHome) -> Unit
+
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
 
     private val titleHome = arrayOf(
         "Full test",
@@ -50,13 +60,8 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(
-            ItemsRvHomeBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+      val itemView = ItemsRvHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HomeViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
@@ -65,14 +70,19 @@ class HomeAdapter() : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             binding.icInsideOval.setImageResource(iconHome[position])
             binding.ivBackgroundOval.setImageResource(backgroundHome[position])
 
-//            bindView(fullTest[position], listener)
         }
     }
 
     override fun getItemCount() = 10
 
-    inner class HomeViewHolder(val binding: ItemsRvHomeBinding) :
+    inner class HomeViewHolder(val binding: ItemsRvHomeBinding, listener: onItemClickListener) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
 
         fun bindView(modelHome: ModelHome, listener: (ModelHome) -> Unit) {
             itemView.setOnClickListener { listener(modelHome) }
