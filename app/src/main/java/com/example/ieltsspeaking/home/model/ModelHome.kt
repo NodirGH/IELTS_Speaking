@@ -8,6 +8,6 @@ import kotlinx.parcelize.Parcelize
 data class ModelHome(
     val id: Int,
     val title: String,
-    val icon: Array<Int>,
+    val icon: Int,
     var backgroundColor: Int
 ): Parcelable

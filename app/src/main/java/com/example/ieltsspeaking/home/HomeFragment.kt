@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.ieltsspeaking.FullTestFragment
+import com.example.ieltsspeaking.home.fulltest.FullTestFragment
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
+import com.example.ieltsspeaking.home.data.HomeData
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
@@ -30,10 +30,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.rvHome.layoutManager = GridLayoutManager(requireContext(), 2)
-        val adapter = HomeAdapter()
+        val homeData = HomeData.getHomeData()
+        val adapter = HomeAdapter(homeData)
         binding.rvHome.adapter = adapter
-        adapter.setOnItemClickListener(object : HomeAdapter.onItemClickListener{
+        adapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 when(position+1){
                     1 -> navigateToFullTestFragment()

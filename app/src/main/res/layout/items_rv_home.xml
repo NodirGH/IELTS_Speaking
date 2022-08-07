@@ -8,6 +8,7 @@
     app:cardElevation="5dp"
     android:clickable="true"
     android:focusable="true"
+    app:cardCornerRadius="20dp"
     android:orientation="vertical"
     android:elevation="5dp">
 
