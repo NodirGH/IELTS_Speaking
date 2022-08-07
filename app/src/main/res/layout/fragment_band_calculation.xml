@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFDDFF"
+    tools:context=".home.band_score.BandCalculationFragment">
+
+    <TextView
+        android:id="@+id/tvWriting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="58dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/writing"
+        android:textColor="#3DCF3A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvSpeaking"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/bg_oval_band_score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="Overall Band Score"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spSpeaking"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9"
+        android:textColor="#5F1646"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+        android:id="@+id/tvSpeaking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/speaking"
+        android:textColor="#FF8F51"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvWriting"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvListening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/listening"
+        android:textColor="#28339A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvReading"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvReading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="58dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/reading"
+        android:textColor="#56133F"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvListening"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spListening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_spinner_blue"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/tvListening"
+        app:layout_constraintStart_toStartOf="@+id/tvListening"
+        app:layout_constraintTop_toBottomOf="@+id/tvListening" />
+
+    <Spinner
+        android:id="@+id/spReading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_spinner_pink"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/tvReading"
+        app:layout_constraintStart_toStartOf="@+id/tvReading"
+        app:layout_constraintTop_toBottomOf="@id/tvReading" />
+
+
+    <Spinner
+        android:id="@+id/spSpeaking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_spinner_orange"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/tvSpeaking"
+        app:layout_constraintStart_toStartOf="@+id/tvSpeaking"
+        app:layout_constraintTop_toBottomOf="@id/tvSpeaking" />
+
+    <Spinner
+        android:id="@+id/spWriting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_spinner_green"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/tvWriting"
+        app:layout_constraintStart_toStartOf="@+id/tvWriting"
+        app:layout_constraintTop_toBottomOf="@id/tvWriting" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

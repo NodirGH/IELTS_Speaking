@@ -6,4 +6,8 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="listening">LISTENING</string>
+    <string name="reading">READING</string>
+    <string name="speaking">SPEAKING</string>
+    <string name="writing">WRITING</string>
 </resources>

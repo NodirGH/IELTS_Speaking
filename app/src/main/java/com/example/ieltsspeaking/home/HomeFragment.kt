@@ -12,9 +12,10 @@ import com.example.ieltsspeaking.home.fulltest.FullTestFragment
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
+import com.example.ieltsspeaking.home.band_score.BandCalculationFragment
 import com.example.ieltsspeaking.home.data.HomeData
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var toggle: ActionBarDrawerToggle
@@ -30,12 +31,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.rvHome.layoutManager = GridLayoutManager(requireContext(), 2)
         val homeData = HomeData.getHomeData()
         val adapter = HomeAdapter(homeData)
         binding.rvHome.adapter = adapter
+
         adapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 when(position+1){
@@ -46,7 +46,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT).show()
                     6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT).show()
                     7 -> Toast.makeText(requireContext(), "You clicked #7", Toast.LENGTH_SHORT).show()
-                    8 -> Toast.makeText(requireContext(), "You clicked #8", Toast.LENGTH_SHORT).show()
+                    8 -> navigateToBandCalculationFragment()
                     9 -> Toast.makeText(requireContext(), "You clicked #9", Toast.LENGTH_SHORT).show()
                     10 -> Toast.makeText(requireContext(), "You clicked #10", Toast.LENGTH_SHORT).show()
 
@@ -90,5 +90,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val fullTestFragment = FullTestFragment()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragmentContainerView, fullTestFragment)?.commit()
+    }
+
+    private fun navigateToBandCalculationFragment(){
+        val bandCalculationFragment = BandCalculationFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainerView, bandCalculationFragment)?.commit()
     }
 }
