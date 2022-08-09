@@ -10,4 +10,5 @@
     <string name="reading">READING</string>
     <string name="speaking">SPEAKING</string>
     <string name="writing">WRITING</string>
+    <string name="overall_band_score">Overall Band Score</string>
 </resources>

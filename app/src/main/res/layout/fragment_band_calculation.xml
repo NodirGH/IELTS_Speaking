@@ -32,14 +32,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingBandScore" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvHeadingBandScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:text="Overall Band Score"
+        android:text="@string/overall_band_score"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.314" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvBandScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingBandScore"
         app:layout_constraintVertical_bias="0.571" />
 
     <TextView
@@ -161,6 +161,5 @@
         app:layout_constraintEnd_toEndOf="@+id/tvWriting"
         app:layout_constraintStart_toStartOf="@+id/tvWriting"
         app:layout_constraintTop_toBottomOf="@id/tvWriting" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
