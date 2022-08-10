@@ -41,6 +41,7 @@ class Part1Adapter(private val part1Model: List<ModelPart1>) :
             binding.tvPart1OrderNumber.text = modelPart1.orderNumber.toString()
             binding.tvPart1NumberQuestion.text = modelPart1.questionCount.toString()
             binding.tvPart1TopicHeading.text = modelPart1.heading
+            binding.ivPart1BgRectangle.setImageResource(modelPart1.background)
         }
 
         init {

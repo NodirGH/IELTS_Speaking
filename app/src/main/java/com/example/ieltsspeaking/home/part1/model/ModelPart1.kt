@@ -8,5 +8,6 @@ class ModelPart1(
     val id: Int,
     val orderNumber: Int,
     val heading: String,
-    val questionCount: Int
+    val questionCount: Int,
+    val background: Int
 ): Parcelable

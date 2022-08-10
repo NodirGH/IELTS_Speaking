@@ -50,7 +50,7 @@
         android:paddingTop="10dp"
         android:paddingEnd="2dp"
         android:text="Topic Text Friendship"
-        android:textColor="#021B59"
+        android:textColor="@color/background_dark_blue"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivPart1BgRectangle"
@@ -65,7 +65,7 @@
         android:paddingTop="5dp"
         android:paddingEnd="5dp"
         android:text="10"
-        android:textColor="#021B59"
+        android:textColor="@color/background_dark_blue"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/ivPart1BgRectangle"
         app:layout_constraintTop_toBottomOf="@+id/tvPart1TopicHeading" />
@@ -78,7 +78,7 @@
         android:paddingTop="5dp"
         android:paddingEnd="3dp"
         android:text="questions"
-        android:textColor="#021B59"
+        android:textColor="@color/background_dark_blue"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/tvPart1NumberQuestion"
         app:layout_constraintTop_toBottomOf="@+id/tvPart1TopicHeading" />

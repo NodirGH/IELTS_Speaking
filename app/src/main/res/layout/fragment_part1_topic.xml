@@ -7,6 +7,16 @@
     android:background="@color/background_light_blue"
     tools:context=".home.part1.Part1TopicFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_part1"
+        android:layout_marginEnd="15dp"
+        app:tint="@color/background_dark_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHeadingPart1"
+        app:layout_constraintEnd_toStartOf="@+id/tvHeadingPart1"
+        app:layout_constraintTop_toTopOf="@+id/tvHeadingPart1" />
+
     <TextView
         android:id="@+id/tvHeadingPart1"
         android:layout_width="wrap_content"

@@ -10,5 +10,6 @@
 
     <color name="drawer_background">#39D2DF</color>
     <color name="background_light_blue">#CFDDFF</color>
+    <color name="background_dark_blue">#021B59</color>
     <color name="background_light_green">#DEEDDF</color>
 </resources>
