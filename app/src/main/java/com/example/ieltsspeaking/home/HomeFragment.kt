@@ -14,6 +14,7 @@ import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
 import com.example.ieltsspeaking.home.band_score.BandCalculationFragment
 import com.example.ieltsspeaking.home.data.HomeData
+import com.example.ieltsspeaking.home.part1.Part1TopicFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
                 when(position+1){
                     1 -> navigateToFullTestFragment()
                     2 -> Toast.makeText(requireContext(), "You clicked #2", Toast.LENGTH_SHORT).show()
-                    3 -> Toast.makeText(requireContext(), "You clicked #3", Toast.LENGTH_SHORT).show()
+                    3 -> navigateToPart1TopicFragment()
                     4 -> Toast.makeText(requireContext(), "You clicked #4", Toast.LENGTH_SHORT).show()
                     5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT).show()
                     6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT).show()
@@ -90,6 +91,12 @@ class HomeFragment : Fragment() {
         val fullTestFragment = FullTestFragment()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragmentContainerView, fullTestFragment)?.commit()
+    }
+
+    private fun navigateToPart1TopicFragment(){
+        val part1TopicFragment = Part1TopicFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainerView, part1TopicFragment)?.commit()
     }
 
     private fun navigateToBandCalculationFragment(){

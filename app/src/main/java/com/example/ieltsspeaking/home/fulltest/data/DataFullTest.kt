@@ -1,4 +1,6 @@
-package com.example.ieltsspeaking.home.fulltest.model
+package com.example.ieltsspeaking.home.fulltest.data
+
+import com.example.ieltsspeaking.home.fulltest.model.FullTestModel
 
 class DataFullTest {
 
