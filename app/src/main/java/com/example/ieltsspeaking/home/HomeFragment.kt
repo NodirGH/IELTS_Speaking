@@ -90,18 +90,21 @@ class HomeFragment : Fragment() {
     private fun navigateToFullTestFragment(){
         val fullTestFragment = FullTestFragment()
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, fullTestFragment).commit()
+        transaction.replace(R.id.fragmentContainerView, fullTestFragment)
+        transaction.addToBackStack(null).commit()
     }
 
     private fun navigateToPart1TopicFragment(){
         val part1TopicFragment = Part1TopicFragment()
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, part1TopicFragment).commit()
+        transaction.replace(R.id.fragmentContainerView, part1TopicFragment)
+            transaction.addToBackStack(null).commit()
     }
 
     private fun navigateToBandCalculationFragment(){
         val bandCalculationFragment = BandCalculationFragment()
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, bandCalculationFragment).commit()
+        transaction.replace(R.id.fragmentContainerView, bandCalculationFragment)
+            transaction.addToBackStack(null).commit()
     }
 }

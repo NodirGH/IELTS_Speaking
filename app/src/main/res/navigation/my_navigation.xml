@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_fullTestFragment"
-            app:destination="@id/fullTestFragment" />
+            app:destination="@id/fullTestFragment"/>
     </fragment>
     <fragment
         android:id="@+id/fullTestFragment"
