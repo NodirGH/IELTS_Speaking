@@ -18,4 +18,14 @@
         android:title="Share with friends"
         android:icon="@drawable/ic_share"/>
 
+    <item
+        android:id="@+id/navSuggestions"
+        android:title="Give suggestions"
+        android:icon="@drawable/ic_suggestion"/>
+
+    <item
+        android:id="@+id/navReportBugs"
+        android:title="Report bugs"
+        android:icon="@drawable/ic_report_bugs"/>
+
 </menu>

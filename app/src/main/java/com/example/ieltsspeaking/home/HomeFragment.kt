@@ -77,6 +77,8 @@ class HomeFragment : Fragment() {
                 R.id.navRate -> Toast.makeText(requireContext(), "Rate us", Toast.LENGTH_SHORT).show()
                 R.id.navContact -> Toast.makeText(requireContext(), "Contact us", Toast.LENGTH_SHORT).show()
                 R.id.navShare -> Toast.makeText(requireContext(), "Share it", Toast.LENGTH_SHORT).show()
+                R.id.navSuggestions -> Toast.makeText(requireContext(), "Give your suggestions", Toast.LENGTH_SHORT).show()
+                R.id.navReportBugs -> Toast.makeText(requireContext(), "Report bugs", Toast.LENGTH_SHORT).show()
             }
             true
         }
