@@ -14,7 +14,7 @@ import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
 import com.example.ieltsspeaking.home.band_score.BandCalculationFragment
 import com.example.ieltsspeaking.home.data.HomeData
-import com.example.ieltsspeaking.home.part1.Part1TopicFragment
+import com.example.ieltsspeaking.home.part1Topic.Part1TopicFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -50,12 +50,10 @@ class HomeFragment : Fragment() {
                     8 -> navigateToBandCalculationFragment()
                     9 -> Toast.makeText(requireContext(), "You clicked #9", Toast.LENGTH_SHORT).show()
                     10 -> Toast.makeText(requireContext(), "You clicked #10", Toast.LENGTH_SHORT).show()
-
                 }
             }
 
         })
-
 
         toggle = ActionBarDrawerToggle(
             requireActivity(),

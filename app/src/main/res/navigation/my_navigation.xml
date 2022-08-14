@@ -13,10 +13,35 @@
         <action
             android:id="@+id/action_homeFragment_to_fullTestFragment"
             app:destination="@id/fullTestFragment"/>
+        <action
+            android:id="@+id/action_homeFragment_to_bandCalculationFragment"
+            app:destination="@id/bandCalculationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_part1TopicFragment"
+            app:destination="@id/part1TopicFragment" />
     </fragment>
     <fragment
         android:id="@+id/fullTestFragment"
         android:name="com.example.ieltsspeaking.home.fulltest.FullTestFragment"
         android:label="fragment_full_test"
         tools:layout="@layout/fragment_full_test" />
+    <fragment
+        android:id="@+id/bandCalculationFragment"
+        android:name="com.example.ieltsspeaking.home.band_score.BandCalculationFragment"
+        android:label="fragment_band_calculation"
+        tools:layout="@layout/fragment_band_calculation" />
+    <fragment
+        android:id="@+id/part1TopicFragment"
+        android:name="com.example.ieltsspeaking.home.part1Topic.Part1TopicFragment"
+        android:label="fragment_part1_topic"
+        tools:layout="@layout/fragment_part1_topic" >
+        <action
+            android:id="@+id/action_part1TopicFragment_to_part1QuestionsFragment"
+            app:destination="@id/part1QuestionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/part1QuestionsFragment"
+        android:name="com.example.ieltsspeaking.home.part1Topic.categories.study.Part1QuestionsStudyFragment"
+        android:label="fragment_part1_questions"
+        tools:layout="@layout/fragment_part1_questions_study" />
 </navigation>
