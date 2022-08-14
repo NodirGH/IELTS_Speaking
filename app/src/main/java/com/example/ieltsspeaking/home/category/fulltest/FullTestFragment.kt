@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.fulltest
+package com.example.ieltsspeaking.home.category.fulltest
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ieltsspeaking.R
-import com.example.ieltsspeaking.home.fulltest.adapter.FullTestAdapter
-import com.example.ieltsspeaking.home.fulltest.data.DataFullTest
+import com.example.ieltsspeaking.home.category.fulltest.adapter.FullTestAdapter
+import com.example.ieltsspeaking.home.category.fulltest.data.DataFullTest
 
 class FullTestFragment : Fragment() {
 

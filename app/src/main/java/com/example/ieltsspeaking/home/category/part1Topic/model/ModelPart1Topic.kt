@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.part1Topic.model
+package com.example.ieltsspeaking.home.category.part1Topic.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

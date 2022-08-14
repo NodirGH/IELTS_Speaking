@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.part1Topic.categories.model
+package com.example.ieltsspeaking.home.category.part1Topic.categories.model
 
 class ModelPart1Questions(
     val id: Int,

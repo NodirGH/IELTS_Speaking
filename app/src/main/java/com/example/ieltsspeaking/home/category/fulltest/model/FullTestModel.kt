@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.fulltest.model
+package com.example.ieltsspeaking.home.category.fulltest.model
 
 data class FullTestModel(
     val id: Int,

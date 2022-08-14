@@ -1,6 +1,6 @@
-package com.example.ieltsspeaking.home.part1Topic.categories.study.data
+package com.example.ieltsspeaking.home.category.part1Topic.categories.study.data
 
-import com.example.ieltsspeaking.home.part1Topic.categories.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.categories.model.ModelPart1Questions
 
 class Part1QuestionsStudyData {
     companion object{

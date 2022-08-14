@@ -1,7 +1,7 @@
-package com.example.ieltsspeaking.home.part1Topic.data
+package com.example.ieltsspeaking.home.category.part1Topic.data
 
 import com.example.ieltsspeaking.R
-import com.example.ieltsspeaking.home.part1Topic.model.ModelPart1Topic
+import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPart1Topic
 
 class Part1TopicData {
     companion object {

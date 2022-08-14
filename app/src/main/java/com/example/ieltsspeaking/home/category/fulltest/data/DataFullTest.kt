@@ -1,6 +1,6 @@
-package com.example.ieltsspeaking.home.fulltest.data
+package com.example.ieltsspeaking.home.category.fulltest.data
 
-import com.example.ieltsspeaking.home.fulltest.model.FullTestModel
+import com.example.ieltsspeaking.home.category.fulltest.model.FullTestModel
 
 class DataFullTest {
 

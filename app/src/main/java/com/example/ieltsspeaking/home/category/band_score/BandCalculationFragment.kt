@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.band_score
+package com.example.ieltsspeaking.home.category.band_score
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

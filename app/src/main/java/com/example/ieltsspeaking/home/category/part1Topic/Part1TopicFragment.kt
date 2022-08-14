@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.part1Topic
+package com.example.ieltsspeaking.home.category.part1Topic
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart1TopicBinding
-import com.example.ieltsspeaking.home.part1Topic.adapter.Part1TopicAdapter
-import com.example.ieltsspeaking.home.part1Topic.data.Part1TopicData
-import com.example.ieltsspeaking.home.part1Topic.categories.study.Part1QuestionsStudyFragment
+import com.example.ieltsspeaking.home.category.part1Topic.adapter.Part1TopicAdapter
+import com.example.ieltsspeaking.home.category.part1Topic.data.Part1TopicData
+import com.example.ieltsspeaking.home.category.part1Topic.categories.study.Part1QuestionsStudyFragment
 
 class Part1TopicFragment : Fragment() {
 

@@ -1,10 +1,10 @@
-package com.example.ieltsspeaking.home.part1Topic.adapter
+package com.example.ieltsspeaking.home.category.part1Topic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ieltsspeaking.databinding.ItemsRvPart1TopicsBinding
-import com.example.ieltsspeaking.home.part1Topic.model.ModelPart1Topic
+import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPart1Topic
 
 class Part1TopicAdapter(private val part1ModelTopic: List<ModelPart1Topic>) :
     RecyclerView.Adapter<Part1TopicAdapter.Part1ViewHolder>() {

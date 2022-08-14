@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.ieltsspeaking.home.fulltest.FullTestFragment
+import com.example.ieltsspeaking.home.category.fulltest.FullTestFragment
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
-import com.example.ieltsspeaking.home.band_score.BandCalculationFragment
+import com.example.ieltsspeaking.home.category.band_score.BandCalculationFragment
 import com.example.ieltsspeaking.home.data.HomeData
-import com.example.ieltsspeaking.home.part1Topic.Part1TopicFragment
+import com.example.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

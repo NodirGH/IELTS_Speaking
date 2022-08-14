@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.fulltest.adapter
+package com.example.ieltsspeaking.home.category.fulltest.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ieltsspeaking.R
-import com.example.ieltsspeaking.home.fulltest.model.FullTestModel
+import com.example.ieltsspeaking.home.category.fulltest.model.FullTestModel
 
 class FullTestAdapter(private val model: List<FullTestModel>) :
     RecyclerView.Adapter<FullTestAdapter.FullTestViewHolder>() {

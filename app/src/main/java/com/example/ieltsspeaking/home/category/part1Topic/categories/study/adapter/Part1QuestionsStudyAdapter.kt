@@ -1,10 +1,10 @@
-package com.example.ieltsspeaking.home.part1Topic.categories.study.adapter
+package com.example.ieltsspeaking.home.category.part1Topic.categories.study.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ieltsspeaking.databinding.ItemsRvPart1QuestionsBinding
-import com.example.ieltsspeaking.home.part1Topic.categories.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.categories.model.ModelPart1Questions
 
 class Part1QuestionsStudyAdapter(private val modelPart1Questions: List<ModelPart1Questions>) :
     RecyclerView.Adapter<Part1QuestionsStudyAdapter.Part1QuestionsStudyViewHolder>() {
