@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/part1QuestionsFragment"
-        android:name="com.example.ieltsspeaking.home.category.part1Topic.categories.study.Part1QuestionsStudyFragment"
+        android:name="com.example.ieltsspeaking.home.category.part1Topic.categories.Part1QuestionsFragment"
         android:label="fragment_part1_questions"
-        tools:layout="@layout/fragment_part1_questions_study" />
+        tools:layout="@layout/fragment_part1_questions" />
 </navigation>

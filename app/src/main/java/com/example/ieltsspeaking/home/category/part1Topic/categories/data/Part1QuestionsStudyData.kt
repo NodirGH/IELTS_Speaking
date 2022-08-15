@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.category.part1Topic.categories.study.data
+package com.example.ieltsspeaking.home.category.part1Topic.categories.data
 
 import com.example.ieltsspeaking.home.category.part1Topic.categories.model.ModelPart1Questions
 
