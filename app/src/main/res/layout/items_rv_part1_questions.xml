@@ -47,6 +47,7 @@
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:text="@string/learned"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

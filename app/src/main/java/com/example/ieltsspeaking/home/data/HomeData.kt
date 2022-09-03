@@ -8,7 +8,7 @@ class HomeData {
     companion object {
         fun getHomeData(): List<ModelHome> {
             return listOf(
-                ModelHome(1, "Full test", R.drawable.ic_menu, R.drawable.bg_full_test),
+                ModelHome(1, "Test yourself", R.drawable.ic_menu, R.drawable.bg_test_yourself),
                 ModelHome(2, "Cue Cards", R.drawable.ic_card, R.drawable.bg_card),
                 ModelHome(3,"Part 1 Topic", R.drawable.ic_part1,    R.drawable.bg_part1),
                 ModelHome(4,"Part 2 & 3 Topics", R.drawable.ic_part2_3, R.drawable.bg_part2_3),

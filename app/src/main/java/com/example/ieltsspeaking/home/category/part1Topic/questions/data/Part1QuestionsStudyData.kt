@@ -1,6 +1,6 @@
-package com.example.ieltsspeaking.home.category.part1Topic.categories.data
+package com.example.ieltsspeaking.home.category.part1Topic.questions.data
 
-import com.example.ieltsspeaking.home.category.part1Topic.categories.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPart1Questions
 
 class Part1QuestionsStudyData {
     companion object{
@@ -29,5 +29,24 @@ class Part1QuestionsStudyData {
 
             )
         }
+
+        fun getWorkQuestions(): List<ModelPart1Questions>{
+            return listOf(
+                ModelPart1Questions(1, "11111Do you work or study", false),
+                ModelPart1Questions(2, "Where du you live", false),
+                ModelPart1Questions(3, "Describe your city", false),
+                ModelPart1Questions(4, "What do people do in their free time", false),
+                ModelPart1Questions(5, "What is your hobby", false),
+                ModelPart1Questions(6, "What is the weather like in your country", false),
+                ModelPart1Questions(7, "What clothes do you wear", false),
+                ModelPart1Questions(8, "What kind of food do you eat", false),
+                ModelPart1Questions(9, "Do you like listening to music", false),
+                ModelPart1Questions(10, "What is your name", false),
+                ModelPart1Questions(11, "111111111", false)
+
+
+            )
+        }
+
     }
 }

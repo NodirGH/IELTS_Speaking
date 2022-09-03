@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.ieltsspeaking.home.category.fulltest.FullTestFragment
+import com.example.ieltsspeaking.home.category.test_yourself.TestYourselfFragment
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToFullTestFragment(){
-        val fullTestFragment = FullTestFragment()
+        val fullTestFragment = TestYourselfFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainerView, fullTestFragment)
         transaction.addToBackStack(null).commit()

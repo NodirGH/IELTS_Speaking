@@ -12,4 +12,15 @@
     <color name="background_light_blue">#CFDDFF</color>
     <color name="background_dark_blue">#021B59</color>
     <color name="background_light_green">#DEEDDF</color>
+    <color name="enabled_button_blue">#006987</color>
+    <color name="gray_button">#AAAEAF</color>
+    <color name="orange">#F4511E</color>
+    <color name="gray">#ECECEC</color>
+    <color name="grayDark">#656565</color>
+    <color name="grayDarkDisabled">#8F8F8F</color>
+
+
+
+    <color name="colorText">#282828</color>
+
 </resources>

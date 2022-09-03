@@ -22,9 +22,9 @@
     </fragment>
     <fragment
         android:id="@+id/fullTestFragment"
-        android:name="com.example.ieltsspeaking.home.category.fulltest.FullTestFragment"
+        android:name="com.example.ieltsspeaking.home.category.test_yourself.TestYourselfFragment"
         android:label="fragment_full_test"
-        tools:layout="@layout/fragment_full_test" />
+        tools:layout="@layout/fragment_test_yourself" />
     <fragment
         android:id="@+id/bandCalculationFragment"
         android:name="com.example.ieltsspeaking.home.category.band_score.BandCalculationFragment"
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/part1QuestionsFragment"
-        android:name="com.example.ieltsspeaking.home.category.part1Topic.categories.Part1QuestionsFragment"
+        android:name="com.example.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment"
         android:label="fragment_part1_questions"
         tools:layout="@layout/fragment_part1_questions" />
 </navigation>

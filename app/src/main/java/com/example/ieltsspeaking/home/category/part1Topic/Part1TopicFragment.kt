@@ -5,15 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart1TopicBinding
 import com.example.ieltsspeaking.home.category.part1Topic.adapter.Part1TopicAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.data.Part1TopicData
-import com.example.ieltsspeaking.home.category.part1Topic.categories.Part1QuestionsFragment
-import com.example.ieltsspeaking.home.category.part1Topic.categories.adapter.Part1QuestionsAdapter
-import com.example.ieltsspeaking.home.category.part1Topic.categories.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
 import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPart1Topic
 
 class Part1TopicFragment : Fragment(), Part1TopicAdapter.OnItemClickListener {

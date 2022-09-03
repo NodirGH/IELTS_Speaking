@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.category.part1Topic.categories.Part1QuestionsFragment">
+    tools:context=".home.category.part1Topic.questions.Part1QuestionsFragment">
 
    <TextView
        android:id="@+id/tvHeadingPart1Questions"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Heading"
-       android:textSize="24sp"
-       android:padding="10dp"
-       android:textColor="@color/background_dark_blue"
-       android:gravity="center"
-       android:textStyle="bold"
        android:background="@color/background_light_blue"
+       android:gravity="center"
+       android:padding="10dp"
+       android:text="Heading"
+       android:textColor="@color/background_dark_blue"
+       android:textSize="24sp"
+       android:textStyle="bold"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
        app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +28,9 @@
        android:layout_height="0dp"
        android:background="@color/background_light_blue"
        app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/tvHeadingPart1Questions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

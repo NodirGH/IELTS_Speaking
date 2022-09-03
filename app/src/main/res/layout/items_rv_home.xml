@@ -21,7 +21,7 @@
             android:id="@+id/ivBackgroundOval"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            tools:src="@drawable/bg_full_test"
+            tools:src="@drawable/bg_test_yourself"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

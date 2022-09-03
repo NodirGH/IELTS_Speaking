@@ -13,4 +13,8 @@
     <string name="overall_band_score">Overall Band Score</string>
     <string name="part_1_topics">Part 1 - Topics</string>
     <string name="learned">Learned</string>
+    <string name="part_1">Part 1</string>
+    <string name="part_2">Part 2</string>
+    <string name="part_3">Part 3</string>
+    <string name="sample_answer">Sample answer</string>
 </resources>

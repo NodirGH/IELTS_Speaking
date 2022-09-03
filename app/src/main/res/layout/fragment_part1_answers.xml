@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light_blue"
+    tools:context=".home.category.part1Topic.questions.answers.Part1AnswersFragment">
+
+    <TextView
+        android:id="@+id/tvP1QuestionHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:paddingBottom="20dp"
+        android:text="Part 1 answer"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPart1Question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvP1QuestionHeading">
+
+        <TextView
+            android:id="@+id/tvPart1Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="This place is for question field"
+            android:textColor="@color/background_dark_blue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPart1Answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/background_light_green"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvPart1Question">
+
+        <TextView
+            android:id="@+id/tvPart1Answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_light_green"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:padding="20dp"
+            android:text="Sample answer is shown here. It desn't matter how much line it requires, it should show all line"
+            android:textColor="#012903"
+            android:textSize="20sp"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnPart1LearnedInside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2"
+        android:background="@drawable/rectangle_button"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/learned"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F1ECE9"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+    <ImageView
+        android:id="@+id/ivTestYourselfPart1BgSolid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="5dp"
+        android:src="@drawable/bg_rectangle_part1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivTestYourselfPart1BgRectangle"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:src="@drawable/bg_test_yourself_part1_numbers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTestYourselfPart1Question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/ivBtnPlay"
+        app:layout_constraintStart_toEndOf="@+id/ivTestYourselfPart1BgRectangle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Part 1 question -What would you like me to call you?" />
+
+    <ImageButton
+        android:id="@+id/ivBtnPlay"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_oval_part1_icons"
+        android:padding="5dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/ivTestYourselfPart1BgSolid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/gray_button" />
+
+    <TextView
+        android:id="@+id/tvPart1_OrderNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivTestYourselfPart1BgRectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivTestYourselfPart1BgRectangle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

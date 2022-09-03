@@ -27,9 +27,8 @@ class Part1TopicAdapter(
 
     override fun getItemCount() = part1ModelTopic.size
 
-    inner class Part1ViewHolder(
-        private val binding: ItemsRvPart1TopicsBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+    inner class Part1ViewHolder(private val binding: ItemsRvPart1TopicsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindView(modelPart1Topic: ModelPart1Topic) {
             binding.tvPart1OrderNumber.text = modelPart1Topic.orderNumber.toString()
