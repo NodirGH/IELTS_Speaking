@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.category.about.AboutFragment">
+
+    <ImageView
+        android:id="@+id/ivInfoIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_info"
+        app:tint="#2196F3"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHeading"
+        app:layout_constraintEnd_toStartOf="@+id/tvHeading"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHeading" />
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="App information"
+        android:textColor="@color/main_text_color"
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivInfoIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_version"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVersion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVersion" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/version"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/ivVersion"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
+
+    <TextView
+        android:id="@+id/tvVersionNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/version_number"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvVersion"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
+
+    <ImageView
+        android:id="@+id/ivRelease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/ic_release"
+        app:layout_constraintBottom_toBottomOf="@+id/tvReleased"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvReleased" />
+
+    <TextView
+        android:id="@+id/tvReleased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/released"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/ivRelease"
+        app:layout_constraintTop_toBottomOf="@+id/tvVersion" />
+
+    <TextView
+        android:id="@+id/tvReleasedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/released_time"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvReleased"
+        app:layout_constraintTop_toBottomOf="@+id/tvVersionNumber" />
+
+    <ImageView
+        android:id="@+id/ivTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_target"
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTarget"
+        app:layout_constraintTop_toTopOf="@+id/tvTarget" />
+
+    <TextView
+        android:id="@+id/tvTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/target"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/ivTarget"
+        app:layout_constraintTop_toBottomOf="@+id/tvReleased" />
+
+    <TextView
+        android:id="@+id/tvTargetItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/target_item"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvReleased"
+        app:layout_constraintTop_toBottomOf="@+id/tvReleasedTime" />
+
+    <ImageView
+        android:id="@+id/ivGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_goal"
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvGoals"
+        app:layout_constraintTop_toTopOf="@+id/tvGoals" />
+
+    <TextView
+        android:id="@+id/tvGoals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/goals"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/ivGoal"
+        app:layout_constraintTop_toBottomOf="@+id/tvTarget" />
+
+    <TextView
+        android:id="@+id/tvGoal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/goal1"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tvGoals"
+        app:layout_constraintTop_toBottomOf="@+id/tvGoals" />
+
+    <TextView
+        android:id="@+id/tvGoal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/goal2"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tvGoals"
+        app:layout_constraintTop_toBottomOf="@+id/tvGoal1" />
+
+    <TextView
+        android:id="@+id/tvGoal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/goal3"
+        android:textColor="@color/main_text_color"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tvGoals"
+        app:layout_constraintTop_toBottomOf="@+id/tvGoal2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

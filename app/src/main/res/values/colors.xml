@@ -18,6 +18,10 @@
     <color name="gray">#ECECEC</color>
     <color name="grayDark">#656565</color>
     <color name="grayDarkDisabled">#8F8F8F</color>
+    <color name="main_text_color">#021B59</color>
+    <color name="light_blue_button">#18DFBD</color>
+    <color name="green_button">#28DF18</color>
+    <color name="red_button">#FD291B</color>
 
 
 

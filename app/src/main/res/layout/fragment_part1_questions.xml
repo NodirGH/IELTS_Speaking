@@ -26,6 +26,7 @@
        android:id="@+id/rvPart1Questions"
        android:layout_width="match_parent"
        android:layout_height="0dp"
+       android:layoutAnimation="@anim/layout_animation_fall_down"
        android:background="@color/background_light_blue"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"

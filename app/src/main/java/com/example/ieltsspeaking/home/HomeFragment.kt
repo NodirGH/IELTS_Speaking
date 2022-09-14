@@ -12,7 +12,9 @@ import com.example.ieltsspeaking.home.category.test_yourself.TestYourselfFragmen
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentHomeBinding
 import com.example.ieltsspeaking.home.adapter.HomeAdapter
+import com.example.ieltsspeaking.home.category.about.AboutFragment
 import com.example.ieltsspeaking.home.category.band_score.BandCalculationFragment
+import com.example.ieltsspeaking.home.category.info.InfoFragment
 import com.example.ieltsspeaking.home.data.HomeData
 import com.example.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
 
@@ -37,19 +39,24 @@ class HomeFragment : Fragment() {
         val adapter = HomeAdapter(homeData)
         binding.rvHome.adapter = adapter
 
-        adapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                when(position+1){
+                when (position + 1) {
                     1 -> navigateToFullTestFragment()
-                    2 -> Toast.makeText(requireContext(), "You clicked #2", Toast.LENGTH_SHORT).show()
+                    2 -> Toast.makeText(requireContext(), "You clicked #2", Toast.LENGTH_SHORT)
+                        .show()
                     3 -> navigateToPart1TopicFragment()
-                    4 -> Toast.makeText(requireContext(), "You clicked #4", Toast.LENGTH_SHORT).show()
-                    5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT).show()
-                    6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT).show()
-                    7 -> Toast.makeText(requireContext(), "You clicked #7", Toast.LENGTH_SHORT).show()
+                    4 -> Toast.makeText(requireContext(), "You clicked #4", Toast.LENGTH_SHORT)
+                        .show()
+                    5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT)
+                        .show()
+                    6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT)
+                        .show()
+                    7 -> Toast.makeText(requireContext(), "You clicked #7", Toast.LENGTH_SHORT)
+                        .show()
                     8 -> navigateToBandCalculationFragment()
-                    9 -> Toast.makeText(requireContext(), "You clicked #9", Toast.LENGTH_SHORT).show()
-                    10 -> Toast.makeText(requireContext(), "You clicked #10", Toast.LENGTH_SHORT).show()
+                    9 -> navigateToInfoFragment()
+                    10 -> navigateToAboutFragment()
                 }
             }
 
@@ -65,18 +72,32 @@ class HomeFragment : Fragment() {
         toggle.syncState()
 
         binding.ibMenu.setOnClickListener {
-            if (!binding.drawerLayoutHome.isOpen){
+            if (!binding.drawerLayoutHome.isOpen) {
                 binding.drawerLayoutHome.open()
             }
         }
 
         binding.navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.navRate -> Toast.makeText(requireContext(), "Rate us", Toast.LENGTH_SHORT).show()
-                R.id.navContact -> Toast.makeText(requireContext(), "Contact us", Toast.LENGTH_SHORT).show()
-                R.id.navShare -> Toast.makeText(requireContext(), "Share it", Toast.LENGTH_SHORT).show()
-                R.id.navSuggestions -> Toast.makeText(requireContext(), "Give your suggestions", Toast.LENGTH_SHORT).show()
-                R.id.navReportBugs -> Toast.makeText(requireContext(), "Report bugs", Toast.LENGTH_SHORT).show()
+            when (it.itemId) {
+                R.id.navRate -> Toast.makeText(requireContext(), "Rate us", Toast.LENGTH_SHORT)
+                    .show()
+                R.id.navContact -> Toast.makeText(
+                    requireContext(),
+                    "Contact us",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.navShare -> Toast.makeText(requireContext(), "Share it", Toast.LENGTH_SHORT)
+                    .show()
+                R.id.navSuggestions -> Toast.makeText(
+                    requireContext(),
+                    "Give your suggestions",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.navReportBugs -> Toast.makeText(
+                    requireContext(),
+                    "Report bugs",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             true
         }
@@ -87,24 +108,68 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun navigateToFullTestFragment(){
+    private fun navigateToFullTestFragment() {
         val fullTestFragment = TestYourselfFragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, fullTestFragment)
         transaction.addToBackStack(null).commit()
     }
 
-    private fun navigateToPart1TopicFragment(){
+    private fun navigateToPart1TopicFragment() {
         val part1TopicFragment = Part1TopicFragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part1TopicFragment)
-            transaction.addToBackStack(null).commit()
+        transaction.addToBackStack(null).commit()
     }
 
-    private fun navigateToBandCalculationFragment(){
+    private fun navigateToBandCalculationFragment() {
         val bandCalculationFragment = BandCalculationFragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, bandCalculationFragment)
-            transaction.addToBackStack(null).commit()
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToAboutFragment() {
+        val aboutFragment = AboutFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, aboutFragment)
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToInfoFragment() {
+        val infoFragment = InfoFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, infoFragment)
+        transaction.addToBackStack(null).commit()
     }
 }

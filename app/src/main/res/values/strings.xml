@@ -17,4 +17,18 @@
     <string name="part_2">Part 2</string>
     <string name="part_3">Part 3</string>
     <string name="sample_answer">Sample answer</string>
+    <string name="about_application">This application is made for those who wants to improve their speaking skills.</string>
+    <string name="about_application2">Sample answers and sample video answers are the best tools for users. Especially, Recording voice aspects is one of the great ways of testing yourself.</string>
+    <string name="about_application3">Hope you enjoy using application.</string>
+    <string name="about_application4">I really hope you rate us 5 stars.</string>
+    <string name="version">Version:</string>
+    <string name="version_number">1.0.0</string>
+    <string name="released">Released:</string>
+    <string name="released_time">10.10.2022</string>
+    <string name="target">Target:</string>
+    <string name="target_item">IELTS Speaking</string>
+    <string name="goals">Goals:</string>
+    <string name="goal1">1. Improve Speaking</string>
+    <string name="goal2">2. Improve Pronunciation</string>
+    <string name="goal3">3. Increase Vocabulary</string>
 </resources>
