@@ -17,6 +17,7 @@ import com.example.ieltsspeaking.home.category.band_score.BandCalculationFragmen
 import com.example.ieltsspeaking.home.category.info.InfoFragment
 import com.example.ieltsspeaking.home.data.HomeData
 import com.example.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
+import com.example.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -52,8 +53,7 @@ class HomeFragment : Fragment() {
                         .show()
                     6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT)
                         .show()
-                    7 -> Toast.makeText(requireContext(), "You clicked #7", Toast.LENGTH_SHORT)
-                        .show()
+                    7 -> navigateToVideoAnswerFragment()
                     8 -> navigateToBandCalculationFragment()
                     9 -> navigateToInfoFragment()
                     10 -> navigateToAboutFragment()
@@ -124,12 +124,6 @@ class HomeFragment : Fragment() {
     private fun navigateToPart1TopicFragment() {
         val part1TopicFragment = Part1TopicFragment()
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
         transaction.replace(R.id.fragmentContainerView, part1TopicFragment)
         transaction.addToBackStack(null).commit()
     }
@@ -170,6 +164,19 @@ class HomeFragment : Fragment() {
             R.anim.to_right
         )
         transaction.replace(R.id.fragmentContainerView, infoFragment)
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToVideoAnswerFragment() {
+        val fragment = VideoAnswerBandsFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, fragment)
         transaction.addToBackStack(null).commit()
     }
 }

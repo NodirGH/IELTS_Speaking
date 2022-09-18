@@ -31,4 +31,8 @@
     <string name="goal1">1. Improve Speaking</string>
     <string name="goal2">2. Improve Pronunciation</string>
     <string name="goal3">3. Increase Vocabulary</string>
+    <string name="sample_answer_band_9">Sample answer\n Band 9</string>
+    <string name="sample_answer_band_8">Sample answer\n Band 8</string>
+    <string name="sample_answer_band_7">Sample answer\n Band 7</string>
+    <string name="sample_answer_band_6">Sample answer\n Band 6</string>
 </resources>
