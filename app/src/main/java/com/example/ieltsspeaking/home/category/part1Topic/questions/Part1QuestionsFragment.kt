@@ -38,18 +38,44 @@ class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.tvHeadingPart1Questions.text = this.heading
 
+        setRecyclerView()
+    }
+
+    private fun setRecyclerView() {
         binding.rvPart1Questions.layoutManager = LinearLayoutManager(requireContext())
-        val dataPart1QuestionsStudy = Part1QuestionsStudyData.getStudyQuestions()
-        val adapter = Part1QuestionsAdapter(dataPart1QuestionsStudy, this)
+        val data: List<ModelPart1Questions> = when(heading){
+            "Work" -> Part1QuestionsStudyData.getWorkQuestions()
+            "Study" -> Part1QuestionsStudyData.getStudyQuestions()
+            "Hometown" -> Part1QuestionsStudyData.getHometownQuestions()
+            "Home" -> Part1QuestionsStudyData.getHomeQuestions()
+            "Art" -> Part1QuestionsStudyData.getArtQuestions()
+            "Birthday" -> Part1QuestionsStudyData.getBirthdayQuestions()
+            "Childhood" -> Part1QuestionsStudyData.getChildhoodQuestions()
+            "Clothes" -> Part1QuestionsStudyData.getClothesQuestions()
+            "Daily Routine" -> Part1QuestionsStudyData.getDailyRoutineQuestions()
+            "Food" -> Part1QuestionsStudyData.getFoodQuestions()
+            "Hobbies" -> Part1QuestionsStudyData.getHobbiesQuestions()
+            "Internet" -> Part1QuestionsStudyData.getInternetQuestions()
+            "Leisure time" -> Part1QuestionsStudyData.getLeisureTimeQuestions()
+            "Music" -> Part1QuestionsStudyData.getBirthdayQuestions()
+            "Shopping" -> Part1QuestionsStudyData.getBirthdayQuestions()
+            else -> Part1QuestionsStudyData.getStudyQuestions()
+        }
+        val adapter = Part1QuestionsAdapter(data, this)
         binding.rvPart1Questions.adapter = adapter
     }
 
     override fun onItemClick(modelPart1Questions: ModelPart1Questions) {
     val part1AnswersFragment = Part1AnswersFragment.newInstance(modelPart1Questions.question)
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part1AnswersFragment)
         transaction.addToBackStack(null)
         transaction.commit()
