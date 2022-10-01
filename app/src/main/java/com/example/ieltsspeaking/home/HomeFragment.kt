@@ -18,6 +18,7 @@ import com.example.ieltsspeaking.home.category.info.InfoFragment
 import com.example.ieltsspeaking.home.data.HomeData
 import com.example.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
 import com.example.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
+import com.example.ieltsspeaking.home.category.pronunciation.PronunciationFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -44,8 +45,7 @@ class HomeFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 when (position + 1) {
                     1 -> navigateToFullTestFragment()
-                    2 -> Toast.makeText(requireContext(), "You clicked #2", Toast.LENGTH_SHORT)
-                        .show()
+                    2 -> navigateToPronunciationFragment()
                     3 -> navigateToPart1TopicFragment()
                     4 -> Toast.makeText(requireContext(), "You clicked #4", Toast.LENGTH_SHORT)
                         .show()
@@ -121,9 +121,28 @@ class HomeFragment : Fragment() {
         transaction.addToBackStack(null).commit()
     }
 
+    private fun navigateToPronunciationFragment(){
+        val pronunciationFragment = PronunciationFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, pronunciationFragment)
+        transaction.addToBackStack(null).commit()
+    }
+
     private fun navigateToPart1TopicFragment() {
         val part1TopicFragment = Part1TopicFragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part1TopicFragment)
         transaction.addToBackStack(null).commit()
     }

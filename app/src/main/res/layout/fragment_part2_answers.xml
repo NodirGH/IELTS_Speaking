@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light_blue"
-    tools:context=".home.category.part1Topic.questions.answers.Part1AnswersFragment">
+    tools:context=".home.category.part2Topic.question.answer.Part2AnswersFragment">
 
     <TextView
-        android:id="@+id/tvP1QuestionHeading"
+        android:id="@+id/tvP2QuestionHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:paddingBottom="20dp"
-        android:text="@string/part_1_sample_answer"
+        android:text="@string/part_2_sample_answer"
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:textColor="@color/background_dark_blue"
         android:textSize="28sp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvPart1Question"
+        android:id="@+id/cvPart2Question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -35,10 +35,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvP1QuestionHeading">
+        app:layout_constraintTop_toBottomOf="@id/tvP2QuestionHeading">
 
         <TextView
-            android:id="@+id/tvPart1Question"
+            android:id="@+id/tvPart2Question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvPart1Question">
+        app:layout_constraintTop_toBottomOf="@+id/cvPart2Question">
 
         <TextView
             android:id="@+id/tvPart1Answer"

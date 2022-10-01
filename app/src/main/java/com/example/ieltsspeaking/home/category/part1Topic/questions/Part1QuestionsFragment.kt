@@ -11,7 +11,7 @@ import com.example.ieltsspeaking.databinding.FragmentPart1QuestionsBinding
 import com.example.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.questions.answers.Part1AnswersFragment
 import com.example.ieltsspeaking.home.category.part1Topic.questions.data.Part1QuestionsStudyData
-import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 
 private const val HEADING = "heading"
 
@@ -45,7 +45,7 @@ class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
     private fun setRecyclerView() {
         binding.rvPart1Questions.layoutManager = LinearLayoutManager(requireContext())
-        val data: List<ModelPart1Questions> = when(heading){
+        val data: List<ModelPartsQuestions> = when(heading){
             "Work" -> Part1QuestionsStudyData.getWorkQuestions()
             "Study" -> Part1QuestionsStudyData.getStudyQuestions()
             "Hometown" -> Part1QuestionsStudyData.getHometownQuestions()
@@ -67,8 +67,8 @@ class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
         binding.rvPart1Questions.adapter = adapter
     }
 
-    override fun onItemClick(modelPart1Questions: ModelPart1Questions) {
-    val part1AnswersFragment = Part1AnswersFragment.newInstance(modelPart1Questions.question)
+    override fun onItemClick(modelPartsQuestions: ModelPartsQuestions) {
+    val part1AnswersFragment = Part1AnswersFragment.newInstance(modelPartsQuestions.question)
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,

@@ -4,15 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ieltsspeaking.databinding.ItemsRvPart1TopicsBinding
-import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPart1Topic
-import com.example.ieltsspeaking.home.category.part1Topic.questions.data.Part1QuestionsStudyData
-import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPart1Questions
+import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 
-class Part1TopicAdapter(
-    private val part1ModelTopic: List<ModelPart1Topic>,
+class PartsTopicAdapter(
+    private val part1ModelTopic: List<ModelPartsTopic>,
     private val part1TopicClickListener: OnItemClickListener
 ) :
-    RecyclerView.Adapter<Part1TopicAdapter.Part1ViewHolder>() {
+    RecyclerView.Adapter<PartsTopicAdapter.Part1ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Part1ViewHolder {
         val itemView =
@@ -32,16 +30,16 @@ class Part1TopicAdapter(
     inner class Part1ViewHolder(val binding: ItemsRvPart1TopicsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(modelPart1Topic: ModelPart1Topic) {
-            binding.tvPart1OrderNumber.text = modelPart1Topic.orderNumber.toString()
+        fun bindView(modelPartsTopic: ModelPartsTopic) {
+            binding.tvPart1OrderNumber.text = modelPartsTopic.orderNumber.toString()
             binding.tvPart1NumberQuestion.text = part1ModelTopic.size.toString()
-            binding.tvPart1TopicHeading.text = modelPart1Topic.heading
-            binding.ivPart1BgRectangle.setImageResource(modelPart1Topic.background)
+            binding.tvPart1TopicHeading.text = modelPartsTopic.heading
+            binding.ivPart1BgRectangle.setImageResource(modelPartsTopic.background)
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(part1ModelTopic: ModelPart1Topic)
+        fun onItemClick(part1ModelTopic: ModelPartsTopic)
     }
 
 }

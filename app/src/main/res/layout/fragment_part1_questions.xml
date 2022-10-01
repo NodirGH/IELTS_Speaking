@@ -4,18 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light_blue"
     tools:context=".home.category.part1Topic.questions.Part1QuestionsFragment">
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/part1"
+       android:layout_margin="10dp"
+       app:layout_constraintEnd_toStartOf="@+id/tvHeadingPart1Questions"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
 
    <TextView
        android:id="@+id/tvHeadingPart1Questions"
-       android:layout_width="match_parent"
+       android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:background="@color/background_light_blue"
        android:gravity="center"
        android:padding="10dp"
+       android:layout_margin="10dp"
+       android:fontFamily="@font/abhaya_libre_extra_bold"
        android:text="Heading"
        android:textColor="@color/background_dark_blue"
-       android:textSize="24sp"
+       android:textSize="32sp"
        android:textStyle="bold"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class ModelPart1Topic(
+class ModelPartsTopic(
     val id: Int,
     val orderNumber: Int,
     val heading: String,

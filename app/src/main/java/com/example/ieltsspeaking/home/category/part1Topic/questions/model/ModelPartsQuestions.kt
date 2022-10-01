@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ModelPart1Questions(
+data class ModelPartsQuestions(
     val id: Int,
     val question: String,
     val isLearned: Boolean

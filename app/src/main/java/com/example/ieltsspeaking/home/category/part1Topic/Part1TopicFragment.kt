@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart1TopicBinding
-import com.example.ieltsspeaking.home.category.part1Topic.adapter.Part1TopicAdapter
+import com.example.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.data.Part1TopicData
 import com.example.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
-import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPart1Topic
+import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 
-class Part1TopicFragment : Fragment(), Part1TopicAdapter.OnItemClickListener {
+class Part1TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentPart1TopicBinding
 
@@ -30,11 +30,11 @@ class Part1TopicFragment : Fragment(), Part1TopicAdapter.OnItemClickListener {
 
         binding.rvPart1.layoutManager = LinearLayoutManager(requireContext())
         val part1Data = Part1TopicData.getPart1Data()
-        val adapter = Part1TopicAdapter(part1Data, this)
+        val adapter = PartsTopicAdapter(part1Data, this)
         binding.rvPart1.adapter = adapter
     }
 
-    override fun onItemClick(part1ModelTopic: ModelPart1Topic) {
+    override fun onItemClick(part1ModelTopic: ModelPartsTopic) {
         val part1QuestionsFragment = Part1QuestionsFragment.newInstance(part1ModelTopic.heading)
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainerView, part1QuestionsFragment)

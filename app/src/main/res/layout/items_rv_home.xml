@@ -35,8 +35,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/ivBackgroundOval"
             app:layout_constraintEnd_toEndOf="@+id/ivBackgroundOval"
             app:layout_constraintStart_toStartOf="@+id/ivBackgroundOval"
-            app:layout_constraintTop_toTopOf="@+id/ivBackgroundOval"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toTopOf="@+id/ivBackgroundOval" />
 
         <TextView
             android:id="@+id/tvTitleItemsRV"
