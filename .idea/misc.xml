@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1225" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/background_spinner.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_about.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_band_6.xml" value="0.1035" />
@@ -28,10 +29,12 @@
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part1_7.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part1_8.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part1_9.xml" value="0.118" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part1_answers.xml" value="0.1035" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part1_test_yourself.xml" value="0.1125" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part2_3.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part2_test_yourself.xml" value="0.1125" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_part3_test_yourself.xml" value="0.1125" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_pronunciation.xml" value="0.1035" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_rectangle_number_part1.xml" value="0.1" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_rectangle_part1.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_sample_answer.xml" value="0.117" />
@@ -47,6 +50,7 @@
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/bg_vocabulary.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/blabla.xml" value="0.1025" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/ic_done.xml" value="0.117" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/ic_menu.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/ic_message.xml" value="0.118" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/ic_play.xml" value="0.1035" />
@@ -57,6 +61,7 @@
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/learned_button.xml" value="0.1035" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/oval.xml" value="0.16" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/rectangle_button.xml" value="0.1025" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/drawable/rectangle_learned_button_enabled.xml" value="0.1035" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_about.xml" value="0.18" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_band6_answer.xml" value="0.2" />
@@ -70,6 +75,10 @@
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part1_answers.xml" value="0.18" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part1_questions.xml" value="0.17074275362318841" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part1_topic.xml" value="0.25" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part2_answers.xml" value="0.2" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part2_questions.xml" value="0.12952898550724637" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_part2_topic.xml" value="0.25" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_pronunciation.xml" value="0.12952898550724637" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_test_yourself.xml" value="0.2" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_test_yourself_part1.xml" value="0.12952898550724637" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/fragment_test_yourself_part1_recording.xml" value="0.22" />
@@ -81,16 +90,18 @@
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/items_rv_part1.xml" value="0.25" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/items_rv_part1_questions.xml" value="0.22" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/items_rv_part1_topics.xml" value="0.2" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/items_rv_pronunciation.xml" value="0.18" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/items_rv_test_yourself_part1.xml" value="0.22" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/nav_header.xml" value="0.17074275362318841" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/spinner_front_color.xml" value="0.17074275362318841" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/spinner_word_color.xml" value="0.17074275362318841" />
+        <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/layout/trash.xml" value="0.22" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/menu/nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/ANDROID STUDIO PROJECTS/IELTSSpeaking/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.118" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

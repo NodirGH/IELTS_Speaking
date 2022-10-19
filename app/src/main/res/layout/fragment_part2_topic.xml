@@ -8,11 +8,10 @@
     tools:context=".home.category.part2Topic.Part2TopicFragment">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_part1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/part2"
         android:layout_marginEnd="15dp"
-        app:tint="@color/background_dark_blue"
         app:layout_constraintBottom_toBottomOf="@+id/tvHeadingPart2"
         app:layout_constraintEnd_toStartOf="@+id/tvHeadingPart2"
         app:layout_constraintTop_toTopOf="@+id/tvHeadingPart2" />
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/part_2_topics"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text_color"
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:textSize="32sp"
         android:textStyle="bold"

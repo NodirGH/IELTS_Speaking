@@ -10,7 +10,6 @@ import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart2TopicBinding
 import com.example.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
-import com.example.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
 import com.example.ieltsspeaking.home.category.part2Topic.data.Part2TopicData
 import com.example.ieltsspeaking.home.category.part2Topic.question.Part2QuestionsFragment
 
@@ -36,10 +35,10 @@ class Part2TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(part1ModelTopic: ModelPartsTopic) {
-//        val part2QuestionsFragment = Part2QuestionsFragment.newInstance(part1ModelTopic.heading)
-//        val transaction = parentFragmentManager.beginTransaction()
-//        transaction.replace(R.id.fragmentContainerView, part1QuestionsFragment)
-//        transaction.addToBackStack(null)
-//        transaction.commit()
+        val part2QuestionsFragment = Part2QuestionsFragment.newInstance(part1ModelTopic.heading)
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainerView, part2QuestionsFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

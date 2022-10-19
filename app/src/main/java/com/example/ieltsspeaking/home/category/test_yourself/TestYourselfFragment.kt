@@ -18,7 +18,7 @@ class TestYourselfFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTestYourselfBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,6 +36,12 @@ class TestYourselfFragment : Fragment() {
     private fun navigateToPart1() {
         val part1Fragment = TestYourselfPart1Fragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part1Fragment)
         transaction.addToBackStack(null).commit()
     }
@@ -43,6 +49,12 @@ class TestYourselfFragment : Fragment() {
     private fun navigateToPart2() {
         val part2Fragment = TestYourselfPart2Fragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part2Fragment)
         transaction.addToBackStack(null).commit()
     }
@@ -50,6 +62,12 @@ class TestYourselfFragment : Fragment() {
     private fun navigateToPart3() {
         val part3Fragment = TestYourselfPart3Fragment()
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, part3Fragment)
         transaction.addToBackStack(null).commit()
     }

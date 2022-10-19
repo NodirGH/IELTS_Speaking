@@ -46,6 +46,12 @@ class TestYourselfPart1Fragment : Fragment(), TestYourselfPart1Adapter.OnItemTes
     override fun onItemClick(modelTestYourselfPart1: TestYourselfModel) {
         val testYourselfPart1RecordingFragment = TestYourselfPart1RecordingFragment.newInstance(modelTestYourselfPart1.part1Question)
         val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
         transaction.replace(R.id.fragmentContainerView, testYourselfPart1RecordingFragment)
         transaction.addToBackStack(null).commit()
     }

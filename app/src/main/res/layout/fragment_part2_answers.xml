@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:paddingBottom="20dp"
+        android:paddingBottom="5dp"
         android:text="@string/part_2_sample_answer"
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:textColor="@color/background_dark_blue"
@@ -49,9 +49,12 @@
             android:textColor="@color/background_dark_blue"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+
     </androidx.cardview.widget.CardView>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"

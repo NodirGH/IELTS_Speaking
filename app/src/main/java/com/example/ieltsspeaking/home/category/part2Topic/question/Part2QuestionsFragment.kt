@@ -10,6 +10,9 @@ import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart2QuestionsBinding
 import com.example.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
+import com.example.ieltsspeaking.home.category.part2Topic.data.Part2TopicData
+import com.example.ieltsspeaking.home.category.part2Topic.question.answer.Part2AnswersFragment
+import com.example.ieltsspeaking.home.category.part2Topic.question.data.Part2QuestionsData
 
 private const val HEADING = "heading"
 
@@ -43,33 +46,49 @@ class Part2QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
     private fun setPart2RecyclerView() {
         binding.rvPart2Questions.layoutManager = LinearLayoutManager(requireContext())
-//        val data: List<ModelPartsQuestions> = when(heading){
-//
-//        }
-//        val adapter = Part1QuestionsAdapter(data, this)
-//        binding.rvPart2Questions.adapter = adapter
+        val data: List<ModelPartsQuestions> = when(heading){
+            "Activity" -> Part2QuestionsData.getActivityQuestions()
+            "Advertisements" -> Part2QuestionsData.getAdvertisementQuestions()
+            "Animal" -> Part2QuestionsData.getAnimalQuestions()
+            "Clothes" -> Part2QuestionsData.getClothesQuestions()
+            "Colors" -> Part2QuestionsData.getColorsQuestions()
+            "Competition & Prizes" -> Part2QuestionsData.getCompetitionQuestions()
+            "Education" -> Part2QuestionsData.getEducationQuestions()
+            "Food & Health" -> Part2QuestionsData.getFoodQuestions()
+            "Music" -> Part2QuestionsData.getMusicQuestions()
+            "Money" -> Part2QuestionsData.getMoneyQuestions()
+            "Plans" -> Part2QuestionsData.getPlansQuestions()
+            "Pollution" -> Part2QuestionsData.getPollutionQuestions()
+            "Service" -> Part2QuestionsData.getServiceQuestions()
+            "Weather" -> Part2QuestionsData.getWeatherQuestions()
+            "Technology & Devices" -> Part2QuestionsData.getTechnologyQuestions()
+
+            else -> Part2QuestionsData.getTechnologyQuestions()
+        }
+        val adapter = Part1QuestionsAdapter(data, this)
+        binding.rvPart2Questions.adapter = adapter
     }
 
     override fun onItemClick(modelPartsQuestions: ModelPartsQuestions) {
-//        val part2AnswerFragment = Part2AnswerFragment
+        val part2AnswerFragment = Part2AnswersFragment.newInstance(modelPartsQuestions.question)
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, part2AnswerFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Part2QuestionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             Part2QuestionsFragment().apply {
                 arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
+                    putString(HEADING, param1)
                 }
             }
     }
