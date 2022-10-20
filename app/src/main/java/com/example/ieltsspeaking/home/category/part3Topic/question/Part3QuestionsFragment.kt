@@ -47,6 +47,16 @@ class Part3QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
         binding.rvPart3Questions.layoutManager = LinearLayoutManager(requireContext())
         val data: List<ModelPartsQuestions> = when (heading) {
             "Weather" -> Part3QuestionsData.getWeatherQuestions()
+            "Travel & Tourism" -> Part3QuestionsData.getTravelQuestions()
+            "Technology & Devices" -> Part3QuestionsData.getTechnologyQuestions()
+            "Sleep & Being late" -> Part3QuestionsData.getSleepQuestions()
+            "Shopping" -> Part3QuestionsData.getShoppingQuestions()
+            "Service" -> Part3QuestionsData.getServiceQuestions()
+            "Pollution" -> Part3QuestionsData.getPollutionQuestions()
+            "Politeness" -> Part3QuestionsData.getPolitenessQuestions()
+            "Plans" -> Part3QuestionsData.getPlansQuestions()
+            "People, Family & Friend" -> Part3QuestionsData.getPeopleQuestions()
+
             else -> Part3QuestionsData.getWrongError()
         }
         val adapter = Part1QuestionsAdapter(data, this)
