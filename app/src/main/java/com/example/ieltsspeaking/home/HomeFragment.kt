@@ -18,6 +18,7 @@ import com.example.ieltsspeaking.home.category.info.InfoFragment
 import com.example.ieltsspeaking.home.data.HomeData
 import com.example.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
 import com.example.ieltsspeaking.home.category.part2Topic.Part2TopicFragment
+import com.example.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
 import com.example.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
 import com.example.ieltsspeaking.home.category.pronunciation.PronunciationFragment
 
@@ -49,8 +50,7 @@ class HomeFragment : Fragment() {
                     2 -> navigateToPronunciationFragment()
                     3 -> navigateToPart1TopicFragment()
                     4 -> navigateToPart2TopicFragment()
-                    5 -> Toast.makeText(requireContext(), "You clicked #5", Toast.LENGTH_SHORT)
-                        .show()
+                    5 -> navigateToPart3TopicFragment()
                     6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT)
                         .show()
                     7 -> navigateToVideoAnswerFragment()
@@ -201,6 +201,19 @@ class HomeFragment : Fragment() {
 
     private fun navigateToPart2TopicFragment(){
         val fragment = Part2TopicFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToPart3TopicFragment(){
+        val fragment = Part3TopicFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,

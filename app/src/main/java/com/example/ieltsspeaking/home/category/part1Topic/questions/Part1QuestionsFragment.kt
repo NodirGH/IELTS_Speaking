@@ -59,8 +59,8 @@ class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
             "Hobbies" -> Part1QuestionsStudyData.getHobbiesQuestions()
             "Internet" -> Part1QuestionsStudyData.getInternetQuestions()
             "Leisure time" -> Part1QuestionsStudyData.getLeisureTimeQuestions()
-            "Music" -> Part1QuestionsStudyData.getBirthdayQuestions()
-            "Shopping" -> Part1QuestionsStudyData.getBirthdayQuestions()
+            "Music" -> Part1QuestionsStudyData.getMusicQuestions()
+            "Shopping" -> Part1QuestionsStudyData.getShoppingQuestions()
             else -> Part1QuestionsStudyData.getStudyQuestions()
         }
         val adapter = Part1QuestionsAdapter(data, this)

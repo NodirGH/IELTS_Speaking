@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light_blue"
+    tools:context=".home.category.part3Topic.question.answer.Part3AnswersFragment">
+
+    <TextView
+        android:id="@+id/tvP3QuestionHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:paddingBottom="5dp"
+        android:text="@string/part_3_sample_answer"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPart3Question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvP3QuestionHeading">
+
+        <TextView
+            android:id="@+id/tvPart3Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="This place is for question field"
+            android:textColor="@color/background_dark_blue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvPart3Question">
+
+        <TextView
+            android:id="@+id/tvPart3Answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_part1_answers"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:padding="20dp"
+            android:text="@string/sample_answer_part1"
+            android:textColor="@color/main_text_color"
+            android:textSize="20sp" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnPart3LearnedInside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2"
+        android:background="@drawable/rectangle_learned_button_disabled"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="@string/learned"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

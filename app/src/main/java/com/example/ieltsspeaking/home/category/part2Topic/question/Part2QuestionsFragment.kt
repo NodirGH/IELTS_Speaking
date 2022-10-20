@@ -10,7 +10,6 @@ import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentPart2QuestionsBinding
 import com.example.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
 import com.example.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
-import com.example.ieltsspeaking.home.category.part2Topic.data.Part2TopicData
 import com.example.ieltsspeaking.home.category.part2Topic.question.answer.Part2AnswersFragment
 import com.example.ieltsspeaking.home.category.part2Topic.question.data.Part2QuestionsData
 
@@ -85,10 +84,10 @@ class Part2QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String) =
+        fun newInstance(heading: String) =
             Part2QuestionsFragment().apply {
                 arguments = Bundle().apply {
-                    putString(HEADING, param1)
+                    putString(HEADING, heading)
                 }
             }
     }

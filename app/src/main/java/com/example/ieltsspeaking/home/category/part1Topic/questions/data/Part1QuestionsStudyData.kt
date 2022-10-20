@@ -210,53 +210,40 @@ class Part1QuestionsStudyData {
                 ModelPartsQuestions(16, "What do you think is the importance of leisure time in life?", false),
                 ModelPartsQuestions(17, "Do you think old and young people spend their leisure time in the same way?", false),
                 ModelPartsQuestions(18, "Do you like to travel in holidays?", false),
-                ModelPartsQuestions(18, "If you had a child, what leisure places would you go with your child?", false)
+                ModelPartsQuestions(19, "If you had a child, what leisure places would you go with your child?", false)
             )
         }
 
         fun getMusicQuestions(): List<ModelPartsQuestions>{
             return listOf(
-                ModelPartsQuestions(1, "", false),
-                ModelPartsQuestions(2, "", false),
-                ModelPartsQuestions(3, "", false),
-                ModelPartsQuestions(4, "", false),
-                ModelPartsQuestions(5, "", false),
-                ModelPartsQuestions(6, "", false),
-                ModelPartsQuestions(7, "", false),
-                ModelPartsQuestions(8, "", false),
-                ModelPartsQuestions(9, "", false),
-                ModelPartsQuestions(10, "", false),
-                ModelPartsQuestions(11, "", false),
-                ModelPartsQuestions(12, "", false),
-                ModelPartsQuestions(13, "", false),
-                ModelPartsQuestions(14, "", false),
-                ModelPartsQuestions(15, "", false),
-                ModelPartsQuestions(16, "", false),
-                ModelPartsQuestions(17, "", false),
-                ModelPartsQuestions(18, "", false)
+                ModelPartsQuestions(1, "Do you often listen to music?", false),
+                ModelPartsQuestions(2, "When do you listen to music?", false),
+                ModelPartsQuestions(3, "How much time do you spend listening to music every day?", false),
+                ModelPartsQuestions(4, "What kinds of music do you like to listen to?", false),
+                ModelPartsQuestions(5, "Have you ever been to a concert before?", false),
+                ModelPartsQuestions(6, "Do you like to listen to live music?", false),
+                ModelPartsQuestions(7, "When did you start listening to this type of music?", false),
+                ModelPartsQuestions(8, "Where do you listen to it?", false),
+                ModelPartsQuestions(9, "How do you feel when you listen to this music?", false),
+                ModelPartsQuestions(10, "Have you ever learned to play a musical instrument?", false),
+                ModelPartsQuestions(11, "Is music an important subject at school in your country?", false),
+                ModelPartsQuestions(12, "Did you often listen to music when you were a child?", false),
+                ModelPartsQuestions(13, "What kinds of music are (most) popular in your country?", false),
+                ModelPartsQuestions(14, "Do you like traditional songs?", false)
             )
         }
 
         fun getShoppingQuestions(): List<ModelPartsQuestions>{
             return listOf(
-                ModelPartsQuestions(1, "", false),
-                ModelPartsQuestions(2, "", false),
-                ModelPartsQuestions(3, "", false),
-                ModelPartsQuestions(4, "", false),
-                ModelPartsQuestions(5, "", false),
-                ModelPartsQuestions(6, "", false),
-                ModelPartsQuestions(7, "", false),
-                ModelPartsQuestions(8, "", false),
-                ModelPartsQuestions(9, "", false),
-                ModelPartsQuestions(10, "", false),
-                ModelPartsQuestions(11, "", false),
-                ModelPartsQuestions(12, "", false),
-                ModelPartsQuestions(13, "", false),
-                ModelPartsQuestions(14, "", false),
-                ModelPartsQuestions(15, "", false),
-                ModelPartsQuestions(16, "", false),
-                ModelPartsQuestions(17, "", false),
-                ModelPartsQuestions(18, "", false)
+                ModelPartsQuestions(1, "Do you like shopping?", false),
+                ModelPartsQuestions(2, "What’s your favourite shop?", false),
+                ModelPartsQuestions(3, "Do you prefer shopping alone or with others?", false),
+                ModelPartsQuestions(4, "What kinds of shops are there where you live?", false),
+                ModelPartsQuestions(5, "Have you ever bought anything online?", false),
+                ModelPartsQuestions(6, "Do you think men and women have different opinions about shopping?", false),
+                ModelPartsQuestions(7, "Do you enjoy shopping?", false),
+                ModelPartsQuestions(8, "What are your favorite stores?", false),
+                ModelPartsQuestions(9, "Have you bought anything online?", false)
             )
         }
 

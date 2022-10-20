@@ -35,6 +35,8 @@ class PartsTopicAdapter(
             binding.tvPart1NumberQuestion.text = part1ModelTopic.size.toString()
             binding.tvPart1TopicHeading.text = modelPartsTopic.heading
             binding.ivPart1BgRectangle.setImageResource(modelPartsTopic.background)
+
+            binding.tvPart1NumberQuestion.text = modelPartsTopic.questionCount.toString()
         }
     }
 

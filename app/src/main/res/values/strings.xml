@@ -13,6 +13,7 @@
     <string name="overall_band_score">Overall Band Score</string>
     <string name="part_1_topics">Part 1 - Topics</string>
     <string name="part_2_topics">Part 2 - Topics</string>
+    <string name="part_3_topics">Part 3 - Topics</string>
     <string name="learned">Learned</string>
     <string name="part_1">Part 1</string>
     <string name="part_2">Part 2</string>
@@ -354,15 +355,15 @@
     <string name="leisure_timeA19">Well, I know children are often crazy about amusement parks and if I had children I suppose they would definitely beg me to take them there. Unfortunately, I can\’t stand crowded and noisy places, so maybe instead of that, I would take my kids to some leafy area, like a national park or botanic gardens, where we could discover more about nature.</string>
 
     //music
-    <string name="musicQ1">Do you often (like to) listen to music?</string>
+    <string name="musicQ1">Do you often listen to music?</string>
     <string name="musicA1">So far I haven\’t met anyone who dislikes music. However, when the workload is too heavy that requires me to stay highly focused, music is a huge distraction. Unlike many people who listen to instrumental music because it helps them focus,  music makes me feel sleepy.</string>
     <string name="musicQ2">When do you listen to music?</string>
     <string name="musicA2">Well, the whole world likes it, so I\’m no exception. I usually listen to cheerful music when I need motivation and prefer sad ones, when I\’m in a bad mood.</string>
     <string name="musicQ3">How much time do you spend listening to music every day?</string>
     <string name="musicA3">As I\’ve mentioned I prefer working in silence. To put it simply, I don\’t listen to music during my working hours. After a long day at school, I probably want to chill out for like half an hour and music helps me to stay energetic.</string>
-    <string name="musicQ4">What kinds of music do you like to listen to? Or What\’s your favourite kind of music?</string>
+    <string name="musicQ4">What kinds of music do you like to listen to?</string>
     <string name="musicA4">I prefer a range of music from Western to Eastern, and from the 90s to modern EDM. But if Korean pop is considered as a kind of music, then yeah, that\’s my favourite. More than half of my playlists are Korean songs and I always keep myself updated with news related to Korean showbiz.</string>
-    <string name="musicQ5">Have you ever been to a concert before? Or Have you ever been to a musical performance?</string>
+    <string name="musicQ5">Have you ever been to a concert before?</string>
     <string name="musicA5">I attend concerts, once in a blue moon, since the ticket price for foreign artists\’ concerts is out of my reach.  So I can only stay home and watch online. It was in 2014 that I finally did go to a concert on my own and it was an international music concert. It was absolutely mind-blowing and an unforgettable experience.</string>
     <string name="musicQ6">Do you like to listen to live music?</string>
     <string name="musicA6">Unless it\’s live at a coffee shop, where literally there is only music and me, then yeah I would love to. But I would change my mind if it\’s a concert. The crowd is too crazy. It\’s completely a mess most of the time and I end up with a severe headache.</string>
@@ -650,9 +651,11 @@
     <string name="part2TechnologyA08">I am not going to be original about the gadget and like most people I use my phone daily. My generation has been relying on this type of technology since childhood. It\'s a thing that does it all, really – it teaches and entertains you, provides information, allows to keep in touch with your nearest and dearest. In addition to that, I often use it to track my jogging routine – it is able to measure my speed as well as the time I spend exercising. I have had this particular phone for more than three years now. Normally I try to get a newer model only after my phone\'s battery is no longer able to keep reasonable amount of charge. Another case when I switch to another one is when it gets heavily damaged, like the screen cracks or there is a firmware malfunction. But if we talk about how long I have been using mobile phones in general then the answer is well more than a decade! I can\'t say for sure. If I were to do without my phone I would feel miserable, isolated, stranded, even helpless! I guess it really makes one think how much reliant we have become to the conveniences of modern technology. After a while though I\’m sure I would get over it and find ways to live without one.</string>
 
 
+    //part 3
 
     <string name="sample_answer_part1">Sample answer is shown here. It doesn\'t matter how much line it requires, it should show all line</string>
     <string name="part_1_sample_answer">Part 1 sample answer</string>
     <string name="part_2_sample_answer">Part 2 sample answer</string>
+    <string name="part_3_sample_answer">Part 3 sample answer</string>
     <string name="pronunciation">Pronunciation</string>
 </resources>

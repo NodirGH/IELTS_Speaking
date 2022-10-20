@@ -108,10 +108,10 @@ class Part2QuestionsData {
         fun getMoneyQuestions(): List<ModelPartsQuestions>{
             return listOf(
             ModelPartsQuestions(1, "Describe a method to save money", false),
-            ModelPartsQuestions(1, "Describe something you want to buy but can't afford", false),
-            ModelPartsQuestions(1, "Talk about a purchase you were unhappy with", false),
-            ModelPartsQuestions(1, "Describe an interesting discussion you had about how you spend your money (Model answer one)", false),
-            ModelPartsQuestions(1, "Describe an interesting discussion you had about how you spend your money (Model answer two)", false)
+            ModelPartsQuestions(2, "Describe something you want to buy but can't afford", false),
+            ModelPartsQuestions(3, "Talk about a purchase you were unhappy with", false),
+            ModelPartsQuestions(4, "Describe an interesting discussion you had about how you spend your money (Model answer one)", false),
+            ModelPartsQuestions(5, "Describe an interesting discussion you had about how you spend your money (Model answer two)", false)
             )
         }
 
