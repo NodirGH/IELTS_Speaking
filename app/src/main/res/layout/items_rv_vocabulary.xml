@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/background_light_green"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+    <ImageView
+        android:id="@+id/ivVocabularyBgSolid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="5dp"
+        android:src="@drawable/bg_rectangle_part1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivVocabularyBgOval"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:src="@drawable/rounded_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVocabularyTopicHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="2dp"
+        android:text="Vocabulary Topic"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivVocabularyBgOval"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVocabularyWordCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="30dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:text="10"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ivVocabularyBgOval"
+        app:layout_constraintTop_toBottomOf="@+id/tvVocabularyTopicHeading" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="3dp"
+        android:paddingBottom="10dp"
+        android:text="words"
+        android:textColor="@color/background_dark_blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvVocabularyWordCount"
+        app:layout_constraintTop_toBottomOf="@+id/tvVocabularyTopicHeading" />
+
+    <ImageView
+        android:id="@+id/ivVocabularyPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/phone_about"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivVocabularyBgOval"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivVocabularyBgOval" />
+
+    <TextView
+        android:id="@+id/tvLearnedPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="0"
+        android:layout_marginBottom="2dp"
+        android:textColor="#00968D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvPercentIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPercentIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="%"
+        android:layout_marginEnd="20dp"
+        android:textColor="#00968D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivVocabularyBgSolid"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

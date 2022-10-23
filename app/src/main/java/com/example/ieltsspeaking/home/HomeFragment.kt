@@ -21,6 +21,7 @@ import com.example.ieltsspeaking.home.category.part2Topic.Part2TopicFragment
 import com.example.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
 import com.example.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
 import com.example.ieltsspeaking.home.category.pronunciation.PronunciationFragment
+import com.example.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -51,8 +52,7 @@ class HomeFragment : Fragment() {
                     3 -> navigateToPart1TopicFragment()
                     4 -> navigateToPart2TopicFragment()
                     5 -> navigateToPart3TopicFragment()
-                    6 -> Toast.makeText(requireContext(), "You clicked #6", Toast.LENGTH_SHORT)
-                        .show()
+                    6 -> navigateToVocabularyFragment()
                     7 -> navigateToVideoAnswerFragment()
                     8 -> navigateToBandCalculationFragment()
                     9 -> navigateToInfoFragment()
@@ -214,6 +214,19 @@ class HomeFragment : Fragment() {
 
     private fun navigateToPart3TopicFragment(){
         val fragment = Part3TopicFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToVocabularyFragment(){
+        val fragment = VocabularyFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,
