@@ -15,6 +15,7 @@ import com.example.ieltsspeaking.databinding.FragmentWorkTestBinding
 import com.example.ieltsspeaking.home.category.vocabulary.categories.result.WorkResultFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
+import com.example.ieltsspeaking.utils.manageVisibility
 
 const val QUESTION_SIZE: String = "question_size"
 const val CORRECT_ANSWERS: String = "correct_answers"
@@ -28,6 +29,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
+    private var isOptionChangeable: Boolean = true
     var questionSize: Int? = null
 
     var isOptionSelected: Boolean = false
@@ -72,6 +74,8 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         binding.tvOptionFour.text = question.optionFour
 
         isOptionSelected = false
+        binding.tvCorrect.manageVisibility(false)
+        binding.tvIncorrect.manageVisibility(false)
     }
 
     private fun defaultOptionsView() {
@@ -120,56 +124,71 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
 
             R.id.btnCheck -> {
 
-                if (isOptionSelected) {
 
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition) {
-                        answerView(mSelectedOptionPosition, R.drawable.bg_incorrect_option_border)
-                        incorrectAnswers++
-                    } else {
-                        correctAnswers++
-                    }
-                    answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
 
-                    if (mCurrentPosition == mQuestionsList!!.size) {
-                        if (question.correctAnswer != mSelectedOptionPosition) {
+                    if (isOptionSelected) {
+
+                        val question = mQuestionsList?.get(mCurrentPosition - 1)
+                        if (question!!.correctAnswer != mSelectedOptionPosition) {
                             answerView(
                                 mSelectedOptionPosition,
                                 R.drawable.bg_incorrect_option_border
                             )
+                            if (isOptionChangeable) {
+                                incorrectAnswers++
+                                binding.tvIncorrect.manageVisibility(true)
+                            }
+
+                        } else {
+                            if (isOptionChangeable) {
+                                correctAnswers++
+                                binding.tvCorrect.manageVisibility(true)
+                            }
                         }
                         answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
-                        binding.btnCheck.text = "Show result"
-                        binding.btnNext.visibility = View.GONE
+
+                        if (mCurrentPosition == mQuestionsList!!.size) {
+                            if (question.correctAnswer != mSelectedOptionPosition) {
+                                answerView(
+                                    mSelectedOptionPosition,
+                                    R.drawable.bg_incorrect_option_border
+                                )
+                            }
+                            answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
+                            isOptionChangeable = false
+                            binding.btnCheck.text = "Show result"
+                            binding.btnNext.visibility = View.GONE
+                            Toast.makeText(
+                                requireContext(),
+                                "You have successfully completed the Quiz",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
+                            binding.btnCheck.setOnClickListener {
+                                navigateToResultFragment()
+                            }
+                        } else {
+                            binding.btnNext.visibility = View.VISIBLE
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
+                        }
+                        mSelectedOptionPosition = 0
+
+                    } else {
                         Toast.makeText(
                             requireContext(),
-                            "You have successfully completed the Quiz",
-                            Toast.LENGTH_LONG
+                            "Please choose your option!",
+                            Toast.LENGTH_SHORT
                         ).show()
-
-                        binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
-                        binding.btnCheck.setOnClickListener {
-                            navigateToResultFragment()
-                        }
-                    } else {
-                        binding.btnNext.visibility = View.VISIBLE
-                        binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
                     }
-                    mSelectedOptionPosition = 0
-
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Please choose your option!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                isOptionChangeable = false
             }
 
             R.id.btnNext -> {
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
                     showNextQuestion()
+                    isOptionChangeable = true
                 }
             }
         }
@@ -184,8 +203,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
             R.anim.from_left,
             R.anim.to_right
         )
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.addToBackStack(null).commit()
+        transaction.replace(R.id.fragmentContainerView, fragment).commit()
     }
 
     private fun showNextQuestion() {
