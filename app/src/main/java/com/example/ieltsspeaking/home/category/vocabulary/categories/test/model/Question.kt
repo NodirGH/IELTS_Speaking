@@ -1,4 +1,4 @@
-package com.example.ieltsspeaking.home.category.vocabulary.categories.work
+package com.example.ieltsspeaking.home.category.vocabulary.categories.test.model
 
 data class Question(
     val id: Int,

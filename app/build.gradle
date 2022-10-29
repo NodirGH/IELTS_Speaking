@@ -71,4 +71,7 @@ dependencies {
 
     //for quiz
     implementation 'com.google.android.material:material:1.7.0'
+
+    //for progressBar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }

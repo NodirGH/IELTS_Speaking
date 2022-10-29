@@ -4,19 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light_green"
     tools:context=".home.category.vocabulary.categories.work.VocabularyWorkFragment">
+
+    <ImageView
+        android:id="@+id/ivHeadingVocabularyPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="80dp"
+        tools:src="@drawable/work"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHeadingVocabularyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:textColor="@color/main_text_color"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHeadingVocabularyPicture"
+        app:layout_constraintStart_toEndOf="@+id/ivHeadingVocabularyPicture"
+        app:layout_constraintTop_toTopOf="@+id/ivHeadingVocabularyPicture"
+        tools:text="Work" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVocabularyWork"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnWorkStartLearning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivHeadingVocabularyPicture" />
+
+    <Button
+        android:id="@+id/btnWorkStartLearning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_light_blue_button_enabled"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/start_learning"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnWorkTest"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnWorkTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_green_button"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/test"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintStart_toEndOf="@+id/btnWorkStartLearning" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,12 @@
-package com.example.ieltsspeaking.home.category.vocabulary.categories.work
+package com.example.ieltsspeaking.home.category.vocabulary.categories.test.data
+
+import com.example.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
 
 object Constants {
+
+    const val TOTAL_QUESTIONS: String = "total_questions"
+    const val CORRECT_ANSWERS: String = "correct_answers"
+
     fun getQuestions(): ArrayList<Question> {
         val questionList = ArrayList<Question>()
 
