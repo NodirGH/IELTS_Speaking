@@ -6,16 +6,14 @@ class DataVocabulary {
     companion object{
         fun getWorkWords():List<ModelVocabularyWordlist>{
             return listOf(
-            ModelVocabularyWordlist(1, "work1"),
-            ModelVocabularyWordlist(2, "work2"),
-            ModelVocabularyWordlist(3, "work3"),
-            ModelVocabularyWordlist(4, "work4"),
-            ModelVocabularyWordlist(5, "work5"),
-            ModelVocabularyWordlist(6, "work6"),
-            ModelVocabularyWordlist(7, "work7"),
-            ModelVocabularyWordlist(8, "work8"),
-            ModelVocabularyWordlist(9, "work9"),
-            ModelVocabularyWordlist(10, "work10")
+            ModelVocabularyWordlist(1, "to get involve in"),
+            ModelVocabularyWordlist(2, "to fit in"),
+            ModelVocabularyWordlist(3, "job flexibility"),
+            ModelVocabularyWordlist(4, "nine-to-five work"),
+            ModelVocabularyWordlist(5, "to dedicate"),
+            ModelVocabularyWordlist(6, "world-class"),
+            ModelVocabularyWordlist(7, "perk"),
+            ModelVocabularyWordlist(8, "overloaded")
             )
         }
     }

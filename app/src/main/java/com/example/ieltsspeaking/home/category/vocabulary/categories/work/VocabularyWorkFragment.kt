@@ -12,6 +12,7 @@ import com.example.ieltsspeaking.R
 import com.example.ieltsspeaking.databinding.FragmentVocabularyWorkBinding
 import com.example.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.adapter.VocabularyWordsAdapter
+import com.example.ieltsspeaking.home.category.vocabulary.categories.start_learning.StartLearningFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.WorkTestFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.work.data.DataVocabulary
 
@@ -39,12 +40,25 @@ class VocabularyWorkFragment : Fragment() {
         }
 
         binding.btnWorkStartLearning.setOnClickListener {
-            Toast.makeText(requireContext(), "Learning started", Toast.LENGTH_SHORT).show()
+            navigateToStartLearningFragment()
         }
     }
 
     private fun navigateToWorkTestFragment(){
         val fragment = WorkTestFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateToStartLearningFragment(){
+        val fragment = StartLearningFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,

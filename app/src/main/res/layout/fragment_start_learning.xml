@@ -1,14 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light_green"
     tools:context=".home.category.vocabulary.categories.start_learning.StartLearningFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/ivHeadingIconStartLearning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/work"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvHeadingStartLearning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        tools:text="Work"
+        android:textColor="@color/main_text_color"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivHeadingIconStartLearning"
+        app:layout_constraintStart_toEndOf="@+id/ivHeadingIconStartLearning"
+        app:layout_constraintTop_toTopOf="@+id/ivHeadingIconStartLearning" />
+
+    <LinearLayout
+        android:id="@+id/llProgressBarStartLearning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivHeadingIconStartLearning">
+
+        <ProgressBar
+            android:id="@+id/pbProgressBarStartLearning"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:indeterminate="false"
+            android:max="10"
+            android:minHeight="50dp"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/tvProgressBarCounterStartLearning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="@color/main_text_color"
+            android:textColorHint="#7A8089"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="0/10" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFlipCardFront"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="50dp"
+        android:background="@drawable/bg_rectangle_part1"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:gravity="center"
+        android:textColor="@color/main_text_color"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnLearnedStartLearning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llProgressBarStartLearning"
+        tools:text="Front vocabulary" />
+
+    <LinearLayout
+        android:id="@+id/llFlipCardBack"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_rectangle_part1"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btnLearnedStartLearning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llProgressBarStartLearning">
+
+        <TextView
+            android:id="@+id/tvFlipCardDefinition"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:textSize="26sp"
+            android:padding="10dp"
+            tools:text="Definition is given here"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:textColor="@color/main_text_color"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/example"
+            android:gravity="center"
+            android:textColor="#FC8800"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tvFlipCardExample"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:padding="20dp"
+            tools:text="Example sentences are shown here and they contain several lines"
+            android:textColor="#05309A"
+            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:textSize="18sp"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLearnedStartLearning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_green_button"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/learned"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

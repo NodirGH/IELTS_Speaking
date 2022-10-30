@@ -12,6 +12,7 @@ import com.example.ieltsspeaking.databinding.FragmentWorkResultBinding
 import com.example.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.WorkTestFragment
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.correctAnswers
+import com.example.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import com.example.ieltsspeaking.home.category.vocabulary.categories.test.incorrectAnswers
 
 class WorkResultFragment : Fragment() {

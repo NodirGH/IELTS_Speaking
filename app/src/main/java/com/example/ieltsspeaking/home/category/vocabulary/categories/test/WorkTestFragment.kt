@@ -30,7 +30,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var isOptionChangeable: Boolean = true
-    var questionSize: Int? = null
+
 
     var isOptionSelected: Boolean = false
 
@@ -45,7 +45,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mQuestionsList = Constants.getQuestions()
+        mQuestionsList = Constants.getWorkQuestions()
 
         setQuestion()
 
@@ -73,7 +73,6 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         binding.tvOptionThree.text = question.optionThree
         binding.tvOptionFour.text = question.optionFour
 
-        isOptionSelected = false
         binding.tvCorrect.manageVisibility(false)
         binding.tvIncorrect.manageVisibility(false)
     }
@@ -123,8 +122,6 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.btnCheck -> {
-
-
 
                     if (isOptionSelected) {
 
@@ -189,6 +186,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                     mCurrentPosition++
                     showNextQuestion()
                     isOptionChangeable = true
+                    isOptionSelected = false
                 }
             }
         }
