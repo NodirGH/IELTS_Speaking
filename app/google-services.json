@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "9960541501",
+    "project_id": "ieltsspeaking-c60e1",
+    "storage_bucket": "ieltsspeaking-c60e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9960541501:android:ace32367b179abebb2c954",
+        "android_client_info": {
+          "package_name": "my.application.ieltsspeaking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9960541501-2h6kf2abcql1n8buvlcq274eipjn4bps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "my.application.ieltsspeaking",
+            "certificate_hash": "621933c7ebd701100eedb88947dc84d5abcd2432"
+          }
+        },
+        {
+          "client_id": "9960541501-cg84hce49ku0q4jinkdiq7mgf4fll71q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpgOG-0wchsJPBFTWGmzrQUD0SE-BmEXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9960541501-cg84hce49ku0q4jinkdiq7mgf4fll71q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

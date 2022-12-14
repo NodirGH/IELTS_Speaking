@@ -24,6 +24,8 @@
     <color name="red_button">#FD291B</color>
     <color name="bg_blue">#EBF2EC</color>
 
+    <color name="status_bar_home_fragment">#EBF2EC</color>
+
 
 
     <color name="colorText">#282828</color>

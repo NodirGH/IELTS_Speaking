@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light_blue"
-    tools:context=".MainActivity">
+    tools:context="my.application.ieltsspeaking.MainActivity">
 
     <TextView
         android:id="@+id/tvPart1Question"
@@ -38,30 +38,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPart1Question" />
 
-    <com.example.ieltsspeaking.home.category.test_yourself.canvas.WaveformView
+    <my.application.ieltsspeaking.home.category.test_yourself.canvas.WaveformView
         android:id="@+id/waveformView"
         android:layout_width="match_parent"
         android:layout_height="400px"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laRecordingDone"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimer"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/done" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laPlayingRecording"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/playing_recording"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="200dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waveformView">
+        app:layout_constraintTop_toBottomOf="@+id/tvTimer">
 
         <ImageButton
             android:id="@+id/btnShare"
@@ -111,7 +138,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSampleAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -128,11 +155,12 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
+        android:id="@+id/tvSampleAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="10dp"
         android:background="@drawable/bg_rectangle_part1"
+        android:padding="10dp"
         android:text="Sample answer is shown here. It may consists several lines. And it should be match with screen size no more. Besides, text is displayed under Sample answer button"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -140,7 +168,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSampleAnswer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
