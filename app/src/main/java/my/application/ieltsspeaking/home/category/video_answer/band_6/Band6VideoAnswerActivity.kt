@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayerView
 import my.application.ieltsspeaking.databinding.ActivityBand6VideoAnswerBinding
 import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
 import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
@@ -15,9 +14,8 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
 
     private lateinit var binding: ActivityBand6VideoAnswerBinding
     private val googleApi = "AIzaSyBnuAg9uZBe0lUnj16_sdRprdrbvDe0bII"
-    private var videoId: String? = null
     private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
-    private var isPlaying: Boolean = false
+    private var mPlayer: YouTubePlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,23 +29,22 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
 
         adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
             override fun onVideoClick(position: Int) {
+
                 Toast.makeText(this@Band6VideoAnswerActivity, "${position + 1}", Toast.LENGTH_SHORT)
                     .show()
 
-                videoId = when (position + 1) {
-                    1 -> "RBUbja6V9Aw"
-                    2 -> "cfjWm3Q0LsA"
-                    3 -> "RBUbja6V9Aw"
-                    4 -> "cfjWm3Q0LsA"
-                    5 -> "RBUbja6V9Aw"
-                    6 -> "cfjWm3Q0LsA"
-                    7 -> "RBUbja6V9Aw"
-                    8 -> "cfjWm3Q0LsA"
-                    9 -> "RBUbja6V9Aw"
-                    10 -> "cfjWm3Q0LsA"
-                    else -> "cfjWm3Q0LsA"
-                }
-                videoInitialed()
+                playVideo(
+                    videoId = when (position + 1) {
+                        1 -> "MSoBQSoiIT8"
+                        2 -> "1G-aYE5N-4o"
+                        3 -> "4nt0W8qNLfE"
+                        4 -> "A0Yl-C692Zg"
+                        5 -> "X0SQAUJ0C5U"
+                        6 -> "SAM9iLnCKx8"
+                        else -> "SAM9iLnCKx8"
+                    }
+                )
+                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
             }
         })
 
@@ -57,8 +54,11 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                 youTubePlayer1: YouTubePlayer?,
                 p2: Boolean
             ) {
-                youTubePlayer1?.loadVideo(videoId)
-                Toast.makeText(this@Band6VideoAnswerActivity, "Success", Toast.LENGTH_SHORT).show()
+                if (!p2) {
+                    mPlayer = youTubePlayer1
+                    Toast.makeText(this@Band6VideoAnswerActivity, "Success", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
             override fun onInitializationFailure(
@@ -68,16 +68,12 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                 Toast.makeText(this@Band6VideoAnswerActivity, "Error", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     }
 
-    private fun videoInitialed(){
-
-        if (isPlaying) onStop()
-        binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
-        isPlaying = true
-
+    private fun playVideo(videoId: String) {
+        if (mPlayer != null) {
+            mPlayer!!.loadVideo(videoId)
+        }
     }
 
 }

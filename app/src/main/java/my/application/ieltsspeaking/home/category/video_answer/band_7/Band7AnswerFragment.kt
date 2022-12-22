@@ -12,9 +12,6 @@ import my.application.ieltsspeaking.databinding.FragmentBand7AnswerBinding
 
 class Band7AnswerFragment : Fragment() {
     private lateinit var binding: FragmentBand7AnswerBinding
-    private lateinit var youtubePlayerInitializer: YouTubePlayer.OnInitializedListener
-    val videoId = "de3kFn4DzGg"
-    private val googleApi = "AIzaSyBnuAg9uZBe0lUnj16_sdRprdrbvDe0bII"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,26 +24,6 @@ class Band7AnswerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        youtubePlayerInitializer = object : YouTubePlayer.OnInitializedListener {
-            override fun onInitializationSuccess(
-                p0: YouTubePlayer.Provider?,
-                youtubePlayer: YouTubePlayer?,
-                p2: Boolean
-            ) {
-                youtubePlayer?.loadVideo(videoId)
-                Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
-            }
 
-            override fun onInitializationFailure(
-                p0: YouTubePlayer.Provider?,
-                p1: YouTubeInitializationResult?
-            ) {
-                Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        binding.btnPlay.setOnClickListener {
-            binding.ytpBand7.initialize(googleApi, youtubePlayerInitializer)
-        }
     }
 }
