@@ -1,5 +1,6 @@
 package my.application.ieltsspeaking.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +9,10 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.TestFirebaseFragment
+import my.application.ieltsspeaking.home.category.video_answer.band_6.Band6VideoAnswerActivity
 import my.application.ieltsspeaking.databinding.FragmentHomeBinding
 import my.application.ieltsspeaking.home.category.about.AboutFragment
 import my.application.ieltsspeaking.home.category.band_score.BandCalculationFragment
@@ -85,11 +86,7 @@ class HomeFragment : Fragment() {
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navRate -> navigateToFirebaseTestFragment()
-                R.id.navContact -> Toast.makeText(
-                    requireContext(),
-                    "Contact us",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.navContact -> navigateTVideoAnswerActivity()
                 R.id.navShare -> Toast.makeText(requireContext(), "Share it", Toast.LENGTH_SHORT)
                     .show()
                 R.id.navSuggestions -> Toast.makeText(
@@ -258,5 +255,10 @@ class HomeFragment : Fragment() {
         )
         transaction.replace(R.id.fragmentContainerView, fragment)
         transaction.addToBackStack(null).commit()
+    }
+
+    private fun navigateTVideoAnswerActivity(){
+        val intent = Intent(requireContext(), Band6VideoAnswerActivity::class.java)
+        startActivity(intent)
     }
 }

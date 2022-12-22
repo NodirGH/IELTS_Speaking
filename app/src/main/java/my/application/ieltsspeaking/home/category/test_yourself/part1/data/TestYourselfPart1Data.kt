@@ -2,7 +2,6 @@ package my.application.ieltsspeaking.home.category.test_yourself.part1.data
 
 import my.application.ieltsspeaking.home.category.test_yourself.model.TestYourselfModel
 
-
 class TestYourselfPart1Data {
 
     companion object {

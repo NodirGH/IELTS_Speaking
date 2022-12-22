@@ -15,6 +15,7 @@
         android:background="@drawable/bg_rectangle_part1"
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:padding="10dp"
+        android:gravity="center"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="Question should be shown right here. The Others display in next lines"
@@ -137,6 +138,17 @@
 
     </LinearLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laRecordingProcess"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/recording" />
+
     <Button
         android:id="@+id/btnSampleAnswer"
         android:layout_width="wrap_content"
@@ -163,6 +175,7 @@
         android:padding="10dp"
         android:text="Sample answer is shown here. It may consists several lines. And it should be match with screen size no more. Besides, text is displayed under Sample answer button"
         android:textColor="@color/black"
+        android:gravity="fill"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"

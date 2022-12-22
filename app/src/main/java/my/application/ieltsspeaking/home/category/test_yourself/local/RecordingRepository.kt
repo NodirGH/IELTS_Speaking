@@ -12,7 +12,7 @@ class RecordingRepository(private val recordingDao: RecordingDao = RecordingData
 
         suspend fun insertInitialQuestion() {
         val dbItemCount =recordingDao.getQuestionCount()
-            if (dbItemCount == 0){
+             if (dbItemCount == 0){
             val initialQuestions = TestYourselfPart1Data.getTestYourselfPart1Data().map { it.mapToEntity() }
                 recordingDao.addAllQuestions(initialQuestions)
             }

@@ -1,24 +1,27 @@
 package my.application.ieltsspeaking.home.category.part1Topic.questions
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1QuestionsBinding
 import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.questions.answers.Part1AnswersFragment
-import my.application.ieltsspeaking.home.category.part1Topic.questions.data.Part1QuestionsStudyData
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 
 private const val HEADING = "heading"
 
-class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickListener {
+class Part1QuestionsFragment : Fragment(){
 
     private lateinit var binding: FragmentPart1QuestionsBinding
     private var heading: String? = null
+    private var db = FirebaseFirestore.getInstance()
+    private lateinit var userQuestionList: ArrayList<ModelPartsQuestions>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,45 +43,43 @@ class Part1QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
         binding.tvHeadingPart1Questions.text = this.heading
 
+        userQuestionList = arrayListOf()
         setRecyclerView()
     }
 
     private fun setRecyclerView() {
         binding.rvPart1Questions.layoutManager = LinearLayoutManager(requireContext())
-        val data: List<ModelPartsQuestions> = when(heading){
-            "Work" -> Part1QuestionsStudyData.getWorkQuestions()
-            "Study" -> Part1QuestionsStudyData.getStudyQuestions()
-            "Hometown" -> Part1QuestionsStudyData.getHometownQuestions()
-            "Home" -> Part1QuestionsStudyData.getHomeQuestions()
-            "Art" -> Part1QuestionsStudyData.getArtQuestions()
-            "Birthday" -> Part1QuestionsStudyData.getBirthdayQuestions()
-            "Childhood" -> Part1QuestionsStudyData.getChildhoodQuestions()
-            "Clothes" -> Part1QuestionsStudyData.getClothesQuestions()
-            "Daily Routine" -> Part1QuestionsStudyData.getDailyRoutineQuestions()
-            "Food" -> Part1QuestionsStudyData.getFoodQuestions()
-            "Hobbies" -> Part1QuestionsStudyData.getHobbiesQuestions()
-            "Internet" -> Part1QuestionsStudyData.getInternetQuestions()
-            "Leisure time" -> Part1QuestionsStudyData.getLeisureTimeQuestions()
-            "Music" -> Part1QuestionsStudyData.getMusicQuestions()
-            "Shopping" -> Part1QuestionsStudyData.getShoppingQuestions()
-            else -> Part1QuestionsStudyData.getStudyQuestions()
-        }
-        val adapter = Part1QuestionsAdapter(data, this)
-        binding.rvPart1Questions.adapter = adapter
-    }
 
-    override fun onItemClick(modelPartsQuestions: ModelPartsQuestions) {
-    val part1AnswersFragment = Part1AnswersFragment.newInstance(modelPartsQuestions.question)
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        transaction.replace(R.id.fragmentContainerView, part1AnswersFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+        db.collection("Part1Topics").document("Hlek682FDsV7sRgTwoBp"
+        ).collection("WorkQuestion").get().addOnSuccessListener {
+
+            if (!it.isEmpty) {
+                for (question in it.documents) {
+                    val questions: ModelPartsQuestions? =
+                        question.toObject(ModelPartsQuestions::class.java)
+                    if (questions != null){
+                        userQuestionList.add(questions)
+                    }
+                }
+
+                val adapter = Part1QuestionsAdapter(userQuestionList)
+
+                binding.rvPart1Questions.adapter = adapter
+
+                adapter.setOnPart1QuestionClickListener(object : Part1QuestionsAdapter.Part1QuestionClickListener{
+                    override fun onQuestionClick(position: Int) {
+                        Toast.makeText(
+                            requireContext(),
+                            "${position + 1} is clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+            } else {
+                Toast.makeText(requireContext(), "It is empty", Toast.LENGTH_SHORT).show()}
+        }
+            .addOnFailureListener { Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show() }
+
     }
 
     companion object {

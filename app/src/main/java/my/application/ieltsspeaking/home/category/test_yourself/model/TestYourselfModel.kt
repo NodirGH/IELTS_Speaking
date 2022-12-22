@@ -6,17 +6,17 @@ import my.application.ieltsspeaking.home.category.test_yourself.local.RecordingE
 
 @Parcelize
 data class TestYourselfModel(
-    val id: Int = 0,
-    val record: String = "",
-    val pause: Boolean = false,
-    val stop: Boolean = false,
-    val delete: Boolean = false,
-    val share: Boolean = false,
-    val orderNumber: Int = 0,
-    val question: String = "",
-    val sampleAnswerButton: Boolean = false,
-    val answer: String = "",
-    val playAnswer: String = ""
+    var id: Int = 0,
+    var record: String = "",
+    var pause: Boolean = false,
+    var stop: Boolean = false,
+    var delete: Boolean = false,
+    var share: Boolean = false,
+    var orderNumber: Int = 0,
+    var question: String = "",
+    var sampleAnswerButton: Boolean = false,
+    var answer: String = "",
+    var playAnswer: String = ""
 ): Parcelable{
     fun mapToEntity(): RecordingEntity {
         return RecordingEntity(

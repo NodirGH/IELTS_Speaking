@@ -23,7 +23,6 @@ class FirebaseDataAdapter (private val userList: ArrayList<FirebaseData>): Recyc
         val orderNumber: TextView= itemView.findViewById(R.id.tvPart1_OrderNumber)
         val heading: TextView= itemView.findViewById(R.id.tvPart1TopicHeading)
         val questionCount: TextView= itemView.findViewById(R.id.tvPart1NumberQuestion)
-//        val background: ImageView = itemView.findViewById(R.id.ivPart1BgRectangle)
 
         init {
             itemView.setOnClickListener{
@@ -42,7 +41,6 @@ class FirebaseDataAdapter (private val userList: ArrayList<FirebaseData>): Recyc
             orderNumber.text = userList[position].orderNumber.toString()
             heading.text = userList[position].heading
             questionCount.text = userList[position].questionCount.toString()
-//            background.setImageResource(userList[position].background)
         }
     }
 

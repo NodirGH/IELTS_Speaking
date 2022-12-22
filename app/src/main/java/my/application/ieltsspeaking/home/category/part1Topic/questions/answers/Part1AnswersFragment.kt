@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1AnswersBinding
+import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
+import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 
 private const val QUESTION = "question"
 
@@ -15,6 +19,7 @@ class Part1AnswersFragment : Fragment() {
     var buttonEnabled = false
     private lateinit var binding: FragmentPart1AnswersBinding
     private var question: String? = null
+    private var db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,49 +42,10 @@ class Part1AnswersFragment : Fragment() {
         binding.tvPart1Question.text = this.question
 
         setPart1Answers()
-
-
-//        loadLearnedButton()
-//        binding.btnPart1LearnedInside.setOnClickListener {
-//            buttonEnabled = if (!buttonEnabled) {
-//                val one = true
-//                saveLearnedButton(one)
-//                loadLearnedButton()
-//                true
-//            } else {
-//                binding.btnPart1LearnedInside.setBackgroundResource(R.drawable.rectangle_learned_button_disabled)
-//                val two = false
-//                saveLearnedButton(two)
-//                loadLearnedButton()
-//                false
-//            }
-//        }
     }
 
-//    private fun loadLearnedButton() {
-//        val sharedPreferences: SharedPreferences = this.requireActivity()
-//            .getSharedPreferences("Learned button enabled", Context.MODE_PRIVATE)
-//        val argumentQues = sharedPreferences.getString("ques", this.question)
-//        val enabledButton = when (sharedPreferences.getBoolean("Learned", false)) {
-//            true-> binding.btnPart1LearnedInside.setBackgroundResource(R.drawable.rectangle_learned_button_enabled)
-//            else -> binding.btnPart1LearnedInside.setBackgroundResource(R.drawable.rectangle_learned_button_disabled)
-//        }
-//    }
-
-//    private fun saveLearnedButton(enabled: Boolean) {
-//
-//        val argumentQuestion = this.question
-//
-//        val sharedPreferences: SharedPreferences = this.requireActivity()
-//            .getSharedPreferences("Learned button enabled", Context.MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        editor.apply {
-//            putBoolean("Learned", enabled)
-//            putString("ques", argumentQuestion)
-//        }.apply()
-//    }
-
     private fun setPart1Answers() {
+
         binding.tvPart1Answer.text = when (this.question) {
             //work
             getString(R.string.workQ1) -> getString(R.string.workA1)

@@ -59,7 +59,7 @@ class Part3QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
             else -> Part3QuestionsData.getWrongError()
         }
-        val adapter = Part1QuestionsAdapter(data, this)
+        val adapter = Part1QuestionsAdapter(data)
         binding.rvPart3Questions.adapter = adapter
     }
 

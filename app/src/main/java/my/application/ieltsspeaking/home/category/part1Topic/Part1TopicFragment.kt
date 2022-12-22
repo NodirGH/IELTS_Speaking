@@ -5,20 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
+import my.application.ieltsspeaking.FirebaseData
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1TopicBinding
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
-import my.application.ieltsspeaking.home.category.part1Topic.data.Part1TopicData
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 import my.application.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
-import my.application.ieltsspeaking.home.category.test_yourself.model.TestYourselfModel
-import my.application.ieltsspeaking.home.category.test_yourself.part1.TestYourselfPart1Fragment
-import my.application.ieltsspeaking.home.category.test_yourself.part1.TestYourselfPart1RecordingFragment
 
-class Part1TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
+class Part1TopicFragment : Fragment(){
 
     private lateinit var binding: FragmentPart1TopicBinding
+    private var db = FirebaseFirestore.getInstance()
+    private lateinit var userTopicList: ArrayList<ModelPartsTopic>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,17 +34,41 @@ class Part1TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvPart1.layoutManager = LinearLayoutManager(requireContext())
-        val part1Data = Part1TopicData.getPart1Data()
-        val adapter = PartsTopicAdapter(part1Data, this)
-        binding.rvPart1.adapter = adapter
+        userTopicList = arrayListOf()
+        db.collection("Part1Topics").orderBy("id").get().addOnSuccessListener{
+
+            if (!it.isEmpty){
+                for (topics in it.documents){
+                    val topic: ModelPartsTopic? = topics.toObject(ModelPartsTopic::class.java)
+                    if (topic != null){
+                        userTopicList.add(topic)
+                    }
+                }
+
+                val adapter = PartsTopicAdapter(userTopicList)
+                binding.rvPart1.adapter = adapter
+
+                adapter.setOnPart1ClickListener(object : PartsTopicAdapter.Part1TopicClickListener{
+                    override fun onPart1Click(position: Int) {
+                        Toast.makeText(
+                            requireContext(),
+                            "${position + 1} is clicked ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        navigateToQuestions()
+                    }
+                })
+            }
+        }
+            .addOnFailureListener { Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show() }
     }
 
-    override fun onItemClick(part1ModelTopic: ModelPartsTopic) {
-        val part1QuestionsFragment = Part1QuestionsFragment.newInstance(part1ModelTopic.heading)
+    private fun navigateToQuestions() {
+        val modelPartsTopic = ModelPartsTopic()
+        val fragment = Part1QuestionsFragment.newInstance(modelPartsTopic.heading)
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, part1QuestionsFragment)
+        transaction.replace(R.id.fragmentContainerView, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 }

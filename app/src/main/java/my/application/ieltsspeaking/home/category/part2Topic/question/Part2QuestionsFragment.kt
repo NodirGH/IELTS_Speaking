@@ -64,7 +64,7 @@ class Part2QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
             else -> Part2QuestionsData.getTechnologyQuestions()
         }
-        val adapter = Part1QuestionsAdapter(data, this)
+        val adapter = Part1QuestionsAdapter(data)
         binding.rvPart2Questions.adapter = adapter
     }
 

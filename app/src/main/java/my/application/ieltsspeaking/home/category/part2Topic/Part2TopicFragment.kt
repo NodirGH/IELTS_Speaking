@@ -10,7 +10,7 @@ import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart2TopicBinding
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
-import my.application.ieltsspeaking.home.category.part2Topic.data.Part2TopicData
+//import my.application.ieltsspeaking.home.category.part2Topic.data.Part2TopicData
 import my.application.ieltsspeaking.home.category.part2Topic.question.Part2QuestionsFragment
 
 class Part2TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
@@ -29,9 +29,9 @@ class Part2TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
     binding.rvPart2.layoutManager = LinearLayoutManager(requireContext())
-        val part2Data = Part2TopicData.getPart2Data()
-        val adapter = PartsTopicAdapter(part2Data, this)
-        binding.rvPart2.adapter = adapter
+//        val part2Data = Part2TopicData.getPart2Data()
+//        val adapter = PartsTopicAdapter(part2Data, this)
+//        binding.rvPart2.adapter = adapter
     }
 
     override fun onItemClick(part1ModelTopic: ModelPartsTopic) {

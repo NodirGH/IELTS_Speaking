@@ -29,8 +29,8 @@ class Part3TopicFragment : Fragment(), PartsTopicAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.rvPart3.layoutManager = LinearLayoutManager(requireContext())
         val part3Data = Part3TopicData.getPart3TopicData()
-        val adapter = PartsTopicAdapter(part3Data, this)
-        binding.rvPart3.adapter = adapter
+//        val adapter = PartsTopicAdapter(part3Data)
+//        binding.rvPart3.adapter = adapter
     }
 
     override fun onItemClick(part1ModelTopic: ModelPartsTopic) {

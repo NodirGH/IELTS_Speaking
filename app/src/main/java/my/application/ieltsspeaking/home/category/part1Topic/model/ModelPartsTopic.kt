@@ -5,9 +5,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class ModelPartsTopic(
-    val id: Int,
-    val orderNumber: Int,
-    val heading: String,
-    val questionCount: Int,
-    val background: Int
+    val id: Int = 0,
+    val orderNumber: Int = 0,
+    val heading: String = "",
+    val questionCount: Int = 0,
+//    val background: Int
 ): Parcelable

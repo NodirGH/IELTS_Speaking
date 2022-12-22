@@ -16,7 +16,6 @@ class TestFirebaseFragment : Fragment() {
     private lateinit var binding: FragmentTestFirebaseBinding
     private lateinit var userList: ArrayList<FirebaseData>
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var testAdapter: FirebaseDataAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

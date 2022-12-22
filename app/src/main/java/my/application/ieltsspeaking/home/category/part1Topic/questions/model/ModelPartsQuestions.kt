@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ModelPartsQuestions(
-    val id: Int,
-    val question: String,
-    val isLearned: Boolean
+    val id: Int = 0,
+    val question: String = "",
+    val isLearned: Boolean = false
 ): Parcelable

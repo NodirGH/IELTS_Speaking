@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import my.application.ieltsspeaking.databinding.FragmentTestYourselfPart1RecordingBinding
-import my.application.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
 import my.application.ieltsspeaking.home.category.test_yourself.local.RecordingViewModel
 import my.application.ieltsspeaking.home.category.test_yourself.model.TestYourselfModel
 import my.application.ieltsspeaking.home.category.test_yourself.timer.Timer
@@ -36,7 +35,7 @@ class TestYourselfPart1RecordingFragment : Fragment(), Timer.OnTimeTickListener 
     private lateinit var recordingLocation: String
     private lateinit var recorder: MediaRecorder
     private var dirPath = ""
-    private var filename = ""
+    var filename = ""
     private var isRecording = false
     private var isPaused = false
     private lateinit var timer: Timer
@@ -66,106 +65,53 @@ class TestYourselfPart1RecordingFragment : Fragment(), Timer.OnTimeTickListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         binding.tvPart1Question.text = this.question
         binding.tvSampleAnswer.text = this.answer
+        timer = Timer(this)
 
         permissionRequest()
 
-        timer = Timer(this)
-
-        vibrator = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
-        binding.btnRecord.setOnClickListener {
-            when {
-                isPaused -> resumeRecording()
-                isRecording -> pauseRecording()
-                else -> startRecording()
-            }
-            vibrator.vibrate(
-                VibrationEffect.createOneShot(
-                    50,
-                    VibrationEffect.DEFAULT_AMPLITUDE
-                )
-            )
-        }
-
-        binding.btnStop.setOnClickListener {
-            stopRecording()
-            vibrator.vibrate(
-                VibrationEffect.createOneShot(
-                    50,
-                    VibrationEffect.DEFAULT_AMPLITUDE
-                )
-            )
-        }
-
+        binding.btnRecord.setOnClickListener { activateBtnRecord() }
+        binding.btnStop.setOnClickListener { activateBtnStop() }
         binding.btnPlay.setOnClickListener { playRecording() }
-
-        binding.btnSampleAnswer.setOnClickListener {
-            if (isExpandableOpen){
-                binding.tvSampleAnswer.visibility = View.GONE
-            } else {
-                binding.tvSampleAnswer.visibility = View.VISIBLE
-            }
-        }
-
+        binding.btnSampleAnswer.setOnClickListener { activateBtnSampleAnswer() }
 
     }
 
-    private fun startRecording() {
+    private fun permissionRequest() {
+        permissionGranted = ContextCompat.checkSelfPermission(
+            requireContext(),
+            permissions[0]
+        ) == PackageManager.PERMISSION_GRANTED
+
         if (!permissionGranted) {
             requestPermissions(permissions, REQUEST_CODES)
-            return
         }
-        recorder = MediaRecorder()
-        dirPath = "${activity?.externalCacheDir?.absolutePath}"
-
-        val simpleDateFormat = SimpleDateFormat("yyyy.MM.DD_hh.mm_ss")
-        val date = simpleDateFormat.format(Date())
-        filename = "audio_record_$date"
-        recordingLocation = "$dirPath$filename.mp3"
-        val roomFileName = "$filename.mp3"
-
-        recorder.apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            setOutputFile(roomFileName)
-
-//            viewModel.insertingRecording(roomFileName)
-
-            try {
-                recorder.prepare()
-            } catch (e: IOException) {
-                Toast.makeText(
-                    requireContext(),
-                    "prepare() function isn't working",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            start()
-
-        }
-
-        isRecording = true
-        isPaused = false
-
-        timer.start()
-
     }
 
-    private fun pauseRecording() {
-        recorder.pause()
-        isPaused = true
-
-        timer.pause()
+    private fun activateBtnRecord() {
+        when {
+            isPaused -> resumeRecording()
+            isRecording -> pauseRecording()
+            else -> startRecording()
+        }
+        vibrator.vibrate(
+            VibrationEffect.createOneShot(
+                50,
+                VibrationEffect.DEFAULT_AMPLITUDE
+            )
+        )
     }
 
-    private fun resumeRecording() {
-        recorder.resume()
-        isPaused = false
-
-        timer.start()
+    private fun activateBtnStop() {
+        stopRecording()
+        vibrator.vibrate(
+            VibrationEffect.createOneShot(
+                50,
+                VibrationEffect.DEFAULT_AMPLITUDE
+            )
+        )
     }
 
     private fun playRecording() {
@@ -196,6 +142,79 @@ class TestYourselfPart1RecordingFragment : Fragment(), Timer.OnTimeTickListener 
         binding.laRecordingDone.visibility = View.GONE
         binding.laPlayingRecording.visibility = View.VISIBLE
         binding.laPlayingRecording.playAnimation()
+
+    }
+
+    private fun activateBtnSampleAnswer() {
+        if (isExpandableOpen) {
+            binding.tvSampleAnswer.visibility = View.GONE
+        } else {
+            binding.tvSampleAnswer.visibility = View.VISIBLE
+        }
+    }
+
+    private fun startRecording() {
+        if (!permissionGranted) {
+            requestPermissions(permissions, REQUEST_CODES)
+            return
+        }
+        recorder = MediaRecorder()
+        dirPath = "${activity?.externalCacheDir?.absolutePath}"
+
+        val simpleDateFormat = SimpleDateFormat("yyyy.MM.DD_hh.mm_ss")
+        val date = simpleDateFormat.format(Date())
+        filename = "audio_record_$date"
+        recordingLocation = "$dirPath$filename.mp3"
+
+        recorder.apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setOutputFile(recordingLocation)
+
+            try {
+                recorder.prepare()
+            } catch (e: IOException) {
+                Toast.makeText(
+                    requireContext(),
+                    "prepare() function isn't working",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            start()
+
+        }
+//            viewModel.insertingRecording(roomRecording)
+//        testYourselfModel?.record = roomRecording
+        isRecording = true
+        isPaused = false
+
+        binding.btnPlay.visibility = View.GONE
+        binding.btnStop.visibility = View.GONE
+        binding.btnShare.visibility = View.GONE
+        binding.btnDelete.visibility = View.GONE
+        binding.laRecordingDone.visibility = View.GONE
+        binding.laPlayingRecording.visibility = View.GONE
+        binding.btnRecord.visibility = View.INVISIBLE
+        binding.laRecordingProcess.playAnimation()
+
+        timer.start()
+
+    }
+
+    private fun pauseRecording() {
+        recorder.pause()
+        isPaused = true
+        binding.btnStop.visibility = View.VISIBLE
+
+        timer.pause()
+    }
+
+    private fun resumeRecording() {
+        recorder.resume()
+        isPaused = false
+
+        timer.start()
     }
 
     private fun stopRecording() {
@@ -207,17 +226,14 @@ class TestYourselfPart1RecordingFragment : Fragment(), Timer.OnTimeTickListener 
             binding.laRecordingDone.playAnimation()
             binding.waveformView.visibility = View.GONE
             binding.laRecordingDone.visibility = View.VISIBLE
-        }
-    }
 
-    private fun permissionRequest() {
-        permissionGranted = ContextCompat.checkSelfPermission(
-            requireContext(),
-            permissions[0]
-        ) == PackageManager.PERMISSION_GRANTED
-
-        if (!permissionGranted) {
-            requestPermissions(permissions, REQUEST_CODES)
+            binding.btnPlay.visibility = View.VISIBLE
+            binding.btnStop.visibility = View.VISIBLE
+            binding.btnShare.visibility = View.VISIBLE
+            binding.btnDelete.visibility = View.VISIBLE
+            binding.laPlayingRecording.visibility = View.GONE
+            binding.btnRecord.visibility = View.VISIBLE
+            binding.laRecordingProcess.visibility = View.GONE
         }
     }
 
