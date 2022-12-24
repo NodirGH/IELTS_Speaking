@@ -49,16 +49,18 @@ class DataVideoAnswer {
 
         fun videoAnswerBand9Data(): List<ModelVideoAnswer>{
             return listOf(
-                ModelVideoAnswer(1, R.drawable.band6_thumbnail_1, "", ""),
-                ModelVideoAnswer(2, R.drawable.band6_thumbnail_2, "", ""),
-                ModelVideoAnswer(3, R.drawable.band6_thumbnail_3, "", ""),
-                ModelVideoAnswer(4, R.drawable.band6_thumbnail_4, "", ""),
-                ModelVideoAnswer(5, R.drawable.band6_thumbnail_5, "", ""),
-                ModelVideoAnswer(6, R.drawable.band6_thumbnail_6, "", ""),
-                ModelVideoAnswer(7, R.drawable.band6_thumbnail_7, "", ""),
-                ModelVideoAnswer(8, R.drawable.band6_thumbnail_8, "", ""),
-                ModelVideoAnswer(9, R.drawable.band6_thumbnail_1, "", ""),
-                ModelVideoAnswer(10, R.drawable.band6_thumbnail_1, "", "")
+                ModelVideoAnswer(1, R.drawable.band9_thumbnail_1, "IELTS Band 9 Speaking practice with YOU!", "Strategies will help with fluent language, natural language, and complex language. Enjoy"),
+                ModelVideoAnswer(2, R.drawable.band9_thumbnail_2, "IELTS Speaking Band 9 Deep Analysis", "IELTS band 9 interview example with a candidate from Azerbaijan."),
+                ModelVideoAnswer(3, R.drawable.band9_thumbnail_3, "IELTS Speaking Interview | BAND 9 | Real Exam!", "IELTS Speaking Interview | BAND 9 | Real Exam!"),
+                ModelVideoAnswer(4, R.drawable.band9_thumbnail_4, "IELTS Speaking Score 9 Special Strategy", "IELTS speaking interview example to show band 9 strategy."),
+                ModelVideoAnswer(5, R.drawable.band9_thumbnail_5, "IELTS Speaking Interview | BAND 9 | Real Exam!", "He speaks in a really natural way. His pronunciation, intonation, vocabulary, grammatical correction - it's all basically at a native speaker's level."),
+                ModelVideoAnswer(6, R.drawable.band9_thumbnail_6, "IELTS Speaking Band 9 Candidate Azerbaijan", "A perfect IELTS speaking interview, with score explanation and feedback"),
+                ModelVideoAnswer(7, R.drawable.band9_thumbnail_7, "IELTS Speaking Band 9 Clear and Confident Answers", "IELTS band 9 interview example with an Indian candidate from Karnataka"),
+                ModelVideoAnswer(8, R.drawable.band9_thumbnail_8, "IELTS Speaking American English Band 9 subs FULL", "This video is band 9 response with an American candidate"),
+                ModelVideoAnswer(9, R.drawable.band9_thumbnail_9, "IELTS Speaking Interview | Band 9 | Real Exam!", "She is using simple words and putting her ideas so well, articulating ideas in such artistic way"),
+                ModelVideoAnswer(10, R.drawable.band9_thumbnail_10, "Band 9.0 IELTS Practice Speaking Exam (mock test) - with feedback - Saskia (2) from Sri Lanka", "IELTS Daily is an independent, private organisation and has no affiliation with any of the IELTS companies"),
+                ModelVideoAnswer(10, R.drawable.band9_thumbnail_11, "IELTS Speaking Interview | BAND 9 | Real Test!", "Let’s appreciate not only the language skills of this young lady but the ability to express her thoughts in such a well-spoken manner."),
+                ModelVideoAnswer(10, R.drawable.band9_thumbnail_12, "IELTS Speaking Band 9 Assessment Strategy", "IELTS band 9 interview example with a candidate from New Delhi, India.")
             )
         }
 
