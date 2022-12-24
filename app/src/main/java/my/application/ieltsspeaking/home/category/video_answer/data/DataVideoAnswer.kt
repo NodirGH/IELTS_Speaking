@@ -34,16 +34,16 @@ class DataVideoAnswer {
 
         fun videoAnswerBand8Data(): List<ModelVideoAnswer>{
             return listOf(
-                ModelVideoAnswer(1, R.drawable.band6_thumbnail_1, "", ""),
-                ModelVideoAnswer(2, R.drawable.band6_thumbnail_2, "", ""),
-                ModelVideoAnswer(3, R.drawable.band6_thumbnail_3, "", ""),
-                ModelVideoAnswer(4, R.drawable.band6_thumbnail_4, "", ""),
-                ModelVideoAnswer(5, R.drawable.band6_thumbnail_5, "", ""),
-                ModelVideoAnswer(6, R.drawable.band6_thumbnail_6, "", ""),
-                ModelVideoAnswer(7, R.drawable.band6_thumbnail_7, "", ""),
-                ModelVideoAnswer(8, R.drawable.band6_thumbnail_8, "", ""),
-                ModelVideoAnswer(9, R.drawable.band6_thumbnail_1, "", ""),
-                ModelVideoAnswer(10, R.drawable.band6_thumbnail_1, "", "")
+                ModelVideoAnswer(1, R.drawable.band8_thumbnail_1, "IELTS Speaking Score 8 Very Good Answers with Subtitles", "IELTS complete speaking interview example with Sikh candidate from India."),
+                ModelVideoAnswer(2, R.drawable.band8_thumbnail_2, "IELTS Speaking Band 8 Italy - Games and Shopping! w Subtitles", "This video is an interview with a native Italian speaker. This video playlist teaches important strategies for IELTS speaking interview to score over band 7, and even 9"),
+                ModelVideoAnswer(3, R.drawable.band8_thumbnail_3, "Band 8.5 IELTS Speaking - with teacher feedback - Saskia from Sri Lanka", "Why did Saskia score 8.0 in pronunciation?"),
+                ModelVideoAnswer(4, R.drawable.band8_thumbnail_4, "IELTS Speaking Band 8.0 Mock Test with Feedback", "IELTS Speaking Mock Test scored 8.0 with the commentary."),
+                ModelVideoAnswer(5, R.drawable.band8_thumbnail_5, "IELTS Speaking Band 8.5 Brazil Full with Subtitles", "This video is an IELTS speaking section interview with a native Brazilian speaker. This playlist teaches important strategies for IELTS speaking interview."),
+                ModelVideoAnswer(6, R.drawable.band8_thumbnail_6, "THOMPSON IELTS Speaking Mock Test | Speaking: 8.0", "Mock exam from Uzbekistan"),
+                ModelVideoAnswer(7, R.drawable.band8_thumbnail_7, "THOMPSON IELTS Speaking Mock Test | Speaking: 8.0", "This video is an IELTS speaking section interview with a native Uzbek speaker"),
+                ModelVideoAnswer(8, R.drawable.band8_thumbnail_8, "IELTS Speaking Interview | BAND 8 | Real Exam!", "This test accurately shows the proficiency level required to acquire band 8"),
+                ModelVideoAnswer(9, R.drawable.band8_thumbnail_9, "IELTS Speaking Band 8.0 Mock Test with Feedback", "IELTS Speaking Mock Test scored 8.0 with the commentary."),
+                ModelVideoAnswer(10, R.drawable.band8_thumbnail_10, "IELTS Speaking in Masks Band 8 Brazil", "This video is an IELTS speaking section interview with a native Brazilian speaker")
             )
         }
 

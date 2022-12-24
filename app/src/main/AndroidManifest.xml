@@ -21,6 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IELTSSpeaking">
         <activity
+            android:name=".home.category.video_answer.band_8.Band8VideoAnswerActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".home.category.video_answer.band_7.Band7VideoAnswerActivity"
             android:exported="false">
             <meta-data

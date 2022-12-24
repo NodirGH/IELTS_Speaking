@@ -30,7 +30,7 @@ class VideoAnswerAdapter(private val videoList: List<ModelVideoAnswer>): Recycle
 
             thumbnail.setImageResource(modelVideoAnswer.thumbnail)
             information.text = modelVideoAnswer.videoInformation
-            definition.text = modelVideoAnswer.videoInformation
+            definition.text = modelVideoAnswer.videoDetails
         }
 
         init {

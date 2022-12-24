@@ -13,6 +13,7 @@ import my.application.ieltsspeaking.home.category.video_answer.band_6.Band6Video
 import my.application.ieltsspeaking.home.category.video_answer.band_7.Band7AnswerFragment
 import my.application.ieltsspeaking.home.category.video_answer.band_7.Band7VideoAnswerActivity
 import my.application.ieltsspeaking.home.category.video_answer.band_8.Band8AnswerFragment
+import my.application.ieltsspeaking.home.category.video_answer.band_8.Band8VideoAnswerActivity
 import my.application.ieltsspeaking.home.category.video_answer.band_9.Band9AnswerFragment
 
 class VideoAnswerBandsFragment : Fragment() {
@@ -56,6 +57,11 @@ class VideoAnswerBandsFragment : Fragment() {
         startActivity(intent)
     }
 
+    private fun navigateToBand8Answer(){
+        val intent = Intent(requireContext(), Band8VideoAnswerActivity::class.java)
+        startActivity(intent)
+    }
+
 //    private fun navigateToBand7Answer(){
 //        val fragment = Band7AnswerFragment()
 //        val transaction = parentFragmentManager.beginTransaction()
@@ -69,18 +75,18 @@ class VideoAnswerBandsFragment : Fragment() {
 //        transaction.addToBackStack(null).commit()
 //    }
 
-    private fun navigateToBand8Answer(){
-        val fragment = Band8AnswerFragment()
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.addToBackStack(null).commit()
-    }
+//    private fun navigateToBand8Answer(){
+//        val fragment = Band8AnswerFragment()
+//        val transaction = parentFragmentManager.beginTransaction()
+//        transaction.setCustomAnimations(
+//            R.anim.from_right,
+//            R.anim.to_left,
+//            R.anim.from_left,
+//            R.anim.to_right
+//        )
+//        transaction.replace(R.id.fragmentContainerView, fragment)
+//        transaction.addToBackStack(null).commit()
+//    }
 
     private fun navigateToBand9Answer(){
         val fragment = Band9AnswerFragment()
