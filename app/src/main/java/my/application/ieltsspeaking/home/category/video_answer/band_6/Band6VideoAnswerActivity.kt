@@ -1,21 +1,24 @@
 package my.application.ieltsspeaking.home.category.video_answer.band_6
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
 import my.application.ieltsspeaking.databinding.ActivityBand6VideoAnswerBinding
 import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
 import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
+import my.application.ieltsspeaking.utils.Extensions
+import my.application.ieltsspeaking.utils.googleApi
+import my.application.ieltsspeaking.utils.manageVisibility
+import my.application.ieltsspeaking.utils.snackBar
 
 class Band6VideoAnswerActivity : YouTubeBaseActivity() {
 
     private lateinit var binding: ActivityBand6VideoAnswerBinding
-    private val googleApi = "AIzaSyBnuAg9uZBe0lUnj16_sdRprdrbvDe0bII"
-    private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
-    private var mPlayer: YouTubePlayer? = null
+
+    var isOnline: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,52 +30,48 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
         val adapter = VideoAnswerAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
+        checkInternetConnection()
+
         adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
             override fun onVideoClick(position: Int) {
 
-                Toast.makeText(this@Band6VideoAnswerActivity, "${position + 1}", Toast.LENGTH_SHORT)
-                    .show()
+                if (isOnline) {
 
-                playVideo(
-                    videoId = when (position + 1) {
-                        1 -> "MSoBQSoiIT8"
-                        2 -> "1G-aYE5N-4o"
-                        3 -> "4nt0W8qNLfE"
-                        4 -> "A0Yl-C692Zg"
-                        5 -> "X0SQAUJ0C5U"
-                        6 -> "SAM9iLnCKx8"
-                        else -> "SAM9iLnCKx8"
-                    }
-                )
-                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
+                    binding.ivIcYoutube.manageVisibility(false)
+
+                    Extensions.playVideo(
+                        videoId = when (position + 1) {
+                            1 -> "MSoBQSoiIT8"
+                            2 -> "1G-aYE5N-4o"
+                            3 -> "4nt0W8qNLfE"
+                            4 -> "A0Yl-C692Zg"
+                            5 -> "X0SQAUJ0C5U"
+                            6 -> "SAM9iLnCKx8"
+                            else -> "SAM9iLnCKx8"
+                        }
+                    )
+                } else snackBar(binding.root, "No internet connection")
+
+                binding.youtubePlayer.initialize(googleApi, Extensions.youtubePlayerInit)
             }
         })
 
-        youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
-            override fun onInitializationSuccess(
-                p0: YouTubePlayer.Provider?,
-                youTubePlayer1: YouTubePlayer?,
-                p2: Boolean
-            ) {
-                if (!p2) {
-                    mPlayer = youTubePlayer1
-                    Toast.makeText(this@Band6VideoAnswerActivity, "Success", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-
-            override fun onInitializationFailure(
-                p0: YouTubePlayer.Provider?,
-                p1: YouTubeInitializationResult?
-            ) {
-                Toast.makeText(this@Band6VideoAnswerActivity, "Error", Toast.LENGTH_SHORT).show()
-            }
-        }
+        Extensions.youtubeInitializer(this)
     }
 
-    private fun playVideo(videoId: String) {
-        if (mPlayer != null) {
-            mPlayer!!.loadVideo(videoId)
+    private fun checkInternetConnection() {
+
+        val connectionManager =
+            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
+        if (isConnected) {
+            isOnline = true
+        } else {
+            snackBar(binding.root, "No internet connection")
+            isOnline = false
+            return
         }
     }
 

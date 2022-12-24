@@ -13,6 +13,16 @@
         android:layout_margin="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    
+    <ImageView
+        android:id="@+id/ivIcYoutube"
+        android:layout_width="150dp"
+        android:layout_height="104dp"
+        android:src="@drawable/ic_youtube"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/youtubePlayer"
+        app:layout_constraintBottom_toBottomOf="@id/youtubePlayer"/>
 
     <TextView
         android:id="@+id/tvVideoDetails"
