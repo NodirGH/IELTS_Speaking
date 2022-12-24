@@ -6,15 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".home.category.video_answer.band_7.Band7VideoAnswerActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivIcYoutube"
+        android:layout_width="150dp"
+        android:layout_height="104dp"
+        android:src="@drawable/ic_youtube"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/youtubePlayer"
+        app:layout_constraintBottom_toBottomOf="@id/youtubePlayer"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvYoutubeVideoAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@id/youtubePlayer" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

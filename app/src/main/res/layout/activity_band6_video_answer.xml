@@ -24,27 +24,14 @@
         app:layout_constraintTop_toTopOf="@id/youtubePlayer"
         app:layout_constraintBottom_toBottomOf="@id/youtubePlayer"/>
 
-    <TextView
-        android:id="@+id/tvVideoDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Video information will shop up here"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/youtubePlayer"
-        android:layout_margin="4dp"
-        android:padding="5dp"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvYoutubeVideoAnswer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvVideoDetails" />
+        app:layout_constraintTop_toBottomOf="@id/youtubePlayer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
