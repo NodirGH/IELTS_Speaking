@@ -44,8 +44,6 @@ class Extensions : YouTubeBaseActivity() {
                 ) {
                     if (!p2) {
                         youtubePlayer = youTubePlayer1
-                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT)
-                            .show()
                     }
                 }
 
@@ -66,12 +64,11 @@ class Extensions : YouTubeBaseActivity() {
 
     }
 
-    fun checkInternetConnection(view: View): Boolean {
+    fun checkInternetConnection(context: Context): Boolean {
 
         val connectionManager =
-            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
-
         return activeNetwork?.isConnectedOrConnecting == true
     }
 

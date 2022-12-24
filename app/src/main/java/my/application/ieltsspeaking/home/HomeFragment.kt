@@ -23,6 +23,7 @@ import my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
 import my.application.ieltsspeaking.home.category.pronunciation.PronunciationFragment
 import my.application.ieltsspeaking.home.category.test_yourself.TestYourselfFragment
 import my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
+import my.application.ieltsspeaking.home.category.video_answer.band_7.Band7VideoAnswerActivity
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import my.application.ieltsspeaking.home.data.HomeData
 
@@ -86,7 +87,8 @@ class HomeFragment : Fragment() {
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navRate -> navigateToFirebaseTestFragment()
-                R.id.navContact -> navigateTVideoAnswerActivity()
+                R.id.navContact -> Toast.makeText(requireContext(), "Contact", Toast.LENGTH_SHORT)
+                    .show()
                 R.id.navShare -> Toast.makeText(requireContext(), "Share it", Toast.LENGTH_SHORT)
                     .show()
                 R.id.navSuggestions -> Toast.makeText(
@@ -257,8 +259,4 @@ class HomeFragment : Fragment() {
         transaction.addToBackStack(null).commit()
     }
 
-    private fun navigateTVideoAnswerActivity(){
-        val intent = Intent(requireContext(), Band6VideoAnswerActivity::class.java)
-        startActivity(intent)
-    }
 }

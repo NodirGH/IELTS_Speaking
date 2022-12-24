@@ -1,8 +1,5 @@
 package my.application.ieltsspeaking.home.category.video_answer.band_6
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.youtube.player.YouTubeBaseActivity
@@ -18,8 +15,6 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
 
     private lateinit var binding: ActivityBand6VideoAnswerBinding
 
-    var isOnline: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBand6VideoAnswerBinding.inflate(layoutInflater)
@@ -30,15 +25,11 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
         val adapter = VideoAnswerAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
-        checkInternetConnection()
-
         adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
             override fun onVideoClick(position: Int) {
 
-                if (isOnline) {
-
+                if (Extensions().checkInternetConnection(this@Band6VideoAnswerActivity)) {
                     binding.ivIcYoutube.manageVisibility(false)
-
                     Extensions.playVideo(
                         videoId = when (position + 1) {
                             1 -> "MSoBQSoiIT8"
@@ -55,24 +46,6 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                 binding.youtubePlayer.initialize(googleApi, Extensions.youtubePlayerInit)
             }
         })
-
         Extensions.youtubeInitializer(this)
     }
-
-    private fun checkInternetConnection() {
-
-        val connectionManager =
-            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
-        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
-
-        if (isConnected) {
-            isOnline = true
-        } else {
-            snackBar(binding.root, "No internet connection")
-            isOnline = false
-            return
-        }
-    }
-
 }

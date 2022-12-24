@@ -25,5 +25,6 @@ class Band7AnswerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
     }
 }
