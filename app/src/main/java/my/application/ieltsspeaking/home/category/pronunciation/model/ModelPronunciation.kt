@@ -1,4 +1,4 @@
-package my.application.ieltsspeaking.home.category.pronunciation
+package my.application.ieltsspeaking.home.category.pronunciation.model
 
 data class ModelPronunciation(
     val id: Int,

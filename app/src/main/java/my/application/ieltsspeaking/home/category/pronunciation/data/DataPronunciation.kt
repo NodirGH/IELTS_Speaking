@@ -1,4 +1,6 @@
-package my.application.ieltsspeaking.home.category.pronunciation
+package my.application.ieltsspeaking.home.category.pronunciation.data
+
+import my.application.ieltsspeaking.home.category.pronunciation.model.ModelPronunciation
 
 class DataPronunciation {
     companion object{
