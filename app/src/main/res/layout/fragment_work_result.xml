@@ -20,65 +20,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivTrophy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laTrophy"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/ic_trophy"
+        app:lottie_rawRes="@raw/congrats"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCongrats" />
 
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="170dp"
-        android:src="@drawable/fireworks2"
-        app:layout_constraintBottom_toBottomOf="@+id/ivTrophy"
-        app:layout_constraintEnd_toStartOf="@+id/ivTrophy"
-        app:layout_constraintTop_toTopOf="@+id/ivTrophy" />
-
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="177dp"
-        android:src="@drawable/fireworks"
-        app:layout_constraintBottom_toBottomOf="@+id/ivTrophy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivTrophy" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <com.airbnb.lottie.LottieAnimationView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="170dp"
-        android:src="@drawable/fireworks"
-        app:layout_constraintBottom_toBottomOf="@+id/ivTrophy"
-        app:layout_constraintEnd_toStartOf="@+id/ivTrophy"
+        app:layout_constraintBottom_toTopOf="@+id/tvYourResult"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivTrophy" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="15dp"
-        android:src="@drawable/fireworks2"
-        app:layout_constraintBottom_toBottomOf="@+id/ivTrophy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivTrophy"
-        app:layout_constraintTop_toTopOf="@+id/ivTrophy" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCongrats"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/fireworks" />
 
     <TextView
         android:id="@+id/tvYourResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/abhaya_libre_extra_bold"
         android:text="Your result!"
         android:textColor="@color/main_text_color"
@@ -86,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTrophy" />
+        app:layout_constraintTop_toBottomOf="@+id/laTrophy" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -219,24 +189,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <Button
-        android:id="@+id/btnFinishResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_light_blue_button_enabled"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:text="Finish"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/tvResultPercent"
         android:layout_width="wrap_content"
@@ -249,4 +201,23 @@
         app:layout_constraintStart_toStartOf="@+id/cpbResultProgressBar"
         app:layout_constraintTop_toTopOf="@+id/cpbResultProgressBar"
         tools:text="100%" />
+
+    <Button
+        android:id="@+id/btnFinishResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_light_blue_button_enabled"
+        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:text="Finish"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

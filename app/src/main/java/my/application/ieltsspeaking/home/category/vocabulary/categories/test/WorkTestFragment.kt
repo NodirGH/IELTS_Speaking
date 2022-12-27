@@ -74,8 +74,8 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         binding.tvOptionThree.text = question.optionThree
         binding.tvOptionFour.text = question.optionFour
 
-        binding.tvCorrect.manageVisibility(false)
-        binding.tvIncorrect.manageVisibility(false)
+        binding.laCorrect.manageVisibility(false)
+        binding.laIncorrect.manageVisibility(false)
     }
 
     private fun defaultOptionsView() {
@@ -134,13 +134,16 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                             )
                             if (isOptionChangeable) {
                                 incorrectAnswers++
-                                binding.tvIncorrect.manageVisibility(true)
+                                binding.laIncorrect.manageVisibility(true)
+                                binding.laIncorrect.playAnimation()
                             }
 
                         } else {
                             if (isOptionChangeable) {
                                 correctAnswers++
-                                binding.tvCorrect.manageVisibility(true)
+                                binding.laCorrect.manageVisibility(true)
+                                binding.laCorrect.playAnimation()
+
                             }
                         }
                         answerView(question.correctAnswer, R.drawable.bg_correct_option_border)

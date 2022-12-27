@@ -173,14 +173,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tvOptionThree"
         tools:text="the feeling of disliking a job" />
 
-    <TextView
-        android:id="@+id/tvCorrect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Correct"
-        android:textColor="#3B7600"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laCorrect"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:lottie_rawRes="@raw/correct"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/btnCheck"
         app:layout_constraintEnd_toEndOf="parent"
@@ -188,14 +187,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOptionFour" />
 
-    <TextView
-        android:id="@+id/tvIncorrect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Incorrect"
-        android:textColor="#9C0000"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/laIncorrect"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:lottie_rawRes="@raw/wrong"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/btnCheck"
         app:layout_constraintEnd_toEndOf="parent"
