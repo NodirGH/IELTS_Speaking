@@ -3,13 +3,13 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.test
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentWorkTestBinding
 import my.application.ieltsspeaking.home.category.vocabulary.categories.result.WorkResultFragment
@@ -29,10 +29,8 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
-    private var isOptionChangeable: Boolean = true
-
-
-    var isOptionSelected: Boolean = false
+    private var isCheckPressed: Boolean = false
+    private var isOptionSelected: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +52,86 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         binding.tvOptionThree.setOnClickListener(this)
         binding.tvOptionFour.setOnClickListener(this)
         binding.btnCheck.setOnClickListener(this)
-        binding.btnNext.setOnClickListener(this)
+    }
 
+    override fun onClick(view: View?) {
+        when (view?.id) {
+
+            R.id.tvOptionOne -> selectedOptionView(binding.tvOptionOne, 1)
+
+            R.id.tvOptionTwo -> selectedOptionView(binding.tvOptionTwo, 2)
+
+            R.id.tvOptionThree -> selectedOptionView(binding.tvOptionThree, 3)
+
+            R.id.tvOptionFour -> selectedOptionView(binding.tvOptionFour, 4)
+
+            R.id.btnCheck -> {
+
+                if (isOptionSelected) {
+
+                    if (!isCheckPressed) {
+
+                        val question = mQuestionsList?.get(mCurrentPosition - 1)
+                        if (question!!.correctAnswer != mSelectedOptionPosition) {
+                            answerView(
+                                mSelectedOptionPosition,
+                                R.drawable.bg_incorrect_option_border
+                            )
+                            incorrectAnswers++
+                            binding.laIncorrect.manageVisibility(true)
+                            binding.laIncorrect.playAnimation()
+
+                        } else {
+                            correctAnswers++
+                            binding.laCorrect.manageVisibility(true)
+                            binding.laCorrect.playAnimation()
+
+                        }
+                        answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
+
+                        if (mCurrentPosition == mQuestionsList!!.size) {
+                            if (question.correctAnswer != mSelectedOptionPosition) {
+                                answerView(
+                                    mSelectedOptionPosition,
+                                    R.drawable.bg_incorrect_option_border
+                                )
+                            }
+                            answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
+                            binding.btnCheck.text = "Show result"
+                            Toast.makeText(
+                                requireContext(),
+                                "You have successfully completed the Quiz",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
+                            binding.btnCheck.setOnClickListener {
+                                navigateToResultFragment()
+                            }
+                        } else {
+                            binding.btnCheck.text = "Next"
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
+                        }
+                        mSelectedOptionPosition = 0
+                        isCheckPressed = true
+                    } else {
+
+                        mCurrentPosition++
+                        showNextQuestion()
+                        isOptionSelected = false
+                        isCheckPressed = false
+
+                    }
+
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Please choose your option!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
     }
 
     private fun setQuestion() {
@@ -91,108 +167,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
             option.background =
                 ContextCompat.getDrawable(requireContext(), R.drawable.bg_default_option_border)
 
-            binding.btnNext.visibility = View.GONE
             binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
-        }
-    }
-
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.tvOptionOne -> {
-                selectedOptionView(binding.tvOptionOne, 1)
-                binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
-                isOptionSelected = true
-            }
-
-            R.id.tvOptionTwo -> {
-                selectedOptionView(binding.tvOptionTwo, 2)
-                binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
-                isOptionSelected = true
-            }
-
-            R.id.tvOptionThree -> {
-                selectedOptionView(binding.tvOptionThree, 3)
-                binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
-                isOptionSelected = true
-            }
-
-            R.id.tvOptionFour -> {
-                selectedOptionView(binding.tvOptionFour, 4)
-                binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
-                isOptionSelected = true
-            }
-
-            R.id.btnCheck -> {
-
-                    if (isOptionSelected) {
-
-                        val question = mQuestionsList?.get(mCurrentPosition - 1)
-                        if (question!!.correctAnswer != mSelectedOptionPosition) {
-                            answerView(
-                                mSelectedOptionPosition,
-                                R.drawable.bg_incorrect_option_border
-                            )
-                            if (isOptionChangeable) {
-                                incorrectAnswers++
-                                binding.laIncorrect.manageVisibility(true)
-                                binding.laIncorrect.playAnimation()
-                            }
-
-                        } else {
-                            if (isOptionChangeable) {
-                                correctAnswers++
-                                binding.laCorrect.manageVisibility(true)
-                                binding.laCorrect.playAnimation()
-
-                            }
-                        }
-                        answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
-
-                        if (mCurrentPosition == mQuestionsList!!.size) {
-                            if (question.correctAnswer != mSelectedOptionPosition) {
-                                answerView(
-                                    mSelectedOptionPosition,
-                                    R.drawable.bg_incorrect_option_border
-                                )
-                            }
-                            answerView(question.correctAnswer, R.drawable.bg_correct_option_border)
-                            isOptionChangeable = false
-                            binding.btnCheck.text = "Show result"
-                            binding.btnNext.visibility = View.GONE
-                            Toast.makeText(
-                                requireContext(),
-                                "You have successfully completed the Quiz",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
-                            binding.btnCheck.setOnClickListener {
-                                navigateToResultFragment()
-                            }
-                        } else {
-                            binding.btnNext.visibility = View.VISIBLE
-                            binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
-                        }
-                        mSelectedOptionPosition = 0
-
-                    } else {
-                        Toast.makeText(
-                            requireContext(),
-                            "Please choose your option!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                isOptionChangeable = false
-            }
-
-            R.id.btnNext -> {
-                if (mSelectedOptionPosition == 0) {
-                    mCurrentPosition++
-                    showNextQuestion()
-                    isOptionChangeable = true
-                    isOptionSelected = false
-                }
-            }
         }
     }
 
@@ -245,12 +220,17 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
-        defaultOptionsView()
-        mSelectedOptionPosition = selectedOptionNumber
 
-        tv.setTextColor(Color.parseColor("#021B59"))
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.background =
-            ContextCompat.getDrawable(requireContext(), R.drawable.bg_selected_option_border)
+        if (!isCheckPressed) {
+            defaultOptionsView()
+            mSelectedOptionPosition = selectedOptionNumber
+
+            tv.setTextColor(Color.parseColor("#021B59"))
+            tv.setTypeface(tv.typeface, Typeface.BOLD)
+            tv.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_selected_option_border)
+        }
+        isOptionSelected = true
+        if (!isCheckPressed) binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
     }
 }

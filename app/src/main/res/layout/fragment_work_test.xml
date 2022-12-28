@@ -78,7 +78,7 @@
         android:paddingEnd="20dp"
         android:text="Match the word with its definition"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -218,19 +218,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_next_button"
-        android:padding="10dp"
-        android:src="@drawable/ic_next_button"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCheck"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCheck"
-        app:layout_constraintTop_toTopOf="@+id/btnCheck"
-        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
