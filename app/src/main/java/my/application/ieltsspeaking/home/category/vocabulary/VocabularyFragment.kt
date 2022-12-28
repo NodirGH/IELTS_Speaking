@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyBinding
 import my.application.ieltsspeaking.home.category.vocabulary.adapter.VocabularyAdapter
+import my.application.ieltsspeaking.home.category.vocabulary.categories.model.ModelVocabularyWordlist
 import my.application.ieltsspeaking.home.category.vocabulary.categories.work.VocabularyWorkFragment
 import my.application.ieltsspeaking.home.category.vocabulary.data.VocabularyData
+import my.application.ieltsspeaking.home.category.vocabulary.model.VocabularyModel
 
 class VocabularyFragment : Fragment() {
     private lateinit var binding: FragmentVocabularyBinding
@@ -50,7 +52,6 @@ class VocabularyFragment : Fragment() {
                 }
             }
         })
-
     }
 
     private fun navigateToVocabularyWorkFragment(){

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.category.vocabulary.categories.result.WorkResultFragment">
+    tools:context=".home.category.vocabulary.categories.result.VocabularyResultFragment">
 
     <TextView
         android:id="@+id/tvCongrats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:text="Congratulation!"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/congratulation"
         android:textColor="@color/main_text_color"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,10 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:text="Your result!"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/your_result"
         android:textColor="@color/main_text_color"
-        android:textSize="32sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,19 +89,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/questions"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tvQuestionSize"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 tools:text="25" />
         </LinearLayout>
 
@@ -125,19 +126,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/correct"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tvCorrectAnswers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 tools:text="19" />
         </LinearLayout>
 
@@ -161,19 +163,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/incorrect"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tvIncorrectAnswers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/abhaya_libre_extra_bold"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
                 android:textColor="@color/main_text_color"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 tools:text="6" />
         </LinearLayout>
 
@@ -183,6 +186,13 @@
         android:id="@+id/cpbResultProgressBar"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        app:cpb_background_progressbar_color="#E1EAE0"
+        app:cpb_background_progressbar_width="13dp"
+        app:cpb_progress="0"
+        app:cpb_progressbar_color="@color/green_button"
+        app:cpb_progressbar_color_start="#12FA00"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
         app:layout_constraintBottom_toTopOf="@+id/btnFinishResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -193,7 +203,7 @@
         android:id="@+id/tvResultPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:textColor="@color/main_text_color"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/cpbResultProgressBar"
@@ -210,8 +220,8 @@
         android:paddingEnd="50dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_light_blue_button_enabled"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:text="Finish"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/finish"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

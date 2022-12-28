@@ -7,27 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import my.application.ieltsspeaking.R
-import my.application.ieltsspeaking.databinding.FragmentWorkResultBinding
+import my.application.ieltsspeaking.databinding.FragmentVocabularyResultBinding
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.correctAnswers
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.incorrectAnswers
 
-class WorkResultFragment : Fragment() {
+class VocabularyResultFragment : Fragment() {
 
-    private lateinit var binding: FragmentWorkResultBinding
+    private lateinit var binding: FragmentVocabularyResultBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWorkResultBinding.inflate(inflater, container, false)
+        binding = FragmentVocabularyResultBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val questionSize = 10
+        val questionSize = 8
         val resultPercent = ((questionSize - incorrectAnswers) * 10).toFloat()
         binding.tvCorrectAnswers.text = correctAnswers.toString()
         binding.tvIncorrectAnswers.text = incorrectAnswers.toString()
@@ -37,8 +37,8 @@ class WorkResultFragment : Fragment() {
         binding.cpbResultProgressBar.apply {
             progressMax = 100f
             setProgressWithAnimation(resultPercent, 3000)
-            progressBarWidth = 5f
-            backgroundProgressBarWidth = 7f
+            progressBarWidth = 10f
+            backgroundProgressBarWidth = 13f
             progressBarColor = Color.GREEN
         }
 

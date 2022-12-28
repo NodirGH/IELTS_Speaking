@@ -3,6 +3,7 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.test
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import my.application.ieltsspeaking.R
-import my.application.ieltsspeaking.databinding.FragmentWorkTestBinding
-import my.application.ieltsspeaking.home.category.vocabulary.categories.result.WorkResultFragment
+import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
+import my.application.ieltsspeaking.home.category.vocabulary.categories.result.VocabularyResultFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
 import my.application.ieltsspeaking.utils.manageVisibility
@@ -25,7 +26,7 @@ var correctAnswers: Int = 0
 var incorrectAnswers: Int = 0
 
 class WorkTestFragment : Fragment(), View.OnClickListener {
-    private lateinit var binding: FragmentWorkTestBinding
+    private lateinit var binding: FragmentVocabularyTestBinding
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
@@ -36,7 +37,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWorkTestBinding.inflate(inflater, container, false)
+        binding = FragmentVocabularyTestBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -172,7 +173,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     }
 
     private fun navigateToResultFragment() {
-        val fragment = WorkResultFragment()
+        val fragment = VocabularyResultFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,

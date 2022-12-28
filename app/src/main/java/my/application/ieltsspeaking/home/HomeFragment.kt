@@ -96,14 +96,23 @@ class HomeFragment : Fragment() {
                     "Give your suggestions",
                     Toast.LENGTH_SHORT
                 ).show()
-                R.id.navReportBugs -> Toast.makeText(
-                    requireContext(),
-                    "Report bugs",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.navReportBugs -> navigateToTestProgressBarFragment()
             }
             true
         }
+    }
+
+    private fun navigateToTestProgressBarFragment() {
+        val fullTestFragment = ProgressBarTestFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, fullTestFragment)
+        transaction.addToBackStack(null).commit()
     }
 
     private fun setStatusBarColor(color: Int) {
