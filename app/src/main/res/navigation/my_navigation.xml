@@ -90,4 +90,18 @@
         android:name="my.application.ieltsspeaking.home.category.about.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/vocabularyFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment"
+        android:label="fragment_vocabulary"
+        tools:layout="@layout/fragment_vocabulary" />
+    <fragment
+        android:id="@+id/startLearningFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.StartLearningFragment"
+        android:label="fragment_start_learning"
+        tools:layout="@layout/fragment_start_learning" >
+        <action
+            android:id="@+id/action_startLearningFragment_to_vocabularyFragment"
+            app:destination="@id/vocabularyFragment" />
+    </fragment>
 </navigation>

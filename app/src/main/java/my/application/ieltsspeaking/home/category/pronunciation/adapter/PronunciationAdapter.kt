@@ -19,7 +19,6 @@ class PronunciationAdapter(private val modelPronunciation: List<ModelPronunciati
         mListener = clickListener
     }
 
-
     inner class PronunciationViewHolder(private val binding: ItemsRvPronunciationBinding, listener: OnPronunciationClickListener) :
         RecyclerView.ViewHolder(binding.root) {
 

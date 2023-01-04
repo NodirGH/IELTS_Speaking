@@ -13,6 +13,7 @@ import my.application.ieltsspeaking.databinding.FragmentPart1QuestionsBinding
 import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.questions.answers.Part1AnswersFragment
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
+import my.application.ieltsspeaking.utils.toast
 
 private const val HEADING = "heading"
 
@@ -68,11 +69,7 @@ class Part1QuestionsFragment : Fragment(){
 
                 adapter.setOnPart1QuestionClickListener(object : Part1QuestionsAdapter.Part1QuestionClickListener{
                     override fun onQuestionClick(position: Int) {
-                        Toast.makeText(
-                            requireContext(),
-                            "${position + 1} is clicked",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        requireContext().toast("${position + 1} is clicked ",)
                     }
                 })
             } else {

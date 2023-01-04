@@ -3,7 +3,6 @@ package my.application.ieltsspeaking.home.category.vocabulary.data
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.home.category.vocabulary.model.VocabularyModel
 
-
 class VocabularyData{
     companion object{
         fun getVocabularyData(): List<VocabularyModel>{

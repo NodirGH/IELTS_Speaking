@@ -6,15 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyResultBinding
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
-import my.application.ieltsspeaking.home.category.vocabulary.categories.test.correctAnswers
-import my.application.ieltsspeaking.home.category.vocabulary.categories.test.incorrectAnswers
+import my.application.ieltsspeaking.utils.UtilsForVocabulary
 
 class VocabularyResultFragment : Fragment() {
 
     private lateinit var binding: FragmentVocabularyResultBinding
+    private var questionSize: Int = 0
+    private var correctAnswers: Int = 0
+    private var incorrectAnswers: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,37 +30,32 @@ class VocabularyResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val questionSize = 8
-        val resultPercent = ((questionSize - incorrectAnswers) * 10).toFloat()
-        binding.tvCorrectAnswers.text = correctAnswers.toString()
-        binding.tvIncorrectAnswers.text = incorrectAnswers.toString()
-        binding.tvQuestionSize.text = questionSize.toString()
-        binding.tvResultPercent.text = "${resultPercent.toInt().toString()}%"
+        setFragmentResultListener("Size"){
+            _, bundle ->
+            val amountOfQuestions = bundle.getInt("questionSize")
+            val correct = bundle.getInt("correctAnswer")
+            val incorrect = bundle.getInt("incorrectAnswer")
+            questionSize = amountOfQuestions
+            correctAnswers = correct
+            incorrectAnswers = incorrect
 
-        binding.cpbResultProgressBar.apply {
-            progressMax = 100f
-            setProgressWithAnimation(resultPercent, 3000)
-            progressBarWidth = 10f
-            backgroundProgressBarWidth = 13f
-            progressBarColor = Color.GREEN
+            val resultPercent = ((correctAnswers.toFloat() / questionSize.toFloat()) * 100)
+            binding.tvCorrectAnswers.text = correctAnswers.toString()
+            binding.tvIncorrectAnswers.text = incorrectAnswers.toString()
+            binding.tvQuestionSize.text = questionSize.toString()
+            binding.tvResultPercent.text = "${resultPercent.toInt().toString()}%"
+
+            binding.cpbResultProgressBar.apply {
+                progressMax = 100f
+                setProgressWithAnimation(resultPercent, 3000)
+                progressBarWidth = 10f
+                backgroundProgressBarWidth = 13f
+                progressBarColor = Color.GREEN
+            }
         }
 
         binding.btnFinishResult.setOnClickListener {
-            navigateToMainVocabularyFragment()
+            UtilsForVocabulary.navigateFragment(VocabularyFragment(), parentFragmentManager)
         }
-    }
-
-    private fun navigateToMainVocabularyFragment() {
-        val fragment = VocabularyFragment()
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.addToBackStack(null).commit()
-
     }
 }

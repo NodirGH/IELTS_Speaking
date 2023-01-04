@@ -1,10 +1,10 @@
 package my.application.ieltsspeaking.home.category.part2Topic.question
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart2QuestionsBinding
@@ -45,7 +45,7 @@ class Part2QuestionsFragment : Fragment(), Part1QuestionsAdapter.OnItemClickList
 
     private fun setPart2RecyclerView() {
         binding.rvPart2Questions.layoutManager = LinearLayoutManager(requireContext())
-        val data: List<ModelPartsQuestions> = when(heading){
+        val data: List<ModelPartsQuestions> = when (heading) {
             "Activity" -> Part2QuestionsData.getActivityQuestions()
             "Advertisements" -> Part2QuestionsData.getAdvertisementQuestions()
             "Animal" -> Part2QuestionsData.getAnimalQuestions()

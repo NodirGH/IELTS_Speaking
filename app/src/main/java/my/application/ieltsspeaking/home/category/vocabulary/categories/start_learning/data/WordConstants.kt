@@ -2,7 +2,6 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.start_l
 
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.model.ModelStartLearning
 
-
 object WordConstants {
 
     fun getWorkWords(): ArrayList<ModelStartLearning> {

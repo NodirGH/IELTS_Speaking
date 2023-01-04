@@ -3,7 +3,6 @@ package my.application.ieltsspeaking.home.data
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.home.model.ModelHome
 
-
 class HomeData {
 
     companion object {

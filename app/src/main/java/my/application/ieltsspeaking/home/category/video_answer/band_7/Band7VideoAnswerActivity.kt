@@ -6,7 +6,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity
 import my.application.ieltsspeaking.databinding.ActivityBand7VideoAnswerBinding
 import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
 import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
-import my.application.ieltsspeaking.utils.Extensions
+import my.application.ieltsspeaking.utils.UtilsForYoutube
 import my.application.ieltsspeaking.utils.googleApi
 import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.snackBar
@@ -28,9 +28,9 @@ class Band7VideoAnswerActivity : YouTubeBaseActivity() {
         adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
             override fun onVideoClick(position: Int) {
 
-                if (Extensions().checkInternetConnection(this@Band7VideoAnswerActivity)) {
+                if (UtilsForYoutube().checkInternetConnection(this@Band7VideoAnswerActivity)) {
                     binding.ivIcYoutube.manageVisibility(false)
-                    Extensions.playVideo(
+                    UtilsForYoutube.playVideo(
                         videoId = when (position + 1) {
                             1 -> "EoUL4lTsis4"
                             2 -> "3wvX1FMprVk"
@@ -47,10 +47,9 @@ class Band7VideoAnswerActivity : YouTubeBaseActivity() {
                     )
                 } else snackBar(binding.root, "No internet connection")
 
-                binding.youtubePlayer.initialize(googleApi, Extensions.youtubePlayerInit)
+                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
             }
         })
-        Extensions.youtubeInitializer(this)
-
+        UtilsForYoutube.youtubeInitializer(this)
     }
 }

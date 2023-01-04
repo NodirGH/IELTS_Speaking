@@ -5,15 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyBinding
 import my.application.ieltsspeaking.home.category.vocabulary.adapter.VocabularyAdapter
-import my.application.ieltsspeaking.home.category.vocabulary.categories.model.ModelVocabularyWordlist
 import my.application.ieltsspeaking.home.category.vocabulary.categories.work.VocabularyWorkFragment
 import my.application.ieltsspeaking.home.category.vocabulary.data.VocabularyData
-import my.application.ieltsspeaking.home.category.vocabulary.model.VocabularyModel
+import my.application.ieltsspeaking.utils.UtilsForVocabulary
+import my.application.ieltsspeaking.utils.toast
 
 class VocabularyFragment : Fragment() {
     private lateinit var binding: FragmentVocabularyBinding
@@ -37,35 +35,19 @@ class VocabularyFragment : Fragment() {
         adapter.setOnWordClickListener(object : VocabularyAdapter.OnVocabularyWordCLickListener {
             override fun onItemClick(position: Int) {
                 when (position + 1) {
-                    1 -> navigateToVocabularyWorkFragment()
-                    2 -> Toast.makeText(requireContext(), "clicked 2", Toast.LENGTH_SHORT).show()
-                    3 -> Toast.makeText(requireContext(), "clicked 3", Toast.LENGTH_SHORT).show()
-                    4 -> Toast.makeText(requireContext(), "clicked 4", Toast.LENGTH_SHORT).show()
-                    5 -> Toast.makeText(requireContext(), "clicked 5", Toast.LENGTH_SHORT).show()
-                    6 -> Toast.makeText(requireContext(), "clicked 6", Toast.LENGTH_SHORT).show()
-                    7 -> Toast.makeText(requireContext(), "clicked 7", Toast.LENGTH_SHORT).show()
-                    8 -> Toast.makeText(requireContext(), "clicked 8", Toast.LENGTH_SHORT).show()
-                    9 -> Toast.makeText(requireContext(), "clicked 9", Toast.LENGTH_SHORT).show()
-                    10 -> Toast.makeText(requireContext(), "clicked 10", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(requireContext(), "Error occurred", Toast.LENGTH_SHORT)
-                        .show()
+                    1 ->  UtilsForVocabulary.navigateFragment(VocabularyWorkFragment(), parentFragmentManager)
+                    2 -> requireContext().toast("Clicked 2")
+                    3 -> requireContext().toast("Clicked 3")
+                    4 -> requireContext().toast("Clicked 4")
+                    5 -> requireContext().toast("Clicked 5")
+                    6 -> requireContext().toast("Clicked 6")
+                    7 -> requireContext().toast("Clicked 7")
+                    8 -> requireContext().toast("Clicked 8")
+                    9 -> requireContext().toast("Clicked 9")
+                    10 -> requireContext().toast("Clicked 10")
+                    else -> requireContext().toast("Error")
                 }
             }
         })
     }
-
-    private fun navigateToVocabularyWorkFragment(){
-        val fragment = VocabularyWorkFragment()
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.addToBackStack(null).commit()
-    }
-
-
 }

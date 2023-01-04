@@ -15,6 +15,7 @@ import my.application.ieltsspeaking.databinding.FragmentPart1TopicBinding
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 import my.application.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment
+import my.application.ieltsspeaking.utils.toast
 
 class Part1TopicFragment : Fragment(){
 
@@ -50,11 +51,7 @@ class Part1TopicFragment : Fragment(){
 
                 adapter.setOnPart1ClickListener(object : PartsTopicAdapter.Part1TopicClickListener{
                     override fun onPart1Click(position: Int) {
-                        Toast.makeText(
-                            requireContext(),
-                            "${position + 1} is clicked ",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        requireContext().toast("${position + 1} is clicked",)
                         navigateToQuestions()
                     }
                 })

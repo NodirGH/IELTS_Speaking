@@ -34,9 +34,7 @@ class Part3AnswersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvPart3Question.text = this.questions
-
         setPart3Answers()
-
     }
 
     private fun setPart3Answers() {

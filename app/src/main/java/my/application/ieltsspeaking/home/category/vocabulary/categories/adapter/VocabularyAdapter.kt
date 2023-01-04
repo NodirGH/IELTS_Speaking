@@ -30,7 +30,5 @@ class VocabularyWordsAdapter(private val modelVocabularyWordlist: List<ModelVoca
             fun bindView(modelVocabularyWordlist: ModelVocabularyWordlist){
                 binding.tvVocabularyWordsList.text = modelVocabularyWordlist.vocabularyWordsList
             }
-
     }
-
 }

@@ -32,7 +32,6 @@ class VocabularyAdapter(
 
     override fun getItemCount() = vocabularyModel.size
 
-
     inner class VocabularyViewHolder(
         val binding: ItemsRvVocabularyBinding,
         listener: OnVocabularyWordCLickListener

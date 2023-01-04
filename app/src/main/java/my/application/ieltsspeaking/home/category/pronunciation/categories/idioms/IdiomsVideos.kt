@@ -6,9 +6,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity
 import my.application.ieltsspeaking.databinding.PronunciationLayoutBinding
 import my.application.ieltsspeaking.home.category.pronunciation.categories.adapter.PronunciationVideosAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.data.DataPronunciation
-import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
-import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
-import my.application.ieltsspeaking.utils.Extensions
+import my.application.ieltsspeaking.utils.UtilsForYoutube
 import my.application.ieltsspeaking.utils.googleApi
 import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.snackBar
@@ -30,9 +28,9 @@ class IdiomsVideos: YouTubeBaseActivity() {
         adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick {
             override fun onVideoClick(position: Int) {
 
-                if (Extensions().checkInternetConnection(this@IdiomsVideos)) {
+                if (UtilsForYoutube().checkInternetConnection(this@IdiomsVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)
-                    Extensions.playVideo(
+                    UtilsForYoutube.playVideo(
                         videoId = when (position + 1) {
                             1 -> "Hm-n-_uqCvQ"
                             2 -> "XvsopmnMfg8"
@@ -48,10 +46,9 @@ class IdiomsVideos: YouTubeBaseActivity() {
                     )
                 } else snackBar(binding.root, "No internet connection")
 
-                binding.youtubePlayer.initialize(googleApi, Extensions.youtubePlayerInit)
+                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
             }
         })
-        Extensions.youtubeInitializer(this)
-
+        UtilsForYoutube.youtubeInitializer(this)
     }
 }
