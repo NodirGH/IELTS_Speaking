@@ -1,16 +1,17 @@
 package my.application.ieltsspeaking.home.category.part1Topic.questions.answers
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1AnswersBinding
-import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.Part1QuestionsAdapter
+import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
+import my.application.ieltsspeaking.utils.toast
 
 private const val QUESTION = "question"
 
@@ -20,6 +21,8 @@ class Part1AnswersFragment : Fragment() {
     private lateinit var binding: FragmentPart1AnswersBinding
     private var question: String? = null
     private var db = FirebaseFirestore.getInstance()
+    private var questionId = 0
+    private lateinit var questionDB: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +42,26 @@ class Part1AnswersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvPart1Question.text = this.question
+        setFragmentResultListener("Question") { _, bundle ->
+            questionId = bundle.getInt("question position")
 
-        setPart1Answers()
+            db.collection("Part1Topics").document("Hlek682FDsV7sRgTwoBp").collection("WorkQuestion")
+                .get().addOnSuccessListener {
+                if (!it.isEmpty){
+                    for (questionsBlock in it.documents){
+                        val quesBlock = questionsBlock.toObject(ModelPartsQuestions::class.java)
+                        if (questionId == quesBlock?.id){
+                            questionDB = quesBlock.question
+
+                            binding.tvPart1Question.text = questionDB
+                        }
+                    }
+                }
+
+                }.addOnFailureListener {
+                    requireContext().toast("Not found")
+                }
+        }
     }
 
     private fun setPart1Answers() {

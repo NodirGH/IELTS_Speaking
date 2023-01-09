@@ -7,7 +7,8 @@ import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.ItemsRvPart1TopicsBinding
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 
-class PartsTopicAdapter(private val part1ModelTopic: ArrayList<ModelPartsTopic>) : RecyclerView.Adapter<PartsTopicAdapter.Part1ViewHolder>() {
+class PartsTopicAdapter(private val partModelTopic: List<ModelPartsTopic>) :
+    RecyclerView.Adapter<PartsTopicAdapter.Part1ViewHolder>() {
 
     private lateinit var mListener: Part1TopicClickListener
 
@@ -15,7 +16,7 @@ class PartsTopicAdapter(private val part1ModelTopic: ArrayList<ModelPartsTopic>)
         fun onPart1Click(position: Int)
     }
 
-    fun setOnPart1ClickListener(clickListener: Part1TopicClickListener) {
+    fun setClickListener(clickListener: Part1TopicClickListener) {
         mListener = clickListener
     }
 
@@ -26,21 +27,23 @@ class PartsTopicAdapter(private val part1ModelTopic: ArrayList<ModelPartsTopic>)
     }
 
     override fun onBindViewHolder(holder: Part1ViewHolder, position: Int) {
-        holder.bindView(part1ModelTopic[position], mListener)
+        holder.bindView(partModelTopic[position], mListener)
     }
 
-    override fun getItemCount() = part1ModelTopic.size
+    override fun getItemCount() = partModelTopic.size
 
     inner class Part1ViewHolder(
         val binding: ItemsRvPart1TopicsBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(modelPartsTopic: ModelPartsTopic, clickListener: Part1TopicClickListener
+        fun bindView(
+            modelPartsTopic: ModelPartsTopic, clickListener: Part1TopicClickListener
         ) {
             binding.tvPart1OrderNumber.text = modelPartsTopic.orderNumber.toString()
-            binding.tvPart1NumberQuestion.text = part1ModelTopic.size.toString()
+            binding.tvPart1NumberQuestion.text = partModelTopic.size.toString()
             binding.tvPart1TopicHeading.text = modelPartsTopic.heading
-            itemView.setOnClickListener{
+//            binding.ivPart1BgRectangle.setImageResource(modelPartsTopic.background)
+            itemView.setOnClickListener {
                 clickListener.onPart1Click(adapterPosition)
             }
 
@@ -64,7 +67,7 @@ class PartsTopicAdapter(private val part1ModelTopic: ArrayList<ModelPartsTopic>)
     }
 
     interface OnItemClickListener {
-        fun onItemClick(part1ModelTopic: ModelPartsTopic)
+        fun onItemClick(partModelTopic: ModelPartsTopic)
     }
 
 }

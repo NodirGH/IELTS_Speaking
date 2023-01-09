@@ -9,5 +9,5 @@ class ModelPartsTopic(
     val orderNumber: Int = 0,
     val heading: String = "",
     val questionCount: Int = 0,
-//    val background: Int
+    val background: Int = 0
 ): Parcelable

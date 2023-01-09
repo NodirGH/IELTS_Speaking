@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import my.application.ieltsspeaking.FirebaseData
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1TopicBinding
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
@@ -22,6 +21,7 @@ class Part1TopicFragment : Fragment(){
     private lateinit var binding: FragmentPart1TopicBinding
     private var db = FirebaseFirestore.getInstance()
     private lateinit var userTopicList: ArrayList<ModelPartsTopic>
+    var topicHeading = "heading test"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +35,7 @@ class Part1TopicFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvPart1.layoutManager = LinearLayoutManager(requireContext())
+
         userTopicList = arrayListOf()
         db.collection("Part1Topics").orderBy("id").get().addOnSuccessListener{
 
@@ -49,23 +50,33 @@ class Part1TopicFragment : Fragment(){
                 val adapter = PartsTopicAdapter(userTopicList)
                 binding.rvPart1.adapter = adapter
 
-                adapter.setOnPart1ClickListener(object : PartsTopicAdapter.Part1TopicClickListener{
+                adapter.setClickListener(object : PartsTopicAdapter.Part1TopicClickListener{
                     override fun onPart1Click(position: Int) {
-                        requireContext().toast("${position + 1} is clicked",)
-                        navigateToQuestions()
+                            navigateToQuestionFragment(position+1)
                     }
                 })
+
             }
         }
-            .addOnFailureListener { Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show() }
+            .addOnFailureListener { requireContext().toast(it.toString(), length = Toast.LENGTH_LONG) }
     }
 
-    private fun navigateToQuestions() {
-        val modelPartsTopic = ModelPartsTopic()
-        val fragment = Part1QuestionsFragment.newInstance(modelPartsTopic.heading)
+    private fun navigateToQuestionFragment(position: Int) {
+        val fragment = Part1QuestionsFragment()
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        val bundle = Bundle()
+        bundle.apply {
+            putInt("topic position", position)
+        }
+        setFragmentResult("TOPIC", bundle)
         transaction.addToBackStack(null)
-        transaction.commit()
+        transaction.replace(R.id.fragmentContainerView, fragment).commit()
     }
+
 }

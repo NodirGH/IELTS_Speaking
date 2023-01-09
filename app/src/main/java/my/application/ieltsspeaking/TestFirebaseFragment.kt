@@ -65,7 +65,7 @@ class TestFirebaseFragment : Fragment() {
     }
     private fun navigateToQuestions() {
         val firebaseData = FirebaseData()
-        val fragment = Part1QuestionsFragment.newInstance(firebaseData.heading)
+        val fragment = Part1QuestionsFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainerView, fragment)
         transaction.addToBackStack(null)
