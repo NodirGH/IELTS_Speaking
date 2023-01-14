@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
@@ -63,6 +62,9 @@ class Part1TopicFragment : Fragment(){
 
     private fun navigateToQuestionFragment(position: Int) {
         val fragment = Part1QuestionsFragment()
+        val argument = Bundle()
+        argument.putInt("topic_position", position)
+        fragment.arguments = argument
         val transaction = parentFragmentManager.beginTransaction()
         transaction.setCustomAnimations(
             R.anim.from_right,
@@ -70,11 +72,7 @@ class Part1TopicFragment : Fragment(){
             R.anim.from_left,
             R.anim.to_right
         )
-        val bundle = Bundle()
-        bundle.apply {
-            putInt("topic position", position)
-        }
-        setFragmentResult("TOPIC", bundle)
+//        setFragmentResult("TOPIC", bundle)
         transaction.addToBackStack(null)
         transaction.replace(R.id.fragmentContainerView, fragment).commit()
     }

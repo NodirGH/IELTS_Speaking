@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentStartLearningBinding
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
-import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.data.WordConstants
+import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.data.LearningWordsCollection
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.model.ModelStartLearning
-import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
+import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
 import my.application.ieltsspeaking.utils.UtilsForVocabulary
 
 class StartLearningFragment : Fragment(), OnClickListener {
@@ -19,7 +19,6 @@ class StartLearningFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentStartLearningBinding
     private var currentPosition = 1
     private var wordList: ArrayList<ModelStartLearning>? = null
-    private val wordCount = Constants.getWorkQuestions().size
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +31,27 @@ class StartLearningFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        wordList = WordConstants.getWorkWords()
+            UtilsForVocabulary.context = requireContext()
+        setLearningWords()
+
+    }
+
+    private fun setLearningWords() {
+
+        wordList = when(globalTopicId){
+            1-> LearningWordsCollection.getWorkWords()
+            2-> LearningWordsCollection.getTravelWords()
+            3-> LearningWordsCollection.getTechnologyWords()
+            4 -> LearningWordsCollection.getSportWords()
+            5-> LearningWordsCollection.getScienceWords()
+            6 -> LearningWordsCollection.getRelationshipWords()
+            7 -> LearningWordsCollection.getAccommodationWords()
+            8 -> LearningWordsCollection.getEducationWords()
+            9 -> LearningWordsCollection.getHobbyWords()
+            10 -> LearningWordsCollection.getMixedWords()
+            else -> LearningWordsCollection.getTravelWords()
+
+        }
         binding.btnLearnedStartLearning.setOnClickListener(this)
         UtilsForVocabulary.setWords(
             wordList,
@@ -41,7 +60,7 @@ class StartLearningFragment : Fragment(), OnClickListener {
             binding.tvFlipCardDefinition,
             binding.tvFlipCardExample,
             binding.pbProgressBarStartLearning,
-            wordCount,
+            wordList!!.size,
             binding.tvProgressBarCounterStartLearning
         )
         UtilsForVocabulary.rotateFlipCard(
@@ -64,11 +83,14 @@ class StartLearningFragment : Fragment(), OnClickListener {
                         binding.tvFlipCardDefinition,
                         binding.tvFlipCardExample,
                         binding.pbProgressBarStartLearning,
-                        wordCount,
+                        wordList!!.size,
                         binding.tvProgressBarCounterStartLearning
                     )
                 } else {
-                    UtilsForVocabulary.alertDialog(requireContext(), VocabularyFragment(), parentFragmentManager)
+                    UtilsForVocabulary.alertDialog(
+                        VocabularyFragment(),
+                        parentFragmentManager)
+
                 }
             }
         }

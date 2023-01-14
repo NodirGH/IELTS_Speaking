@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import my.application.ieltsspeaking.R
@@ -40,30 +38,29 @@ class Part1QuestionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-            setFragmentResultListener("TOPIC") { _, bundle ->
-                topicId = bundle.getInt("topic position")
+        arguments?.getInt("topic_position").let {
+            topicId = it
+        }
+        whichQuestion = when(topicId){
+            1 -> "WorkQuestion"
+            2 -> "StudyQuestion"
+            3 -> "HometownQuestion"
+            4 -> "HomeQuestion"
+            5 -> "ArtQuestion"
+            6 -> "BirthdayQuestion"
+            7 -> "ChildhoodQuestion"
+            8 -> "ClothesQuestion"
+            9 -> "DailyRoutineQuestion"
+            10 -> "FoodQuestion"
+            11 -> "HobbiesQuestion"
+            12 -> "InternetQuestion"
+            13 -> "LeisureTimeQuestion"
+            14 -> "MusicQuestion"
+            15 -> "ShoppingQuestion"
+            else -> "WorkQuestion"
+        }
 
-                whichQuestion = when(topicId){
-                    1 -> "WorkQuestion"
-                    2 -> "StudyQuestion"
-                    3 -> "HometownQuestion"
-                    4 -> "HomeQuestion"
-                    5 -> "ArtQuestion"
-                    6 -> "BirthdayQuestion"
-                    7 -> "ChildhoodQuestion"
-                    8 -> "ClothesQuestion"
-                    9 -> "DailyRoutineQuestion"
-                    10 -> "FoodQuestion"
-                    11 -> "HobbiesQuestion"
-                    12 -> "InternetQuestion"
-                    13 -> "LeisureTimeQuestion"
-                    14 -> "MusicQuestion"
-                    15 -> "ShoppingQuestion"
-                    else -> "WorkQuestion"
-                }
-
-                setRecyclerView()
-            }
+        setRecyclerView()
         userQuestionList = arrayListOf()
     }
 

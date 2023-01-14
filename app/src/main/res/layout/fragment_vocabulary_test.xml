@@ -7,29 +7,29 @@
     android:background="#EBF4EB"
     tools:context=".home.category.vocabulary.categories.test.WorkTestFragment">
 
-    <ImageView
-        android:id="@+id/ivWorkHeadingPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/work"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivWorkHeadingPicture"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="100dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:src="@drawable/work"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/tvWorkHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/main_text_color"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivWorkHeadingPicture"
-        app:layout_constraintStart_toEndOf="@+id/ivWorkHeadingPicture"
-        app:layout_constraintTop_toTopOf="@+id/ivWorkHeadingPicture"
-        tools:text="Work" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvWorkHeading"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:fontFamily="@font/roboto_bold"-->
+<!--        android:textColor="@color/main_text_color"-->
+<!--        android:textSize="26sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/ivWorkHeadingPicture"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/ivWorkHeadingPicture"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/ivWorkHeadingPicture"-->
+<!--        tools:text="Work" />-->
 
     <LinearLayout
         android:id="@+id/llProgressBar"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWorkHeading">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
             android:id="@+id/pbProgressBar"
@@ -50,11 +50,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:progressTint="#15E11B"
             android:indeterminate="false"
             android:max="10"
             android:minHeight="50dp"
-            android:progress="4" />
+            android:progress="4"
+            android:progressTint="#15E11B" />
 
         <TextView
             android:id="@+id/tvProgressBarCounter"
@@ -75,7 +75,6 @@
         android:id="@+id/tvExplanation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
         android:paddingStart="20dp"
@@ -93,7 +92,7 @@
         android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/roboto_black_italic"
         android:gravity="center"
@@ -111,12 +110,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/bg_default_option_border"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/main_text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +134,7 @@
         android:background="@drawable/bg_default_option_border"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/main_text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +153,7 @@
         android:background="@drawable/bg_default_option_border"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/main_text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +172,7 @@
         android:background="@drawable/bg_default_option_border"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/main_text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +218,7 @@
         android:fontFamily="@font/roboto_bold"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="Check"
+        android:text="@string/check"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

@@ -15,7 +15,10 @@ import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
 import my.application.ieltsspeaking.home.category.vocabulary.categories.result.VocabularyResultFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
+import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
 import my.application.ieltsspeaking.utils.UtilsForVocabulary
+import my.application.ieltsspeaking.utils.manageVisibility
+import my.application.ieltsspeaking.utils.toast
 
 class WorkTestFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentVocabularyTestBinding
@@ -38,17 +41,38 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mQuestionsList = Constants.getWorkQuestions()
+        mQuestionsList = when(globalTopicId){
+            1-> Constants.quizForWork()
+            2-> Constants.quizForTravel()
+            3-> Constants.quizForTechnology()
+            4-> Constants.quizForSport()
+            5-> Constants.quizForScience()
+            6-> Constants.quizForRelationship()
+            7-> Constants.quizForAccommodation()
+            8-> Constants.quizForEducation()
+            9-> Constants.quizForHobby()
+            10-> Constants.quizForMixed()
+
+            else -> Constants.quizForWork()
+        }
+//        mQuestionsList = Constants.quizForWork()
+
+        UtilsForVocabulary.context = requireContext()
+        UtilsForVocabulary.optionOne = binding.tvOptionOne
+        UtilsForVocabulary.optionTwo = binding.tvOptionTwo
+        UtilsForVocabulary.optionThree = binding.tvOptionThree
+        UtilsForVocabulary.optionFour = binding.tvOptionFour
+        UtilsForVocabulary.btnCheck = binding.btnCheck
 
         UtilsForVocabulary.setQuestionTest(
-            binding.btnCheck,
+//            binding.btnCheck,
             binding.pbProgressBar,
             binding.tvProgressBarCounter,
             binding.tvQuestion,
-            binding.tvOptionOne,
-            binding.tvOptionTwo,
-            binding.tvOptionThree,
-            binding.tvOptionFour,
+//            binding.tvOptionOne,
+//            binding.tvOptionTwo,
+//            binding.tvOptionThree,
+//            binding.tvOptionFour,
             mQuestionsList,
             mCurrentPosition,
             binding.laCorrect,
@@ -66,153 +90,164 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
         when (view?.id) {
 
             R.id.tvOptionOne -> {
-                UtilsForVocabulary.defaultOptionsView(
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.btnCheck
-                )
+                UtilsForVocabulary.defaultOptionsView()
                 selectedOptionView(binding.tvOptionOne, 1)
             }
 
             R.id.tvOptionTwo -> {
-                UtilsForVocabulary.defaultOptionsView(
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.btnCheck
-                )
+                UtilsForVocabulary.defaultOptionsView()
                 selectedOptionView(binding.tvOptionTwo, 2)
-
             }
 
             R.id.tvOptionThree -> {
-                UtilsForVocabulary.defaultOptionsView(
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.btnCheck
-                )
+                UtilsForVocabulary.defaultOptionsView()
                 selectedOptionView(binding.tvOptionThree, 3)
-                isOptionSelected = true
-
             }
 
             R.id.tvOptionFour -> {
-                UtilsForVocabulary.defaultOptionsView(
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.btnCheck
-                )
+                UtilsForVocabulary.defaultOptionsView()
                 selectedOptionView(binding.tvOptionFour, 4)
-                isOptionSelected = true
-
             }
 
             R.id.btnCheck -> {
 
-                UtilsForVocabulary.btnCheckFunction(
-                    isOptionSelected,
-                    isCheckPressed,
-                    mQuestionsList,
-                    mCurrentPosition,
-                    mSelectedOptionPosition,
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.laCorrect,
-                    binding.laIncorrect,
-                    binding.btnCheck,
-                    binding.pbProgressBar,
-                    binding.tvProgressBarCounter,
-                    binding.tvQuestion,
-                    correctAnswers,
-                    incorrectAnswers
-                )
 
-                val vocabularyBtnCheck = UtilsForVocabulary.btnCheckFunction(
-                    isOptionSelected,
-                    isCheckPressed,
-                    mQuestionsList,
-                    mCurrentPosition,
-                    mSelectedOptionPosition,
-                    binding.tvOptionOne,
-                    binding.tvOptionTwo,
-                    binding.tvOptionThree,
-                    binding.tvOptionFour,
-                    requireContext(),
-                    binding.laCorrect,
-                    binding.laIncorrect,
-                    binding.btnCheck,
-                    binding.pbProgressBar,
-                    binding.tvProgressBarCounter,
-                    binding.tvQuestion,
-                    correctAnswers,
-                    incorrectAnswers
-                )
-                correctAnswers = vocabularyBtnCheck.correctA
-                incorrectAnswers = vocabularyBtnCheck.incorrectA
-                mSelectedOptionPosition = vocabularyBtnCheck.mySelectedPosition
-                isCheckPressed = vocabularyBtnCheck.isCheckPressed
-                mCurrentPosition = vocabularyBtnCheck.currentPosition
-                isOptionSelected = vocabularyBtnCheck.isOptionSelected
+//                UtilsForVocabulary.btnCheckFunction(
+//                    isOptionSelected,
+//                    isCheckPressed,
+//                    mQuestionsList,
+//                    mCurrentPosition,
+//                    mSelectedOptionPosition,
+//                    binding.tvOptionOne,
+//                    binding.tvOptionTwo,
+//                    binding.tvOptionThree,
+//                    binding.tvOptionFour,
+//                    requireContext(),
+//                    binding.laCorrect,
+//                    binding.laIncorrect,
+//                    binding.btnCheck,
+//                    binding.pbProgressBar,
+//                    binding.tvProgressBarCounter,
+//                    binding.tvQuestion,
+//                    correctAnswers,
+//                    incorrectAnswers
+//                )
+//
+//                val vocabularyBtnCheck = UtilsForVocabulary.btnCheckFunction(
+//                    isOptionSelected,
+//                    isCheckPressed,
+//                    mQuestionsList,
+//                    mCurrentPosition,
+//                    mSelectedOptionPosition,
+//                    binding.tvOptionOne,
+//                    binding.tvOptionTwo,
+//                    binding.tvOptionThree,
+//                    binding.tvOptionFour,
+//                    requireContext(),
+//                    binding.laCorrect,
+//                    binding.laIncorrect,
+//                    binding.btnCheck,
+//                    binding.pbProgressBar,
+//                    binding.tvProgressBarCounter,
+//                    binding.tvQuestion,
+//                    correctAnswers,
+//                    incorrectAnswers
+//                )
+//                correctAnswers = vocabularyBtnCheck.correctA
+//                incorrectAnswers = vocabularyBtnCheck.incorrectA
+//                mSelectedOptionPosition = vocabularyBtnCheck.mySelectedPosition
+//                isCheckPressed = vocabularyBtnCheck.isCheckPressed
+//                mCurrentPosition = vocabularyBtnCheck.currentPosition
+//                isOptionSelected = vocabularyBtnCheck.isOptionSelected
 
-                //                if (isOptionSelected) {
-//
-//                    if (!isCheckPressed) {
-//                        val question = mQuestionsList?.get(mCurrentPosition - 1)
-//                        if (question!!.correctAnswer != mSelectedOptionPosition) {
-//                            UtilsForVocabulary.answerView(mSelectedOptionPosition, R.drawable.bg_incorrect_option_border, binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext())
-//                            incorrectAnswers++
-//                            binding.laIncorrect.manageVisibility(true)
-//                            binding.laIncorrect.playAnimation()
-//
-//                        } else {
-//                            correctAnswers++
-//                            binding.laCorrect.manageVisibility(true)
-//                            binding.laCorrect.playAnimation()
-//                        }
-//
-//                        UtilsForVocabulary.answerView(question.correctAnswer, R.drawable.bg_correct_option_border, binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext())
-//
-//                        if (mCurrentPosition == mQuestionsList!!.size) {
-//                            if (question.correctAnswer != mSelectedOptionPosition) {
-//                                UtilsForVocabulary.answerView(mSelectedOptionPosition, R.drawable.bg_incorrect_option_border, binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext())
-//                            }
-//                            UtilsForVocabulary.answerView(question.correctAnswer, R.drawable.bg_correct_option_border, binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext())
-//                            binding.btnCheck.text = getString(R.string.show_result)
-//                            requireContext().toast("You have successfully completed the Quiz")
-//
-//                            binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
-//                            binding.btnCheck.setOnClickListener {
-//                                navigateToResultFragment()
-//                            }
-//                        } else {
-//                            binding.btnCheck.text = getString(R.string.next)
-//                            binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
-//                        }
-//                        mSelectedOptionPosition = 0
-//                        isCheckPressed = true
-//                    } else {
-//                        mCurrentPosition++
-//                        UtilsForVocabulary.defaultOptionsView(binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext(), binding.btnCheck)
-//                        UtilsForVocabulary.setQuestionTest(binding.btnCheck, binding.pbProgressBar, binding.tvProgressBarCounter, binding.tvQuestion, binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, mQuestionsList, mCurrentPosition, binding.laCorrect, binding.laIncorrect)
-//                        isOptionSelected = false
-//                        isCheckPressed = false
-//                    }
-//
-//                } else requireContext().toast("Please choose your option!")
+                if (isOptionSelected) {
+
+                    if (!isCheckPressed) {
+                        val question = mQuestionsList?.get(mCurrentPosition - 1)
+                        if (question!!.correctAnswer != mSelectedOptionPosition) {
+                            UtilsForVocabulary.answerView(
+                                mSelectedOptionPosition,
+                                R.drawable.bg_incorrect_option_border,
+//                                binding.tvOptionOne,
+//                                binding.tvOptionTwo,
+//                                binding.tvOptionThree,
+//                                binding.tvOptionFour
+                            )
+                            incorrectAnswers++
+                            binding.laIncorrect.manageVisibility(true)
+                            binding.laIncorrect.playAnimation()
+
+                        } else {
+                            correctAnswers++
+                            binding.laCorrect.manageVisibility(true)
+                            binding.laCorrect.playAnimation()
+                        }
+
+                        UtilsForVocabulary.answerView(
+                            question.correctAnswer,
+                            R.drawable.bg_correct_option_border,
+//                            binding.tvOptionOne,
+//                            binding.tvOptionTwo,
+//                            binding.tvOptionThree,
+//                            binding.tvOptionFour
+                        )
+
+                        if (mCurrentPosition == mQuestionsList!!.size) {
+                            if (question.correctAnswer != mSelectedOptionPosition) {
+                                UtilsForVocabulary.answerView(
+                                    mSelectedOptionPosition,
+                                    R.drawable.bg_incorrect_option_border,
+//                                    binding.tvOptionOne,
+//                                    binding.tvOptionTwo,
+//                                    binding.tvOptionThree,
+//                                    binding.tvOptionFour
+                                )
+                            }
+                            UtilsForVocabulary.answerView(
+                                question.correctAnswer,
+                                R.drawable.bg_correct_option_border,
+//                                binding.tvOptionOne,
+//                                binding.tvOptionTwo,
+//                                binding.tvOptionThree,
+//                                binding.tvOptionFour
+                            )
+                            binding.btnCheck.text = getString(R.string.show_result)
+                            requireContext().toast("You have successfully completed the Quiz")
+
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
+                            binding.btnCheck.setOnClickListener {
+                                navigateToResultFragment()
+                            }
+                        } else {
+                            binding.btnCheck.text = getString(R.string.next)
+                            binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
+                        }
+                        mSelectedOptionPosition = 0
+                        isCheckPressed = true
+                    } else {
+                        mCurrentPosition++
+                        UtilsForVocabulary.defaultOptionsView(
+//                            binding.tvOptionOne, binding.tvOptionTwo, binding.tvOptionThree, binding.tvOptionFour, requireContext(), binding.btnCheck
+                        )
+                        UtilsForVocabulary.setQuestionTest(
+//                            binding.btnCheck,
+                            binding.pbProgressBar,
+                            binding.tvProgressBarCounter,
+                            binding.tvQuestion,
+//                            binding.tvOptionOne,
+//                            binding.tvOptionTwo,
+//                            binding.tvOptionThree,
+//                            binding.tvOptionFour,
+                            mQuestionsList,
+                            mCurrentPosition,
+                            binding.laCorrect,
+                            binding.laIncorrect
+                        )
+                        isOptionSelected = false
+                        isCheckPressed = false
+                    }
+
+                } else requireContext().toast("Please choose your option!")
             }
         }
     }
