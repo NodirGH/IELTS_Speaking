@@ -7,30 +7,6 @@
     android:background="#EBF4EB"
     tools:context=".home.category.vocabulary.categories.test.WorkTestFragment">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/ivWorkHeadingPicture"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="100dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:src="@drawable/work"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvWorkHeading"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="30dp"-->
-<!--        android:fontFamily="@font/roboto_bold"-->
-<!--        android:textColor="@color/main_text_color"-->
-<!--        android:textSize="26sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/ivWorkHeadingPicture"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/ivWorkHeadingPicture"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/ivWorkHeadingPicture"-->
-<!--        tools:text="Work" />-->
-
     <LinearLayout
         android:id="@+id/llProgressBar"
         android:layout_width="match_parent"
@@ -81,7 +57,7 @@
         android:paddingEnd="20dp"
         android:text="@string/match_the_word_with_its_definition"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -93,11 +69,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/roboto_black_italic"
+        android:fontFamily="@font/roboto_black"
         android:gravity="center"
         android:textColor="@color/main_text_color"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -216,8 +191,8 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_light_blue_button_disabled"
         android:fontFamily="@font/roboto_bold"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         android:text="@string/check"
         android:textAllCaps="false"
         android:textColor="@color/white"

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/bg_rectangle_part1"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_regular"
         android:padding="10dp"
         android:gravity="center"
         android:paddingStart="10dp"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="00:00.00"
+        android:text="@string/_00_00_00"
         android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,9 +155,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_sample_answer"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         android:text="@string/sample_answer"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -173,6 +173,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/bg_rectangle_part1"
         android:padding="10dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Sample answer is shown here. It may consists several lines. And it should be match with screen size no more. Besides, text is displayed under Sample answer button"
         android:textColor="@color/black"
         android:gravity="fill"
@@ -182,6 +183,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSampleAnswer" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,6 @@
         android:id="@+id/laTrophy"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
         app:lottie_rawRes="@raw/congrats"
         app:lottie_autoPlay="true"
         app:lottie_loop="false"
@@ -62,7 +61,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,7 +73,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="0dp"
@@ -111,7 +110,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="0dp"
@@ -148,7 +147,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="0dp"
@@ -205,7 +204,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:textColor="@color/main_text_color"
-        android:textSize="26sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/cpbResultProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/cpbResultProgressBar"
         app:layout_constraintStart_toStartOf="@+id/cpbResultProgressBar"
@@ -216,8 +215,8 @@
         android:id="@+id/btnFinishResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_light_blue_button_enabled"
         android:fontFamily="@font/roboto_bold"

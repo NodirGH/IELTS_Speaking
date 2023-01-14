@@ -42,7 +42,7 @@
         android:fontFamily="@font/roboto_medium"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:text="Finish"
+        android:text="@string/finish"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

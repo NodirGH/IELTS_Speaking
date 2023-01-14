@@ -18,10 +18,10 @@
         android:layout_weight="1"
         android:textAllCaps="false"
         android:background="@drawable/bg_band_6"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/sample_answer_band_6"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnBand7"
@@ -33,11 +33,11 @@
         android:layout_weight="1"
         android:textAllCaps="false"
         android:background="@drawable/bg_band_7"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/sample_answer_band_7"
         android:lines="2"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnBand8"
@@ -49,10 +49,10 @@
         android:layout_weight="1"
         android:textAllCaps="false"
         android:background="@drawable/bg_band_8"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/sample_answer_band_8"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnBand9"
@@ -62,9 +62,9 @@
         android:layout_weight="1"
         android:textAllCaps="false"
         android:background="@drawable/bg_band_9"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/sample_answer_band_9"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
  </LinearLayout>

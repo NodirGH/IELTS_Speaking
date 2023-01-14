@@ -10,7 +10,7 @@
         android:id="@+id/tvTitlePronunciation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:padding="30dp"
         android:text="@string/pronunciation"
         android:textColor="@color/black"

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyBinding
 import my.application.ieltsspeaking.home.category.vocabulary.adapter.VocabularyAdapter
-import my.application.ieltsspeaking.home.category.vocabulary.categories.work.VocabularyCategoriesFragment
+import my.application.ieltsspeaking.home.category.vocabulary.categories.VocabularyCategoriesFragment
 import my.application.ieltsspeaking.home.category.vocabulary.data.VocabularyData
 import my.application.ieltsspeaking.utils.UtilsForVocabulary
 

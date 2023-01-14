@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             tools:text="Test"
+            android:fontFamily="@font/roboto_medium"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

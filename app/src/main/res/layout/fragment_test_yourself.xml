@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,10 +16,10 @@
         android:layout_marginEnd="20dp"
         android:layout_weight="1"
         android:background="@drawable/bg_part1_test_yourself"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/part_1"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/btnPart2"
@@ -31,10 +30,10 @@
         android:layout_marginEnd="20dp"
         android:layout_weight="1"
         android:background="@drawable/bg_part2_test_yourself"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/part_2"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/btnPart3"
@@ -43,9 +42,9 @@
         android:layout_margin="20dp"
         android:layout_weight="1"
         android:background="@drawable/bg_part3_test_yourself"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/part_3"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="26sp" />
 
 </LinearLayout>

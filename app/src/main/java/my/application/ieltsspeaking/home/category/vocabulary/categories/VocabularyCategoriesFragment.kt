@@ -1,4 +1,4 @@
-package my.application.ieltsspeaking.home.category.vocabulary.categories.work
+package my.application.ieltsspeaking.home.category.vocabulary.categories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

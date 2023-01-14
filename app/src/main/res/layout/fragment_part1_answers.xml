@@ -14,9 +14,9 @@
         android:layout_margin="20dp"
         android:paddingBottom="20dp"
         android:text="@string/part_1_sample_answer"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_medium"
         android:textColor="@color/background_dark_blue"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -42,12 +42,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:padding="10dp"
             android:text="This place is for question field"
             android:textColor="@color/background_dark_blue"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
@@ -65,11 +65,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_part1_answers"
-            android:fontFamily="@font/abhaya_libre_extra_bold"
+            android:fontFamily="@font/roboto_italic"
             android:padding="20dp"
             android:text="@string/sample_answer_part1"
             android:textColor="@color/main_text_color"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </ScrollView>
 
@@ -81,7 +81,7 @@
         android:layout_marginBottom="20dp"
         android:layout_weight="2"
         android:background="@drawable/rectangle_learned_button_disabled"
-        android:fontFamily="@font/abhaya_libre_extra_bold"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/learned"
         android:visibility="gone"
         android:textColor="@color/white"

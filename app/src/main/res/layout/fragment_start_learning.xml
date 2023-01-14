@@ -7,29 +7,29 @@
     android:background="@color/background_light_green"
     tools:context=".home.category.vocabulary.categories.start_learning.StartLearningFragment">
 
-    <ImageView
-        android:id="@+id/ivHeadingIconStartLearning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        tools:src="@drawable/work"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivHeadingIconStartLearning"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        tools:src="@drawable/work"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/tvHeadingStartLearning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/roboto_bold"
-        tools:text="Work"
-        android:textColor="@color/main_text_color"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivHeadingIconStartLearning"
-        app:layout_constraintStart_toEndOf="@+id/ivHeadingIconStartLearning"
-        app:layout_constraintTop_toTopOf="@+id/ivHeadingIconStartLearning" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvHeadingStartLearning"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:fontFamily="@font/roboto_bold"-->
+<!--        tools:text="Work"-->
+<!--        android:textColor="@color/main_text_color"-->
+<!--        android:textSize="26sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/ivHeadingIconStartLearning"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/ivHeadingIconStartLearning"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/ivHeadingIconStartLearning" />-->
 
     <LinearLayout
         android:id="@+id/llProgressBarStartLearning"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivHeadingIconStartLearning">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
             android:id="@+id/pbProgressBarStartLearning"
@@ -112,7 +112,7 @@
             android:layout_height="0dp"
             android:layout_weight="5"
             android:gravity="center"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:padding="10dp"
             tools:text="Definition is given here"
             android:fontFamily="@font/roboto_medium"
@@ -132,12 +132,13 @@
             android:id="@+id/tvFlipCardExample"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="4"
-            android:padding="20dp"
+            android:layout_weight="3"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
             tools:text="Example sentences are shown here and they contain several lines"
             android:textColor="#05309A"
             android:fontFamily="@font/roboto_medium_italic"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
@@ -148,8 +149,8 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_green_button"
         android:fontFamily="@font/roboto_medium"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         android:text="@string/learned"
         android:textAllCaps="false"
         android:textColor="@color/white"

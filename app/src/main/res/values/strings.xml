@@ -956,6 +956,9 @@
     <string name="practice_makes_perfect">Keep learning. Just keep in mind: Practice makes perfect</string>
     <string name="great">GREAT!</string>
     <string name="app_information">App information</string>
+    <string name="words">words</string>
+    <string name="percent">%</string>
+    <string name="_00_00_00">00:00.00</string>
 
 
 </resources>
