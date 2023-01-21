@@ -1,15 +1,16 @@
 package my.application.ieltsspeaking.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import my.application.ieltsspeaking.R
-import my.application.ieltsspeaking.TestFirebaseFragment
 import my.application.ieltsspeaking.databinding.FragmentHomeBinding
 import my.application.ieltsspeaking.home.adapter.HomeAdapter
 import my.application.ieltsspeaking.home.category.about.AboutFragment
@@ -19,12 +20,11 @@ import my.application.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
 import my.application.ieltsspeaking.home.category.part2Topic.Part2TopicFragment
 import my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
 import my.application.ieltsspeaking.home.category.pronunciation.PronunciationFragment
-import my.application.ieltsspeaking.home.category.test_yourself.TestYourselfFragment
 import my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import my.application.ieltsspeaking.home.data.HomeData
-import my.application.ieltsspeaking.utils.UtilsForVocabulary
-import my.application.ieltsspeaking.utils.toast
+import my.application.ieltsspeaking.home.drawer_layout.give_suggestion.GiveSuggestionsActivity
+import my.application.ieltsspeaking.utils.*
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -42,7 +42,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setStatusBarColor(R.color.status_bar_home_fragment)
+        binding.navView.setupWithNavController(findNavController())
+
+        UtilsForApp.updateStatusBarColor(
+            R.color.background_light_green,
+            requireContext(),
+            requireActivity()
+        )
         setRecyclerView()
         setDrawerLayout()
 
@@ -50,55 +56,48 @@ class HomeFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 when (position + 1) {
                     1 -> UtilsForVocabulary.navigateFragment(
-                        TestYourselfFragment(),
-                        parentFragmentManager
-                    )
-                    2 -> UtilsForVocabulary.navigateFragment(
                         PronunciationFragment(),
                         parentFragmentManager
                     )
+                    2 -> findNavController().navigateSafe(R.id.part1TopicFragment)
                     3 -> UtilsForVocabulary.navigateFragment(
-                        Part1TopicFragment(),
-                        parentFragmentManager
-                    )
-                    4 -> UtilsForVocabulary.navigateFragment(
                         Part2TopicFragment(),
                         parentFragmentManager
                     )
-                    5 -> UtilsForVocabulary.navigateFragment(
+                    4 -> UtilsForVocabulary.navigateFragment(
                         Part3TopicFragment(),
                         parentFragmentManager
                     )
-                    6 -> UtilsForVocabulary.navigateFragment(
+                    5 -> UtilsForVocabulary.navigateFragment(
                         VocabularyFragment(),
                         parentFragmentManager
                     )
-                    7 -> UtilsForVocabulary.navigateFragment(
+                    6 -> UtilsForVocabulary.navigateFragment(
                         VideoAnswerBandsFragment(),
                         parentFragmentManager
                     )
-                    8 -> UtilsForVocabulary.navigateFragment(
+                    7 -> UtilsForVocabulary.navigateFragment(
                         BandCalculationFragment(),
                         parentFragmentManager
                     )
-                    9 -> UtilsForVocabulary.navigateFragment(InfoFragment(), parentFragmentManager)
-                    10 -> UtilsForVocabulary.navigateFragment(
-                        AboutFragment(),
+                    8 -> UtilsForVocabulary.navigateFragment(
+                        InfoFragment(),
                         parentFragmentManager
                     )
+                    9 -> UtilsForVocabulary.navigateFragment(AboutFragment(), parentFragmentManager)
+                    10 -> requireContext().snackBar(binding.root, "UNDER DEVELOPMENT")
                 }
             }
         })
 
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.navRate -> UtilsForVocabulary.navigateFragment(
-                    TestFirebaseFragment(),
-                    parentFragmentManager
-                )
-                R.id.navContact -> requireContext().toast("Contact")
+                R.id.navRate -> requireContext().toast("")
+                R.id.contactUsFragment -> {
+                    findNavController().navigateSafe(R.id.contactUsFragment)
+                }
                 R.id.navShare -> requireContext().toast("Share it")
-                R.id.navSuggestions -> requireContext().toast("Give your suggestions")
+                R.id.navSuggestions -> navigateToGiveSuggestion()
                 R.id.navReportBugs -> requireContext().toast("Report Bug")
             }
             true
@@ -129,8 +128,8 @@ class HomeFragment : Fragment() {
         binding.rvHome.adapter = adapter
     }
 
-    private fun setStatusBarColor(color: Int) {
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        activity?.window?.statusBarColor = color
+    private fun navigateToGiveSuggestion() {
+        val intent = Intent(requireContext(), GiveSuggestionsActivity::class.java)
+        startActivity(intent)
     }
 }

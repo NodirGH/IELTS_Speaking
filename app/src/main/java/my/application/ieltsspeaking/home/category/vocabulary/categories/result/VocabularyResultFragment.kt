@@ -2,11 +2,16 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.result
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyResultBinding
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
@@ -30,8 +35,7 @@ class VocabularyResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setFragmentResultListener("Size"){
-            _, bundle ->
+        setFragmentResultListener("Size") { _, bundle ->
             val amountOfQuestions = bundle.getInt("questionSize")
             val correct = bundle.getInt("correctAnswer")
             val incorrect = bundle.getInt("incorrectAnswer")
@@ -55,7 +59,24 @@ class VocabularyResultFragment : Fragment() {
         }
 
         binding.btnFinishResult.setOnClickListener {
+            //TODO should be handled
             UtilsForVocabulary.navigateFragment(VocabularyFragment(), parentFragmentManager)
+
         }
     }
+
+    private fun navigateToVocabulary() {
+        val myFragment = VocabularyFragment()
+        val fm = fragmentManager
+        val transaction = fm!!.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.replace(R.id.fragmentContainerView, myFragment).commit()
+    }
+
+
 }

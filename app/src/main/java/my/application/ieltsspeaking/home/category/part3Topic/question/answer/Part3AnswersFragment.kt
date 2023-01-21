@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart3AnswersBinding
+import my.application.ieltsspeaking.utils.UtilsForApp
 
 private const val QUESTION = "question"
 
@@ -32,6 +33,8 @@ class Part3AnswersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        UtilsForApp.updateStatusBarColor(R.color.background_light_blue, requireContext(), requireActivity())
 
         binding.tvPart3Question.text = this.questions
         setPart3Answers()

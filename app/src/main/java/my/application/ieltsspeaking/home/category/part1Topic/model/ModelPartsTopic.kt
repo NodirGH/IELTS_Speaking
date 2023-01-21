@@ -10,4 +10,6 @@ class ModelPartsTopic(
     val heading: String = "",
     val questionCount: Int = 0,
     val background: Int = 0
-): Parcelable
+): Parcelable{
+    var hashId : String = ""
+}

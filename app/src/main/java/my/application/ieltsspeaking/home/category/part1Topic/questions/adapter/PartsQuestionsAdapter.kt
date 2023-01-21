@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import my.application.ieltsspeaking.databinding.ItemsRvPart1QuestionsBinding
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 
-class Part1QuestionsAdapter(private val modelPartsQuestions: List<ModelPartsQuestions>) :
-    RecyclerView.Adapter<Part1QuestionsAdapter.Part1QuestionsViewHolder>() {
+class PartsQuestionsAdapter(private val modelPartsQuestions: List<ModelPartsQuestions>) :
+    RecyclerView.Adapter<PartsQuestionsAdapter.Part1QuestionsViewHolder>() {
 
-    private lateinit var mListener: Part1QuestionClickListener
+    private lateinit var mListener: PartsQuestionClickListener
 
-    interface Part1QuestionClickListener {
-        fun onQuestionClick(position: Int)
+    interface PartsQuestionClickListener {
+        fun onQuestionClick(question: ModelPartsQuestions)
     }
 
-    fun setOnPart1QuestionClickListener(clickListener: Part1QuestionClickListener) {
+    fun setOnPart1QuestionClickListener(clickListener: PartsQuestionClickListener) {
         mListener = clickListener
     }
 
@@ -34,9 +34,9 @@ class Part1QuestionsAdapter(private val modelPartsQuestions: List<ModelPartsQues
     inner class Part1QuestionsViewHolder(private val binding: ItemsRvPart1QuestionsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(modelPartsQuestions: ModelPartsQuestions, clickListener: Part1QuestionClickListener) {
-            binding.tvPart1Question.text = modelPartsQuestions.question
-            itemView.setOnClickListener { clickListener.onQuestionClick(adapterPosition) }
+        fun bindView(modelPartsQuestion: ModelPartsQuestions, clickListener: PartsQuestionClickListener) {
+            binding.tvPart1Question.text = modelPartsQuestion.question
+            itemView.setOnClickListener { clickListener.onQuestionClick(modelPartsQuestions[adapterPosition]) }
         }
     }
 

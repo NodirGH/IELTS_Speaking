@@ -7,17 +7,24 @@ import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.ItemsRvPart1TopicsBinding
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 
-class PartsTopicAdapter(private val partModelTopic: List<ModelPartsTopic>) :
+class PartsTopicAdapter() :
     RecyclerView.Adapter<PartsTopicAdapter.Part1ViewHolder>() {
 
-    private lateinit var mListener: Part1TopicClickListener
+    private lateinit var mListener: PartTopicClickListener
 
-    interface Part1TopicClickListener {
-        fun onPart1Click(position: Int)
+    interface PartTopicClickListener {
+        fun onPartsClick(topic: ModelPartsTopic)
     }
 
-    fun setClickListener(clickListener: Part1TopicClickListener) {
+    fun setClickListener(clickListener: PartTopicClickListener) {
         mListener = clickListener
+    }
+
+    private var topics: List<ModelPartsTopic> = emptyList()
+
+    fun submitList(newTopics : List<ModelPartsTopic>){
+        topics  = newTopics
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Part1ViewHolder {
@@ -27,24 +34,22 @@ class PartsTopicAdapter(private val partModelTopic: List<ModelPartsTopic>) :
     }
 
     override fun onBindViewHolder(holder: Part1ViewHolder, position: Int) {
-        holder.bindView(partModelTopic[position], mListener)
+        holder.bindView(topics[position], mListener)
     }
 
-    override fun getItemCount() = partModelTopic.size
+    override fun getItemCount() = topics.size
 
     inner class Part1ViewHolder(
         val binding: ItemsRvPart1TopicsBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindView(
-            modelPartsTopic: ModelPartsTopic, clickListener: Part1TopicClickListener
+            modelPartsTopic: ModelPartsTopic, clickListener: PartTopicClickListener
         ) {
             binding.tvPart1OrderNumber.text = modelPartsTopic.orderNumber.toString()
-            binding.tvPart1NumberQuestion.text = partModelTopic.size.toString()
             binding.tvPart1TopicHeading.text = modelPartsTopic.heading
-//            binding.ivPart1BgRectangle.setImageResource(modelPartsTopic.background)
             itemView.setOnClickListener {
-                clickListener.onPart1Click(adapterPosition)
+                clickListener.onPartsClick(topics[adapterPosition])
             }
 
             val backgroundDrawable = when (adapterPosition % 10) {

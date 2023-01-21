@@ -27,59 +27,28 @@ class UtilsForVocabulary {
         lateinit var optionThree: TextView
         lateinit var optionFour: TextView
         lateinit var btnCheck: Button
-//         var mSelectedPosition: Int = 0
-//        var selectedView: Int = 0
-//        private val myFragment: Fragment = VocabularyFragment()
-//        lateinit var fragmentManager: FragmentManager
-//        private lateinit var fragmentActivity: FragmentActivity
-//        lateinit var frontCard: TextView
-//        lateinit var backCard: LinearLayout
-//        var wordList: ArrayList<ModelStartLearning>? = null
-//        var currentPosition: Int = 0
-//        lateinit var definition: TextView
-//        lateinit var example: TextView
-//        lateinit var progressBar: ProgressBar
-//        var wordCount: Int = 0
-//        lateinit var pbCounter: TextView
-//        lateinit var progressBarCounter: TextView
-//        lateinit var tvQuestion: TextView
-//        var mQuestionList: ArrayList<Question>? = null
-//        var position: Int = 0
-//        lateinit var correct: LottieAnimationView
-//        lateinit var incorrect: LottieAnimationView
-//        lateinit var tv: TextView
-//        var selectedOptionNumber: Int = 0
-//        var isCheckPressed: Boolean = false
 
-
-
-
-
-
-        fun defaultOptionsView() {
-            val options = ArrayList<TextView>()
-            options.add(0, optionOne)
-            options.add(1, optionTwo)
-            options.add(2, optionThree)
-            options.add(3, optionFour)
-
-            for (option in options) {
-                option.setTextColor(Color.parseColor("#7A8089"))
-                option.typeface = Typeface.DEFAULT
-                option.background =
-                    ContextCompat.getDrawable(context, R.drawable.bg_default_option_border)
-
-                btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
-            }
-        }
+//        fun defaultOptionsView() {
+//            val options = ArrayList<TextView>()
+//            options.add(0, optionOne)
+//            options.add(1, optionTwo)
+//            options.add(2, optionThree)
+//            options.add(3, optionFour)
+//
+//            for (option in options) {
+//                option.setTextColor(Color.parseColor("#7A8089"))
+//                option.typeface = Typeface.DEFAULT
+//                option.textSize = 16f
+//                option.background =
+//                    ContextCompat.getDrawable(context, R.drawable.bg_default_option_border)
+//
+//                btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
+//            }
+//        }
 
         fun answerView(
             mSelectedPosition: Int,
             selectedView: Int,
-//            optionOne: TextView,
-//            optionTwo: TextView,
-//            optionThree: TextView,
-//            optionFour: TextView,
         ) {
             when (mSelectedPosition) {
                 1 -> {
@@ -113,6 +82,19 @@ class UtilsForVocabulary {
             )
             transaction.replace(R.id.fragmentContainerView, myFragment)
             transaction.addToBackStack(null).commit()
+        }
+
+        fun navigateFragmentWithoutBackStack(
+            myFragment: Fragment, fragmentManager: FragmentManager
+        ) {
+            val transaction = fragmentManager.beginTransaction()
+            transaction.setCustomAnimations(
+                R.anim.from_right,
+                R.anim.to_left,
+                R.anim.from_left,
+                R.anim.to_right
+            )
+            transaction.replace(R.id.fragmentContainerView, myFragment).commit()
         }
 
         fun rotateFlipCard(
@@ -190,14 +172,9 @@ class UtilsForVocabulary {
         }
 
         fun setQuestionTest(
-//            btnCheck: Button,
             progressBar: ProgressBar,
             progressBarCounter: TextView,
             tvQuestion: TextView,
-//            optionOne: TextView,
-//            optionTwo: TextView,
-//            optionThree: TextView,
-//            optionFour: TextView,
             mQuestionList: ArrayList<Question>?,
             position: Int,
             correct: LottieAnimationView,
@@ -218,172 +195,31 @@ class UtilsForVocabulary {
         }
 
 
-        fun selectedOptionView(
-            tv: TextView,
-            selectedOptionNumber: Int,
-//            context: Context,
-            isCheckPressed: Boolean,
-//            btnCheck: Button
-        ): Int {
-            val mSelectedOptionPosition = selectedOptionNumber
-
-            if (!isCheckPressed) {
-
-                tv.setTextColor(Color.parseColor("#021B59"))
-                tv.setTypeface(tv.typeface, Typeface.BOLD)
-                tv.background =
-                    ContextCompat.getDrawable(context, R.drawable.bg_selected_option_border)
-                btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
-            }
-            return mSelectedOptionPosition
-        }
-
-//        fun btnCheckFunction(
-//            isOptionSelected: Boolean,
+//        fun selectedOptionView(
+//            tv: TextView,
+//            selectedOptionNumber: Int,
 //            isCheckPressed: Boolean,
-//            mQuestionList: ArrayList<Question>?,
-//            mCurrentPosition: Int,
-//            mSelectedOptionPosition: Int,
-//            optionOne: TextView,
-//            optionTwo: TextView,
-//            optionThree: TextView,
-//            optionFour: TextView,
-//            context: Context,
-//            correct: LottieAnimationView,
-//            incorrect: LottieAnimationView,
-//            btnCheck: Button,
-//            progressBar: ProgressBar,
-//            progressBarCounter: TextView,
-//            tvQuestion: TextView,
-//            correctAnswers: Int,
-//            incorrectAnswers: Int
-//        ): CustomReturn<Int, Int, Int, Boolean, Int, Boolean> {
+//        ): Int {
+//            val mSelectedOptionPosition = selectedOptionNumber
 //
-//            var isCheckClicked = false
-//            var isOptionReallySelected = false
-//            var correctAnswer: Int = correctAnswers
-//            var incorrectAnswer: Int = incorrectAnswers
-//            var mySelectedOptionPosition = 0
-//            var myCurrentPosition = 0
+//            if (!isCheckPressed) {
 //
-//            if (isOptionSelected) {
-//
-//                if (!isCheckPressed) {
-//                    val question = mQuestionList?.get(mCurrentPosition - 1)
-//                    if (question!!.correctAnswer != mSelectedOptionPosition) {
-//                        answerView(
-//                            mSelectedOptionPosition,
-//                            R.drawable.bg_incorrect_option_border,
-//                            optionOne,
-//                            optionTwo,
-//                            optionThree,
-//                            optionFour,
-//                            context
-//                        )
-//                        incorrectAnswer++
-//                        incorrect.manageVisibility(true)
-//                        incorrect.playAnimation()
-//
-//                    } else {
-//                        correctAnswer++
-//                        correct.manageVisibility(true)
-//                        correct.playAnimation()
-//                    }
-//
-//                    answerView(
-//                        question.correctAnswer,
-//                        R.drawable.bg_correct_option_border,
-//                        optionOne,
-//                        optionTwo,
-//                        optionThree,
-//                        optionFour,
-//                        context
-//                    )
-//
-//                    if (mCurrentPosition == mQuestionList!!.size) {
-//                        if (question.correctAnswer != mSelectedOptionPosition) {
-//                            UtilsForVocabulary.answerView(
-//                                mSelectedOptionPosition,
-//                                R.drawable.bg_incorrect_option_border,
-//                                optionOne,
-//                                optionTwo,
-//                                optionThree,
-//                                optionFour,
-//                                context
-//                            )
-//                        }
-//                        UtilsForVocabulary.answerView(
-//                            question.correctAnswer,
-//                            R.drawable.bg_correct_option_border,
-//                            optionOne,
-//                            optionTwo,
-//                            optionThree,
-//                            optionFour,
-//                            context
-//                        )
-//                        btnCheck.text = "Show result"
-//                        context.toast("You have successfully completed the Quiz")
-//
-//                        btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
-//                        btnCheck.setOnClickListener {
-////                            navigateToResultFragment()
-//                            context.toast("Navigated to result")
-//                        }
-//                    } else {
-//                        btnCheck.text = "Next"
-//                        btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
-//                    }
-//                    mySelectedOptionPosition = mSelectedOptionPosition  // Should be overviewed
-//                    isCheckClicked = true
-//                } else {
-//                    myCurrentPosition = mCurrentPosition
-//                    myCurrentPosition++
-//                    UtilsForVocabulary.defaultOptionsView(
-//                        optionOne,
-//                        optionTwo,
-//                        optionThree,
-//                        optionFour,
-//                        context,
-//                        btnCheck
-//                    )
-//                    UtilsForVocabulary.setQuestionTest(
-//                        btnCheck,
-//                        progressBar,
-//                        progressBarCounter,
-//                        tvQuestion,
-//                        optionOne,
-//                        optionTwo,
-//                        optionThree,
-//                        optionFour,
-//                        mQuestionList,
-//                        mCurrentPosition,
-//                        correct,
-//                        incorrect
-//                    )
-//                    isOptionReallySelected = false
-//                    isCheckClicked = false
-//                }
-//
-//            } else context.toast("Please choose your option!")
-//            return CustomReturn(
-//                correctAnswer,
-//                incorrectAnswer,
-//                mySelectedOptionPosition,
-//                isCheckClicked,
-//                myCurrentPosition,
-//                isOptionReallySelected
-//            )
+//                tv.setTextColor(Color.parseColor("#021B59"))
+//                tv.setTypeface(tv.typeface, Typeface.BOLD)
+//                tv.background =
+//                    ContextCompat.getDrawable(context, R.drawable.bg_selected_option_border)
+//                btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_enabled)
+//            }
+//            return mSelectedOptionPosition
 //        }
-
-
     }
 }
 
-data class CustomReturn<A, B, C, D, E, F>(
-    val correctA: A,
-    val incorrectA: B,
-    val mySelectedPosition: C,
-    val isCheckPressed: D,
-    val currentPosition: E,
-    val isOptionSelected: F
-)
+//data class CustomReturn<A, B, C, D, E, F>(
+//    val correctA: A,
+//    val incorrectA: B,
+//    val mySelectedPosition: C,
+//    val isCheckPressed: D,
+//    val currentPosition: E,
+//    val isOptionSelected: F
+//)

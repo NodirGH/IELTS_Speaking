@@ -6,30 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart1AnswersBinding
-import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
-import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
+import my.application.ieltsspeaking.utils.UtilsForApp
 import my.application.ieltsspeaking.utils.toast
 
 private const val QUESTION = "question"
 
 class Part1AnswersFragment : Fragment() {
 
-    var buttonEnabled = false
     private lateinit var binding: FragmentPart1AnswersBinding
     private var question: String? = null
     private var db = FirebaseFirestore.getInstance()
     private var questionId = 0
-    private lateinit var questionDB: String
+    private var answerId: Int? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            question = it.getString(QUESTION)
-        }
-    }
+    private val args : Part1AnswersFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,26 +36,14 @@ class Part1AnswersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setFragmentResultListener("Question") { _, bundle ->
-            questionId = bundle.getInt("question position")
 
-            db.collection("Part1Topics").document("Hlek682FDsV7sRgTwoBp").collection("WorkQuestion")
-                .get().addOnSuccessListener {
-                if (!it.isEmpty){
-                    for (questionsBlock in it.documents){
-                        val quesBlock = questionsBlock.toObject(ModelPartsQuestions::class.java)
-                        if (questionId == quesBlock?.id){
-                            questionDB = quesBlock.question
-
-                            binding.tvPart1Question.text = questionDB
-                        }
-                    }
-                }
-
-                }.addOnFailureListener {
-                    requireContext().toast("Not found")
-                }
-        }
+        UtilsForApp.updateStatusBarColor(
+            R.color.background_light_blue,
+            requireContext(),
+            requireActivity()
+        )
+        binding.tvPart1Answer.text = args.answer.answer
+        binding.tvPart1Question.text = args.answer.question
     }
 
     private fun setPart1Answers() {

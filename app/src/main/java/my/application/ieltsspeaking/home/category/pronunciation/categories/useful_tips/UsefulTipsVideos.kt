@@ -3,13 +3,11 @@ package my.application.ieltsspeaking.home.category.pronunciation.categories.usef
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.youtube.player.YouTubeBaseActivity
+import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.PronunciationLayoutBinding
 import my.application.ieltsspeaking.home.category.pronunciation.categories.adapter.PronunciationVideosAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.data.DataPronunciation
-import my.application.ieltsspeaking.utils.UtilsForYoutube
-import my.application.ieltsspeaking.utils.googleApi
-import my.application.ieltsspeaking.utils.manageVisibility
-import my.application.ieltsspeaking.utils.snackBar
+import my.application.ieltsspeaking.utils.*
 
 class  UsefulTipsVideos: YouTubeBaseActivity() {
 
@@ -19,6 +17,7 @@ class  UsefulTipsVideos: YouTubeBaseActivity() {
         super.onCreate(savedInstanceState)
         binding = PronunciationLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataPronunciation.videoUsefulTips()

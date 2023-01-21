@@ -41,7 +41,7 @@ class VocabularyAdapter(
         fun bindView(model: VocabularyModel) {
             binding.ivVocabularyPicture.setImageResource(model.backgroundPicture)
             binding.ivVocabularyBgOval.setImageResource(model.backgroundColor)
-            binding.tvLearnedPercent.text = model.learnedPercent.toString()
+//            binding.tvLearnedPercent.text = model.learnedPercent.toString()
             binding.tvVocabularyWordCount.text = model.wordCount.toString()
             binding.tvVocabularyTopicHeading.text = model.heading
         }

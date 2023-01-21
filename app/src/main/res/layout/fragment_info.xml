@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_blue"
     tools:context=".home.category.about.AboutFragment">
 
     <TextView
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_version"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvVersion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvVersion" />
@@ -39,7 +40,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/version"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/ivVersion"
         app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
@@ -48,11 +49,11 @@
         android:id="@+id/tvVersionNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
+        android:layout_marginStart="140dp"
         android:fontFamily="@font/roboto_italic"
         android:text="@string/version_number"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvVersion"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/ivVersion"
@@ -62,7 +63,7 @@
         android:id="@+id/ivRelease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_release"
         app:layout_constraintBottom_toBottomOf="@+id/tvReleased"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +78,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/released"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/ivRelease"
         app:layout_constraintTop_toBottomOf="@+id/tvVersion" />
@@ -89,8 +90,8 @@
         android:fontFamily="@font/roboto_italic"
         android:text="@string/released_time"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
-        android:layout_marginStart="170dp"
+        android:textSize="20sp"
+        android:layout_marginStart="140dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvReleased"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/ivRelease"
@@ -101,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_target"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/tvTarget"
         app:layout_constraintTop_toTopOf="@+id/tvTarget" />
@@ -115,7 +116,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/target"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/ivTarget"
         app:layout_constraintTop_toBottomOf="@+id/tvReleased" />
@@ -127,8 +128,8 @@
         android:fontFamily="@font/roboto_italic"
         android:text="@string/target_item"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
-        android:layout_marginStart="170dp"
+        android:textSize="20sp"
+        android:layout_marginStart="140dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvTarget"
         app:layout_constraintStart_toStartOf="@+id/ivTarget"
         app:layout_constraintTop_toTopOf="@+id/tvTarget" />
@@ -138,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_goal"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/tvGoals"
         app:layout_constraintTop_toTopOf="@+id/tvGoals" />
@@ -154,7 +155,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/goals"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/ivGoal"
         app:layout_constraintTop_toBottomOf="@+id/tvTarget" />
@@ -166,7 +167,7 @@
         android:fontFamily="@font/roboto_medium_italic"
         android:text="@string/goal1"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tvGoals"
         app:layout_constraintTop_toBottomOf="@+id/tvGoals" />
@@ -178,7 +179,7 @@
         android:fontFamily="@font/roboto_medium_italic"
         android:text="@string/goal2"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tvGoals"
         app:layout_constraintTop_toBottomOf="@+id/tvGoal1" />
@@ -190,7 +191,7 @@
         android:fontFamily="@font/roboto_medium_italic"
         android:text="@string/goal3"
         android:textColor="@color/main_text_color"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tvGoals"
         app:layout_constraintTop_toBottomOf="@+id/tvGoal2" />

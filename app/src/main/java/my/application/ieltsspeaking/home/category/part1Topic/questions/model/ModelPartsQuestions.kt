@@ -7,5 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class ModelPartsQuestions(
     val id: Int = 0,
     val question: String = "",
-    val isLearned: Boolean = false
+    val isLearned: Boolean = false,
+    val answer: String = ""
 ): Parcelable

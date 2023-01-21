@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentBandCalculationBinding
+import my.application.ieltsspeaking.utils.UtilsForApp
 
 class BandCalculationFragment : Fragment() {
     private lateinit var binding: FragmentBandCalculationBinding
@@ -28,6 +29,8 @@ class BandCalculationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        UtilsForApp.updateStatusBarColor(R.color.background_light_blue, requireContext(), requireActivity())
 
         val scoreList: MutableList<String> = mutableListOf(
             "1",

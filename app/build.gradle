@@ -34,6 +34,11 @@ android {
         jvmTarget = '1.8'
     }
 
+    packagingOptions{
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
+    }
+
     buildFeatures{
         viewBinding true
     }
@@ -88,4 +93,9 @@ dependencies {
 
     //lottie animation
     implementation 'com.airbnb.android:lottie:3.4.0'
+
+    //send email 
+    implementation 'com.sun.mail:android-mail:1.6.6'
+    implementation 'com.sun.mail:android-activation:1.6.7'
+
 }

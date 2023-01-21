@@ -959,6 +959,9 @@
     <string name="words">words</string>
     <string name="percent">%</string>
     <string name="_00_00_00">00:00.00</string>
-
+    <string name="telegram_address">Mahkamov_Nodirbek</string>
+    <string name="instagram_address">nodir.bek1199</string>
+    <string name="gmail_address">mahkamov.nodirbek.95@gmail.com</string>
+    <string name="contact_us">Contact us</string>
 
 </resources>

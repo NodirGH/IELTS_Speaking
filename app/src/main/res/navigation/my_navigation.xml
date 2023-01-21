@@ -5,67 +5,64 @@
     android:id="@+id/my_navigation"
     app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="my.application.ieltsspeaking.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_fullTestFragment"
-            app:destination="@id/fullTestFragment"/>
-        <action
-            android:id="@+id/action_homeFragment_to_bandCalculationFragment"
-            app:destination="@id/bandCalculationFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_part1TopicFragment"
-            app:destination="@id/part1TopicFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fullTestFragment"
-        android:name="my.application.ieltsspeaking.home.category.test_yourself.TestYourselfFragment"
-        android:label="fragment_full_test"
-        tools:layout="@layout/fragment_test_yourself" >
-        <action
-            android:id="@+id/action_fullTestFragment_to_testYourselfPart1Fragment"
-            app:destination="@id/testYourselfPart1Fragment" />
-        <action
-            android:id="@+id/action_fullTestFragment_to_testYourselfPart2Fragment"
-            app:destination="@id/testYourselfPart2Fragment" />
-        <action
-            android:id="@+id/action_fullTestFragment_to_testYourselfPart3Fragment"
-            app:destination="@id/testYourselfPart3Fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/bandCalculationFragment"
-        android:name="my.application.ieltsspeaking.home.category.band_score.BandCalculationFragment"
-        android:label="fragment_band_calculation"
-        tools:layout="@layout/fragment_band_calculation" />
+    <!--    region Part 1-->
     <fragment
         android:id="@+id/part1TopicFragment"
         android:name="my.application.ieltsspeaking.home.category.part1Topic.Part1TopicFragment"
         android:label="fragment_part1_topic"
-        tools:layout="@layout/fragment_part1_topic" >
+        tools:layout="@layout/fragment_part1_topic">
+
         <action
             android:id="@+id/action_part1TopicFragment_to_part1QuestionsFragment"
-            app:destination="@id/part1QuestionsFragment" />
+            app:destination="@id/part1QuestionsFragment"/>
     </fragment>
     <fragment
         android:id="@+id/part1QuestionsFragment"
         android:name="my.application.ieltsspeaking.home.category.part1Topic.questions.Part1QuestionsFragment"
         android:label="fragment_part1_questions"
         tools:layout="@layout/fragment_part1_questions" >
+
+        <argument
+            android:name="topic"
+            app:argType="my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic" />
         <action
             android:id="@+id/action_part1QuestionsFragment_to_part1AnswersFragment"
-            app:destination="@id/part1AnswersFragment" />
+            app:destination="@id/part1AnswersFragment"/>
     </fragment>
+
+
     <fragment
         android:id="@+id/part1AnswersFragment"
         android:name="my.application.ieltsspeaking.home.category.part1Topic.questions.answers.Part1AnswersFragment"
         android:label="fragment_part1_answers"
-        tools:layout="@layout/fragment_part1_answers" />
+        tools:layout="@layout/fragment_part1_answers" >
+        <argument
+            android:name="answer"
+            app:argType="my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions" />
+    </fragment>
+    <!--    endregion-->
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="my.application.ieltsspeaking.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+    <fragment
+        android:id="@+id/fullTestFragment"
+        android:name="my.application.ieltsspeaking.home.category.test_yourself.TestYourselfFragment"
+        android:label="fragment_full_test"
+        tools:layout="@layout/fragment_test_yourself">
+
+    </fragment>
+    <fragment
+        android:id="@+id/bandCalculationFragment"
+        android:name="my.application.ieltsspeaking.home.category.band_score.BandCalculationFragment"
+        android:label="fragment_band_calculation"
+        tools:layout="@layout/fragment_band_calculation" />
+
+
     <fragment
         android:id="@+id/testYourselfPart1Fragment"
         android:name="my.application.ieltsspeaking.home.category.test_yourself.part1.TestYourselfPart1Fragment"
@@ -82,10 +79,6 @@
         android:label="fragment_test_yourself_part3"
         tools:layout="@layout/fragment_test_yourself_part3" />
     <fragment
-        android:id="@+id/testYourselfPart1RecordingFragment"
-        android:name="my.application.ieltsspeaking.home.category.test_yourself.part1.TestYourselfPart1RecordingFragment"
-        android:label="TestYourselfPart1RecordingFragment" />
-    <fragment
         android:id="@+id/aboutFragment"
         android:name="my.application.ieltsspeaking.home.category.about.AboutFragment"
         android:label="fragment_about"
@@ -94,14 +87,96 @@
         android:id="@+id/vocabularyFragment"
         android:name="my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment"
         android:label="fragment_vocabulary"
-        tools:layout="@layout/fragment_vocabulary" />
+        tools:layout="@layout/fragment_vocabulary">
+
+    </fragment>
     <fragment
         android:id="@+id/startLearningFragment"
         android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.StartLearningFragment"
         android:label="fragment_start_learning"
-        tools:layout="@layout/fragment_start_learning" >
-        <action
-            android:id="@+id/action_startLearningFragment_to_vocabularyFragment"
-            app:destination="@id/vocabularyFragment" />
+        tools:layout="@layout/fragment_start_learning">
+
     </fragment>
+    <fragment
+        android:id="@+id/vocabularyResultFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.result.VocabularyResultFragment"
+        android:label="fragment_vocabulary_result"
+        tools:layout="@layout/fragment_vocabulary_result">
+        <action
+            android:id="@+id/action_vocabularyResultFragment_to_vocabularyFragment"
+            app:destination="@id/vocabularyFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/vocabularyFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/workTestFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.test.WorkTestFragment"
+        android:label="fragment_vocabulary_test"
+        tools:layout="@layout/fragment_vocabulary_test">
+
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="my.application.ieltsspeaking.home.category.info.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/videoAnswerBandsFragment"
+        android:name="my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment"
+        android:label="VideoAnswerBandsFragment"
+        tools:layout="@layout/fragment_video_answer_bands" />
+    <fragment
+        android:id="@+id/part3TopicFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment"
+        android:label="Part3TopicFragment"
+        tools:layout="@layout/fragment_part3_topic">
+
+    </fragment>
+    <fragment
+        android:id="@+id/part3QuestionsFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.Part3QuestionsFragment"
+        android:label="fragment_part3_questions"
+        tools:layout="@layout/fragment_part3_questions">
+
+    </fragment>
+    <fragment
+        android:id="@+id/part3AnswersFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.answer.Part3AnswersFragment"
+        android:label="fragment_part3_answers"
+        tools:layout="@layout/fragment_part3_answers" />
+    <fragment
+        android:id="@+id/part2TopicFragment"
+        android:name="my.application.ieltsspeaking.home.category.part2Topic.Part2TopicFragment"
+        android:label="fragment_part3_topic"
+        tools:layout="@layout/fragment_part3_topic">
+
+    </fragment>
+    <fragment
+        android:id="@+id/part2QuestionsFragment"
+        android:name="my.application.ieltsspeaking.home.category.part2Topic.question.Part2QuestionsFragment"
+        android:label="fragment_part2_questions"
+        tools:layout="@layout/fragment_part2_questions">
+
+    </fragment>
+    <fragment
+        android:id="@+id/part2AnswersFragment"
+        android:name="my.application.ieltsspeaking.home.category.part2Topic.question.answer.Part2AnswersFragment"
+        android:label="fragment_part2_answers"
+        tools:layout="@layout/fragment_part2_answers" />
+    <fragment
+        android:id="@+id/pronunciationFragment"
+        android:name="my.application.ieltsspeaking.home.category.pronunciation.PronunciationFragment"
+        android:label="fragment_pronunciation"
+        tools:layout="@layout/fragment_pronunciation" />
+
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="my.application.ieltsspeaking.home.drawer_layout.contact.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+
 </navigation>

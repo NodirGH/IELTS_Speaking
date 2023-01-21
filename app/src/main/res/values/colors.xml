@@ -23,8 +23,12 @@
     <color name="green_button">#28DF18</color>
     <color name="red_button">#FD291B</color>
     <color name="bg_blue">#EBF2EC</color>
+    <color name="bg_vocabulary_test">#EBF4EB</color>
+    <color name="bg_video_answer_bands">#E3E0E0</color>
+    <color name="contact_color">#001BBC</color>
 
     <color name="status_bar_home_fragment">#EBF2EC</color>
+    <color name="status_bar_home_fragment_check_test">#FF016E</color>
 
 
 

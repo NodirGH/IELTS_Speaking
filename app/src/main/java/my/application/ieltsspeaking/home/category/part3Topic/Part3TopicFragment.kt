@@ -1,25 +1,26 @@
 package my.application.ieltsspeaking.home.category.part3Topic
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPart3TopicBinding
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
-import my.application.ieltsspeaking.home.category.part2Topic.question.Part2QuestionsFragment
-import my.application.ieltsspeaking.home.category.part3Topic.data.Part3TopicData
 import my.application.ieltsspeaking.home.category.part3Topic.question.Part3QuestionsFragment
+import my.application.ieltsspeaking.utils.UtilsForApp
 import my.application.ieltsspeaking.utils.toast
 
-class Part3TopicFragment : Fragment()
-//    , PartsTopicAdapter.OnItemClickListener
-{
+class Part3TopicFragment : Fragment() {
 
     private lateinit var binding: FragmentPart3TopicBinding
+    private var db = FirebaseFirestore.getInstance()
+    private lateinit var userTopicList: ArrayList<ModelPartsTopic>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,27 +33,53 @@ class Part3TopicFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvPart3.layoutManager = LinearLayoutManager(requireContext())
-        val part3Data = Part3TopicData.getPart3TopicData()
-        val adapter = PartsTopicAdapter(part3Data)
-        binding.rvPart3.adapter = adapter
-        adapter.setClickListener(object : PartsTopicAdapter.Part1TopicClickListener{
-            override fun onPart1Click(position: Int) {
-                when(position+1){
-                    1-> requireContext().toast("1")
-                    2-> requireContext().toast("2")
-                    3-> requireContext().toast("3")
-                    else-> requireContext().toast("Error")
+
+        UtilsForApp.updateStatusBarColor(R.color.background_light_blue, requireContext(), requireActivity())
+
+        userTopicList = arrayListOf()
+        db.collection("Part3Topics").orderBy("id").get().addOnSuccessListener {
+
+            if (!it.isEmpty) {
+                for (topics in it.documents) {
+                    val topic: ModelPartsTopic? = topics.toObject(ModelPartsTopic::class.java)
+                    if (topic != null) {
+                        userTopicList.add(topic)
+                    }
                 }
+
+                //todo
+//                val adapter = PartsTopicAdapter(userTopicList)
+//                binding.rvPart3.adapter = adapter
+//
+//                adapter.setClickListener(object : PartsTopicAdapter.PartTopicClickListener {
+//                    override fun onPartsClick(position: Int) {
+//                        navigateToQuestionFragment(position + 1)
+//                    }
+//                })
+
             }
-        })
+        }
+            .addOnFailureListener {
+                requireContext().toast(
+                    it.toString(),
+                    length = Toast.LENGTH_LONG
+                )
+            }
     }
 
-//    override fun onItemClick(partModelTopic: ModelPartsTopic) {
-//        val part3QuestionsFragment = Part3QuestionsFragment.newInstance(partModelTopic.heading)
-//        val transaction = parentFragmentManager.beginTransaction()
-//        transaction.replace(R.id.fragmentContainerView, part3QuestionsFragment)
-//        transaction.addToBackStack(null)
-//        transaction.commit()
-//    }
-
+    private fun navigateToQuestionFragment(position: Int) {
+        val fragment = Part3QuestionsFragment()
+        val argument = Bundle()
+        argument.putInt("topic_position_part3", position)
+        fragment.arguments = argument
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(
+            R.anim.from_right,
+            R.anim.to_left,
+            R.anim.from_left,
+            R.anim.to_right
+        )
+        transaction.addToBackStack(null)
+        transaction.replace(R.id.fragmentContainerView, fragment).commit()
+    }
 }

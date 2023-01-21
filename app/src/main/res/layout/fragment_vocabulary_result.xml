@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_blue"
     tools:context=".home.category.vocabulary.categories.result.VocabularyResultFragment">
 
     <TextView
@@ -24,13 +25,13 @@
         android:id="@+id/laTrophy"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:lottie_rawRes="@raw/congrats"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCongrats" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCongrats"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/congrats" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="wrap_content"
@@ -98,8 +99,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
                 android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
                 android:textColor="@color/main_text_color"
                 android:textSize="24sp"
                 tools:text="25" />
@@ -135,8 +136,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
                 android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
                 android:textColor="@color/main_text_color"
                 android:textSize="24sp"
                 tools:text="19" />
@@ -172,8 +173,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
                 android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
                 android:textColor="@color/main_text_color"
                 android:textSize="24sp"
                 tools:text="6" />
@@ -215,11 +216,11 @@
         android:id="@+id/btnFinishResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="60dp"
-        android:paddingEnd="60dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_light_blue_button_enabled"
         android:fontFamily="@font/roboto_bold"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
         android:text="@string/finish"
         android:textAllCaps="false"
         android:textColor="@color/white"

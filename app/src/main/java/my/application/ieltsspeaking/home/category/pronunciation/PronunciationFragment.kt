@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPronunciationBinding
 import my.application.ieltsspeaking.home.category.pronunciation.adapter.PronunciationAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.ben_franklin.BenFranklinVideos
@@ -20,6 +21,7 @@ import my.application.ieltsspeaking.home.category.pronunciation.categories.usefu
 import my.application.ieltsspeaking.home.category.pronunciation.data.DataPronunciation
 import my.application.ieltsspeaking.home.category.video_answer.band_8.Band8VideoAnswerActivity
 import my.application.ieltsspeaking.home.category.video_answer.band_9.Band9VideoAnswerActivity
+import my.application.ieltsspeaking.utils.UtilsForApp
 
 class PronunciationFragment : Fragment() {
     private lateinit var binding: FragmentPronunciationBinding
@@ -34,6 +36,8 @@ class PronunciationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        UtilsForApp.updateStatusBarColor(R.color.bg_blue, requireContext(), requireActivity())
 
         binding.rvPronunciation.layoutManager = LinearLayoutManager(requireContext())
         val data = DataPronunciation.getPronunciationData()

@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_rate_us"/>
 
     <item
-        android:id="@+id/navContact"
+        android:id="@+id/contactUsFragment"
         android:title="Contact us"
         android:icon="@drawable/ic_contact_us"/>
 
