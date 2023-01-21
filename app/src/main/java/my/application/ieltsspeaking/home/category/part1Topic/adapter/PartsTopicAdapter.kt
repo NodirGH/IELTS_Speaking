@@ -70,9 +70,4 @@ class PartsTopicAdapter() :
             binding.tvPart1NumberQuestion.text = modelPartsTopic.questionCount.toString()
         }
     }
-
-    interface OnItemClickListener {
-        fun onItemClick(partModelTopic: ModelPartsTopic)
-    }
-
 }

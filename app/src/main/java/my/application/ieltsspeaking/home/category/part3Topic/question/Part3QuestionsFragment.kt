@@ -20,7 +20,7 @@ import my.application.ieltsspeaking.utils.UtilsForApp
 import my.application.ieltsspeaking.utils.toast
 
 
-class Part3QuestionsFragment : Fragment(), PartsQuestionsAdapter.OnItemClickListener {
+class Part3QuestionsFragment : Fragment(){
 
     private lateinit var binding: FragmentPart3QuestionsBinding
     private var db = FirebaseFirestore.getInstance()
@@ -82,9 +82,9 @@ class Part3QuestionsFragment : Fragment(), PartsQuestionsAdapter.OnItemClickList
                     }
                 }
 
-                val adapter = PartsQuestionsAdapter(userQuestionList)
+//                val adapter = PartsQuestionsAdapter(userQuestionList)
 
-                binding.rvPart3Questions.adapter = adapter
+//                binding.rvPart3Questions.adapter = adapter
 
                 //TODO
 //                adapter.setOnPart1QuestionClickListener(object :
@@ -103,19 +103,19 @@ class Part3QuestionsFragment : Fragment(), PartsQuestionsAdapter.OnItemClickList
 
     }
 
-    override fun onItemClick(modelPartsQuestions: ModelPartsQuestions) {
-        val part3AnswerFragment = Part3AnswersFragment.newInstance(modelPartsQuestions.question)
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        transaction.replace(R.id.fragmentContainerView, part3AnswerFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+//    override fun onItemClick(modelPartsQuestions: ModelPartsQuestions) {
+//        val part3AnswerFragment = Part3AnswersFragment.newInstance(modelPartsQuestions.question)
+//        val transaction = parentFragmentManager.beginTransaction()
+//        transaction.setCustomAnimations(
+//            R.anim.from_right,
+//            R.anim.to_left,
+//            R.anim.from_left,
+//            R.anim.to_right
+//        )
+//        transaction.replace(R.id.fragmentContainerView, part3AnswerFragment)
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+//    }
 
     private fun returnDocumentationPATH(position: Int, whichQuestion: String): Query{
 

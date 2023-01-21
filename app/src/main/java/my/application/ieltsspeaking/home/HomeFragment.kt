@@ -16,8 +16,6 @@ import my.application.ieltsspeaking.home.adapter.HomeAdapter
 import my.application.ieltsspeaking.home.category.about.AboutFragment
 import my.application.ieltsspeaking.home.category.band_score.BandCalculationFragment
 import my.application.ieltsspeaking.home.category.info.InfoFragment
-import my.application.ieltsspeaking.home.category.part1Topic.Part1TopicFragment
-import my.application.ieltsspeaking.home.category.part2Topic.Part2TopicFragment
 import my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
 import my.application.ieltsspeaking.home.category.pronunciation.PronunciationFragment
 import my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
@@ -60,10 +58,7 @@ class HomeFragment : Fragment() {
                         parentFragmentManager
                     )
                     2 -> findNavController().navigateSafe(R.id.part1TopicFragment)
-                    3 -> UtilsForVocabulary.navigateFragment(
-                        Part2TopicFragment(),
-                        parentFragmentManager
-                    )
+                    3 -> findNavController().navigateSafe(R.id.part2TopicFragment)
                     4 -> UtilsForVocabulary.navigateFragment(
                         Part3TopicFragment(),
                         parentFragmentManager

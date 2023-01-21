@@ -18,7 +18,7 @@ import my.application.ieltsspeaking.utils.toast
 class Part1TopicFragment :
     BaseFragment<FragmentPart1TopicBinding>(FragmentPart1TopicBinding::inflate) {
 
-    private var db = FirebaseFirestore.getInstance()
+    private var dataBase = FirebaseFirestore.getInstance()
     private lateinit var adapter: PartsTopicAdapter
 
 
@@ -26,6 +26,7 @@ class Part1TopicFragment :
         super.onCreate(savedInstanceState)
         adapter = PartsTopicAdapter()
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -34,6 +35,9 @@ class Part1TopicFragment :
             requireContext(),
             requireActivity()
         )
+
+        binding.rvPart1.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPart1.adapter = adapter
 
         adapter.setClickListener(object : PartsTopicAdapter.PartTopicClickListener {
             override fun onPartsClick(topic: ModelPartsTopic) {
@@ -44,9 +48,9 @@ class Part1TopicFragment :
                 findNavController().navigateSafeAction(action.actionId, action.arguments)
             }
         })
-        binding.rvPart1.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvPart1.adapter = adapter
-        db.collection("Part1Topics").orderBy("id").get().addOnSuccessListener {
+
+        dataBase.collection("Part1Topics").orderBy("id").get().addOnSuccessListener {
+
             val userTopicList = ArrayList<ModelPartsTopic>()
             if (!it.isEmpty) {
                 for (document in it.documents) {
@@ -67,6 +71,4 @@ class Part1TopicFragment :
                 )
             }
     }
-
-
 }
