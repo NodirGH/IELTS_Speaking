@@ -9,19 +9,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
-import my.application.ieltsspeaking.home.category.vocabulary.categories.result.VocabularyResultFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
-import my.application.ieltsspeaking.utils.UtilsForApp
-import my.application.ieltsspeaking.utils.UtilsForVocabulary
-import my.application.ieltsspeaking.utils.manageVisibility
-import my.application.ieltsspeaking.utils.toast
+import my.application.ieltsspeaking.utils.*
 
-class WorkTestFragment : Fragment(), View.OnClickListener {
+class VocabularyTestFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentVocabularyTestBinding
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
@@ -30,6 +27,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
     private var isOptionSelected: Boolean = false
     var correctAnswers: Int = 0
     var incorrectAnswers: Int = 0
+    var questionsSize: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,22 +57,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
             else -> Constants.quizForWork()
         }
 
-        UtilsForVocabulary.context = requireContext()
-        UtilsForVocabulary.optionOne = binding.tvOptionOne
-        UtilsForVocabulary.optionTwo = binding.tvOptionTwo
-        UtilsForVocabulary.optionThree = binding.tvOptionThree
-        UtilsForVocabulary.optionFour = binding.tvOptionFour
-        UtilsForVocabulary.btnCheck = binding.btnCheck
-
-        UtilsForVocabulary.setQuestionTest(
-            binding.pbProgressBar,
-            binding.tvProgressBarCounter,
-            binding.tvQuestion,
-            mQuestionsList,
-            mCurrentPosition,
-            binding.laCorrect,
-            binding.laIncorrect
-        )
+        setQuestionTest()
 
         binding.tvOptionOne.setOnClickListener(this)
         binding.tvOptionTwo.setOnClickListener(this)
@@ -113,7 +96,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                     if (!isCheckPressed) {
                         val question = mQuestionsList?.get(mCurrentPosition - 1)
                         if (question!!.correctAnswer != mSelectedOptionPosition) {
-                            UtilsForVocabulary.answerView(
+                            answerView(
                                 mSelectedOptionPosition,
                                 R.drawable.bg_incorrect_option_border,
                             )
@@ -127,19 +110,19 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                             binding.laCorrect.playAnimation()
                         }
 
-                        UtilsForVocabulary.answerView(
+                        answerView(
                             question.correctAnswer,
                             R.drawable.bg_correct_option_border,
                         )
 
                         if (mCurrentPosition == mQuestionsList!!.size) {
                             if (question.correctAnswer != mSelectedOptionPosition) {
-                                UtilsForVocabulary.answerView(
+                                answerView(
                                     mSelectedOptionPosition,
                                     R.drawable.bg_incorrect_option_border,
                                 )
                             }
-                            UtilsForVocabulary.answerView(
+                            answerView(
                                 question.correctAnswer,
                                 R.drawable.bg_correct_option_border,
                             )
@@ -148,7 +131,13 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
 
                             binding.btnCheck.setBackgroundResource(R.drawable.bg_fnish_button_enabled)
                             binding.btnCheck.setOnClickListener {
-                                navigateToResultFragment()
+
+                                questionsSize = mQuestionsList!!.size
+                                val sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+
+                                sharedViewModel.sendAnswers(questionsSize, correctAnswers, incorrectAnswers)
+                                val action = VocabularyTestFragmentDirections.actionVocabularyTestFragmentToVocabularyResultFragment()
+                                findNavController().navigate(action)
                             }
                         } else {
                             binding.btnCheck.text = getString(R.string.next)
@@ -159,15 +148,7 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                     } else {
                         mCurrentPosition++
                         defaultOptionsView()
-                        UtilsForVocabulary.setQuestionTest(
-                            binding.pbProgressBar,
-                            binding.tvProgressBarCounter,
-                            binding.tvQuestion,
-                            mQuestionsList,
-                            mCurrentPosition,
-                            binding.laCorrect,
-                            binding.laIncorrect
-                        )
+                        setQuestionTest()
                         isOptionSelected = false
                         isCheckPressed = false
                     }
@@ -175,25 +156,6 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                 } else requireContext().toast("Please choose your option!")
             }
         }
-    }
-
-    private fun navigateToResultFragment() {
-        val fragment = VocabularyResultFragment()
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(
-            R.anim.from_right,
-            R.anim.to_left,
-            R.anim.from_left,
-            R.anim.to_right
-        )
-        val bundle = Bundle()
-        bundle.apply {
-            putInt("questionSize", mQuestionsList!!.size)
-            putInt("correctAnswer", correctAnswers)
-            putInt("incorrectAnswer", incorrectAnswers)
-        }
-        setFragmentResult("Size", bundle)
-        transaction.replace(R.id.fragmentContainerView, fragment).commit()
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
@@ -226,6 +188,46 @@ class WorkTestFragment : Fragment(), View.OnClickListener {
                 ContextCompat.getDrawable(requireContext(), R.drawable.bg_default_option_border)
 
             binding.btnCheck.setBackgroundResource(R.drawable.bg_light_blue_button_disabled)
+        }
+    }
+
+
+    private fun setQuestionTest() {
+        val question = mQuestionsList!![mCurrentPosition - 1]
+        binding.btnCheck.text = "Check"
+        binding.pbProgressBar.progress = mCurrentPosition
+        binding.pbProgressBar.max = mQuestionsList!!.size
+        binding.tvProgressBarCounter.text = "$mCurrentPosition" + "/" + binding.pbProgressBar.max
+        binding.tvQuestion.text = question.question
+        binding.tvOptionOne.text = question.optionOne
+        binding.tvOptionTwo.text = question.optionTwo
+        binding.tvOptionThree.text = question.optionThree
+        binding.tvOptionFour.text = question.optionFour
+        binding.laCorrect.manageVisibility(false)
+        binding.laIncorrect.manageVisibility(false)
+    }
+
+   private fun answerView(
+        mSelectedPosition: Int,
+        selectedView: Int,
+    ) {
+        when (mSelectedPosition) {
+            1 -> {
+                binding.tvOptionOne.background =
+                    ContextCompat.getDrawable(requireContext(), selectedView)
+            }
+            2 -> {
+                binding.tvOptionTwo.background =
+                    ContextCompat.getDrawable(requireContext(), selectedView)
+            }
+            3 -> {
+                binding.tvOptionThree.background =
+                    ContextCompat.getDrawable(requireContext(), selectedView)
+            }
+            4 -> {
+                binding.tvOptionFour.background =
+                    ContextCompat.getDrawable(requireContext(), selectedView)
+            }
         }
     }
 }

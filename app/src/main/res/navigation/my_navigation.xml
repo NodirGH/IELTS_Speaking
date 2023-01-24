@@ -50,7 +50,6 @@
         android:label="fragment_part3_topic"
         tools:layout="@layout/fragment_part3_topic">
 
-
         <action
             android:id="@+id/action_part2TopicFragment_to_part2QuestionsFragment"
             app:destination="@id/part2QuestionsFragment" />
@@ -67,14 +66,53 @@
 
         <action
             android:id="@+id/action_part2QuestionsFragment_to_part2AnswersFragment"
-            app:destination="@id/part2AnswersFragment"/>
+            app:destination="@id/part2AnswersFragment" />
     </fragment>
     <fragment
         android:id="@+id/part2AnswersFragment"
         android:name="my.application.ieltsspeaking.home.category.part2Topic.question.answer.Part2AnswersFragment"
         android:label="fragment_part2_answers"
-        tools:layout="@layout/fragment_part2_answers" >
+        tools:layout="@layout/fragment_part2_answers">
 
+        <argument
+            android:name="answer"
+            app:argType="my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions" />
+    </fragment>
+
+    <!--  endregion  -->
+
+    <!--  region part3  -->
+
+    <fragment
+        android:id="@+id/part3TopicFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment"
+        android:label="Part3TopicFragment"
+        tools:layout="@layout/fragment_part3_topic">
+
+        <action
+            android:id="@+id/action_part3TopicFragment_to_part3QuestionsFragment"
+            app:destination="@id/part3QuestionsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/part3QuestionsFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.Part3QuestionsFragment"
+        android:label="fragment_part3_questions"
+        tools:layout="@layout/fragment_part3_questions">
+
+        <action
+            android:id="@+id/action_part3QuestionsFragment_to_part3AnswersFragment"
+            app:destination="@id/part3AnswersFragment" />
+        <argument
+            android:name="topic"
+            app:argType="my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/part3AnswersFragment"
+        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.answer.Part3AnswersFragment"
+        android:label="fragment_part3_answers"
+        tools:layout="@layout/fragment_part3_answers">
         <argument
             android:name="answer"
             app:argType="my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions" />
@@ -130,11 +168,16 @@
 
     </fragment>
     <fragment
-        android:id="@+id/startLearningFragment"
+        android:id="@+id/vocabularyStartLearningFragment"
         android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.StartLearningFragment"
         android:label="fragment_start_learning"
         tools:layout="@layout/fragment_start_learning">
 
+        <action
+            android:id="@+id/action_vocabularyStartLearningFragment_to_vocabularyCategoriesFragment"
+            app:destination="@id/vocabularyCategoriesFragment"
+            app:popUpTo="@id/vocabularyCategoriesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/vocabularyResultFragment"
@@ -144,18 +187,29 @@
         <action
             android:id="@+id/action_vocabularyResultFragment_to_vocabularyFragment"
             app:destination="@id/vocabularyFragment"
+            app:popUpTo="@id/vocabularyFragment"
+            app:popUpToInclusive="true"
+            app:exitAnim="@anim/to_left"
+            app:enterAnim="@anim/from_right"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/vocabularyTestFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.test.VocabularyTestFragment"
+        android:label="fragment_vocabulary_test"
+        tools:layout="@layout/fragment_vocabulary_test">
+
+        <action
+            android:id="@+id/action_vocabularyTestFragment_to_vocabularyResultFragment"
+            app:destination="@id/vocabularyResultFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"
-            app:popUpTo="@id/vocabularyFragment"
+            app:popUpTo="@id/vocabularyCategoriesFragment"
             app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/workTestFragment"
-        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.test.WorkTestFragment"
-        android:label="fragment_vocabulary_test"
-        tools:layout="@layout/fragment_vocabulary_test">
 
     </fragment>
     <fragment
@@ -168,25 +222,7 @@
         android:name="my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment"
         android:label="VideoAnswerBandsFragment"
         tools:layout="@layout/fragment_video_answer_bands" />
-    <fragment
-        android:id="@+id/part3TopicFragment"
-        android:name="my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment"
-        android:label="Part3TopicFragment"
-        tools:layout="@layout/fragment_part3_topic">
 
-    </fragment>
-    <fragment
-        android:id="@+id/part3QuestionsFragment"
-        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.Part3QuestionsFragment"
-        android:label="fragment_part3_questions"
-        tools:layout="@layout/fragment_part3_questions">
-
-    </fragment>
-    <fragment
-        android:id="@+id/part3AnswersFragment"
-        android:name="my.application.ieltsspeaking.home.category.part3Topic.question.answer.Part3AnswersFragment"
-        android:label="fragment_part3_answers"
-        tools:layout="@layout/fragment_part3_answers" />
 
     <fragment
         android:id="@+id/pronunciationFragment"
@@ -199,5 +235,10 @@
         android:name="my.application.ieltsspeaking.home.drawer_layout.contact.ContactUsFragment"
         android:label="fragment_contact_us"
         tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/vocabularyCategoriesFragment"
+        android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.VocabularyCategoriesFragment"
+        android:label="fragment_vocabulary_categories"
+        tools:layout="@layout/fragment_vocabulary_categories" />
 
 </navigation>

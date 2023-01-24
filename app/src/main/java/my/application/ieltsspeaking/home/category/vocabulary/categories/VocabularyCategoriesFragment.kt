@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyCategoriesBinding
 import my.application.ieltsspeaking.home.category.vocabulary.categories.adapter.VocabularyWordsAdapter
 import my.application.ieltsspeaking.home.category.vocabulary.categories.data.VocabularyDataForAll
-import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.StartLearningFragment
-import my.application.ieltsspeaking.home.category.vocabulary.categories.test.WorkTestFragment
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
-import my.application.ieltsspeaking.utils.UtilsForVocabulary
+import my.application.ieltsspeaking.utils.navigateSafe
 
 class VocabularyCategoriesFragment : Fragment() {
     private lateinit var binding: FragmentVocabularyCategoriesBinding
@@ -30,12 +30,12 @@ class VocabularyCategoriesFragment : Fragment() {
 
         setRecyclerView()
 
-        binding.btnWorkTest.setOnClickListener{
-            UtilsForVocabulary.navigateFragment(WorkTestFragment(), parentFragmentManager)
+        binding.btnTest.setOnClickListener{
+            findNavController().navigateSafe(R.id.vocabularyTestFragment)
         }
 
-        binding.btnWorkStartLearning.setOnClickListener {
-            UtilsForVocabulary.navigateFragment(StartLearningFragment(), parentFragmentManager)
+        binding.btnStartLearning.setOnClickListener {
+            findNavController().navigateSafe(R.id.vocabularyStartLearningFragment)
         }
     }
 
@@ -56,8 +56,8 @@ class VocabularyCategoriesFragment : Fragment() {
 
             }
             val adapter = VocabularyWordsAdapter(data)
-            binding.rvVocabularyWork.layoutManager = LinearLayoutManager(requireContext())
-            binding.rvVocabularyWork.adapter = adapter
+            binding.rvVocabularyAll.layoutManager = LinearLayoutManager(requireContext())
+            binding.rvVocabularyAll.adapter = adapter
 
 
     }

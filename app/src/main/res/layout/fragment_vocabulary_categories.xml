@@ -8,7 +8,7 @@
     tools:context=".home.category.vocabulary.categories.VocabularyCategoriesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVocabularyWork"
+        android:id="@+id/rvVocabularyAll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btnWorkStartLearning"
+            android:id="@+id/btnStartLearning"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,12 +43,12 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnWorkTest"
+            app:layout_constraintEnd_toStartOf="@+id/btnTest"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btnWorkTest"
+            android:id="@+id/btnTest"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -64,7 +64,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btnWorkStartLearning" />
+            app:layout_constraintStart_toEndOf="@+id/btnStartLearning" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

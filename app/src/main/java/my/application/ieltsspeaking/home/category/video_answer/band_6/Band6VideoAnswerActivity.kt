@@ -43,7 +43,9 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                     )
                 } else snackBar(binding.root, "No internet connection")
 
-                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
+                if (UtilsForYoutube.youtubePlayer == null) {
+                    binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
+                }
             }
         })
         UtilsForYoutube.youtubeInitializer(this)

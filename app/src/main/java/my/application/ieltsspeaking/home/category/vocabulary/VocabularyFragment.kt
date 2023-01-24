@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyBinding
 import my.application.ieltsspeaking.home.category.vocabulary.adapter.VocabularyAdapter
-import my.application.ieltsspeaking.home.category.vocabulary.categories.VocabularyCategoriesFragment
 import my.application.ieltsspeaking.home.category.vocabulary.data.VocabularyData
-import my.application.ieltsspeaking.utils.UtilsForVocabulary
+import my.application.ieltsspeaking.utils.navigateSafe
 
 var globalTopicId = 0
 class VocabularyFragment : Fragment() {
@@ -37,27 +36,9 @@ class VocabularyFragment : Fragment() {
         adapter.setOnWordClickListener(object : VocabularyAdapter.OnVocabularyWordCLickListener {
             override fun onItemClick(position: Int) {
 
-                UtilsForVocabulary.navigateFragment(VocabularyCategoriesFragment(), parentFragmentManager)
+                findNavController().navigateSafe(R.id.vocabularyCategoriesFragment)
                 globalTopicId = position+1
             }
         })
     }
-
-//    private fun navigateToQuestionFragment(position: Int) {
-//        val fragment = VocabularyCategoriesFragment()
-//        val transaction = parentFragmentManager.beginTransaction()
-//        transaction.setCustomAnimations(
-//            R.anim.from_right,
-//            R.anim.to_left,
-//            R.anim.from_left,
-//            R.anim.to_right
-//        )
-//        val bundle = Bundle()
-//        bundle.apply {
-//            putInt("vocabulary topic position", position)
-//        }
-//        setFragmentResult("VOCABULARY TOPIC", bundle)
-//        transaction.addToBackStack(null)
-//        transaction.replace(R.id.fragmentContainerView, fragment).commit()
-//    }
 }

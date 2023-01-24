@@ -25,7 +25,7 @@
     <string name="version">Version:</string>
     <string name="version_number">1.0.0</string>
     <string name="released">Released:</string>
-    <string name="released_time">10.01.2023</string>
+    <string name="released_time">28.01.2023</string>
     <string name="target">Target:</string>
     <string name="target_item">IELTS Speaking</string>
     <string name="goals">Goals:</string>
@@ -936,9 +936,9 @@
     <string name="part3PeopleA28">Well, that\’s a tough question! Not that I have not thought about it, but I have never drawn a solid conclusion about it! Umm, my expectation from a good friend is that he would be a good companion, good listener, would criticise me whenever needed, would be supportive and positive. He must be honest and would have a sense of humour. Finally, I expect him to be more like a family member than an outsider.</string>
 
     <string name="sample_answer_part1">Sample answer is shown here. It doesn\'t matter how much line it requires, it should show all line</string>
-    <string name="part_1_sample_answer">Part 1 sample answer</string>
-    <string name="part_2_sample_answer">Part 2 sample answer</string>
-    <string name="part_3_sample_answer">Part 3 sample answer</string>
+    <string name="part_1_sample_answer">Part 1 answer</string>
+    <string name="part_2_sample_answer">Part 2 answer</string>
+    <string name="part_3_sample_answer">Part 3 answer</string>
     <string name="pronunciation">Pronunciation</string>
     <string name="correct">Correct:</string>
     <string name="questions">Questions:</string>

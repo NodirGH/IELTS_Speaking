@@ -1,11 +1,8 @@
 package my.application.ieltsspeaking.home.category.part2Topic
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,15 +11,13 @@ import my.application.ieltsspeaking.databinding.FragmentPart2TopicBinding
 import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
-import my.application.ieltsspeaking.home.category.part2Topic.question.Part2QuestionsFragment
 import my.application.ieltsspeaking.utils.UtilsForApp
-import my.application.ieltsspeaking.utils.navigateSafe
 import my.application.ieltsspeaking.utils.navigateSafeAction
 import my.application.ieltsspeaking.utils.toast
 
 class Part2TopicFragment : BaseFragment<FragmentPart2TopicBinding>(FragmentPart2TopicBinding::inflate) {
 
-    private var dataBase = FirebaseFirestore.getInstance()
+    private var database = FirebaseFirestore.getInstance()
     private lateinit var adapter: PartsTopicAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +40,7 @@ class Part2TopicFragment : BaseFragment<FragmentPart2TopicBinding>(FragmentPart2
             }
         })
 
-        dataBase.collection("Part2Topics").orderBy("id").get().addOnSuccessListener {
+        database.collection("Part2Topics").orderBy("id").get().addOnSuccessListener {
 
             val userTopicList = ArrayList<ModelPartsTopic>()
 

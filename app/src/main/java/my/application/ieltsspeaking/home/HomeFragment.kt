@@ -53,33 +53,15 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 when (position + 1) {
-                    1 -> UtilsForVocabulary.navigateFragment(
-                        PronunciationFragment(),
-                        parentFragmentManager
-                    )
+                    1 -> findNavController().navigateSafe(R.id.pronunciationFragment)
                     2 -> findNavController().navigateSafe(R.id.part1TopicFragment)
                     3 -> findNavController().navigateSafe(R.id.part2TopicFragment)
-                    4 -> UtilsForVocabulary.navigateFragment(
-                        Part3TopicFragment(),
-                        parentFragmentManager
-                    )
-                    5 -> UtilsForVocabulary.navigateFragment(
-                        VocabularyFragment(),
-                        parentFragmentManager
-                    )
-                    6 -> UtilsForVocabulary.navigateFragment(
-                        VideoAnswerBandsFragment(),
-                        parentFragmentManager
-                    )
-                    7 -> UtilsForVocabulary.navigateFragment(
-                        BandCalculationFragment(),
-                        parentFragmentManager
-                    )
-                    8 -> UtilsForVocabulary.navigateFragment(
-                        InfoFragment(),
-                        parentFragmentManager
-                    )
-                    9 -> UtilsForVocabulary.navigateFragment(AboutFragment(), parentFragmentManager)
+                    4 -> findNavController().navigateSafe(R.id.part3TopicFragment)
+                    5 -> findNavController().navigateSafe(R.id.vocabularyFragment)
+                    6 -> findNavController().navigateSafe(R.id.videoAnswerBandsFragment)
+                    7 -> findNavController().navigateSafe(R.id.bandCalculationFragment)
+                    8 -> findNavController().navigateSafe(R.id.infoFragment)
+                    9 -> findNavController().navigateSafe(R.id.aboutFragment)
                     10 -> requireContext().snackBar(binding.root, "UNDER DEVELOPMENT")
                 }
             }
@@ -90,6 +72,7 @@ class HomeFragment : Fragment() {
                 R.id.navRate -> requireContext().toast("")
                 R.id.contactUsFragment -> {
                     findNavController().navigateSafe(R.id.contactUsFragment)
+                    binding.drawerLayoutHome.close()
                 }
                 R.id.navShare -> requireContext().toast("Share it")
                 R.id.navSuggestions -> navigateToGiveSuggestion()
@@ -126,5 +109,6 @@ class HomeFragment : Fragment() {
     private fun navigateToGiveSuggestion() {
         val intent = Intent(requireContext(), GiveSuggestionsActivity::class.java)
         startActivity(intent)
+        binding.drawerLayoutHome.close()
     }
 }
