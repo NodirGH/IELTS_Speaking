@@ -963,5 +963,16 @@
     <string name="instagram_address">nodir.bek1199</string>
     <string name="gmail_address">mahkamov.nodirbek.95@gmail.com</string>
     <string name="contact_us">Contact us</string>
+    <string name="report_a_bug">Report a bug</string>
+    <string name="bug_definition">If you have faced unexpected bugs, problems or errors, please report us and we will work on them</string>
+    <string name="title">Title</string>
+    <string name="reporting_about_a_bug">Reporting about a bug</string>
+    <string name="description">Description</string>
+    <string name="type_a_bug_you_faced">Type a bug you faced</string>
+    <string name="send">Send</string>
+    <string name="suggestion_definition">If you have any suggestions to improve this application or ideas to add patterns, please write to us and we will add them in our next version</string>
+    <string name="giving_suggestions">Giving suggestions</string>
+    <string name="type_suggestions_you_have">Type suggestions you have</string>
+    <string name="give_your_suggestion">Give your suggestion</string>
 
 </resources>

@@ -1,20 +1,20 @@
-package my.application.ieltsspeaking.home.drawer_layout.give_suggestion
+package my.application.ieltsspeaking.home.drawer_layout.report_bugs
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import my.application.ieltsspeaking.databinding.ActivityGiveSuggestionsBinding
+import android.os.Bundle
+import my.application.ieltsspeaking.R
+import my.application.ieltsspeaking.databinding.ActivityReportBugBinding
 import my.application.ieltsspeaking.utils.toast
 
-
-class GiveSuggestionsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityGiveSuggestionsBinding
+class ReportBugActivity : AppCompatActivity() {
     private lateinit var getter: String
+    private lateinit var binding: ActivityReportBugBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGiveSuggestionsBinding.inflate(layoutInflater)
+        binding = ActivityReportBugBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnSend.setOnClickListener {

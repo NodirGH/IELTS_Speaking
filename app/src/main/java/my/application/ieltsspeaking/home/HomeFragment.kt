@@ -22,6 +22,7 @@ import my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsF
 import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import my.application.ieltsspeaking.home.data.HomeData
 import my.application.ieltsspeaking.home.drawer_layout.give_suggestion.GiveSuggestionsActivity
+import my.application.ieltsspeaking.home.drawer_layout.report_bugs.ReportBugActivity
 import my.application.ieltsspeaking.utils.*
 
 class HomeFragment : Fragment() {
@@ -76,7 +77,7 @@ class HomeFragment : Fragment() {
                 }
                 R.id.navShare -> requireContext().toast("Share it")
                 R.id.navSuggestions -> navigateToGiveSuggestion()
-                R.id.navReportBugs -> requireContext().toast("Report Bug")
+                R.id.navReportBugs -> navigateToReportBug()
             }
             true
         }
@@ -108,6 +109,12 @@ class HomeFragment : Fragment() {
 
     private fun navigateToGiveSuggestion() {
         val intent = Intent(requireContext(), GiveSuggestionsActivity::class.java)
+        startActivity(intent)
+        binding.drawerLayoutHome.close()
+    }
+
+    private fun navigateToReportBug() {
+        val intent = Intent(requireContext(), ReportBugActivity::class.java)
         startActivity(intent)
         binding.drawerLayoutHome.close()
     }

@@ -21,6 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IELTSSpeaking">
         <activity
+            android:name=".home.drawer_layout.report_bugs.ReportBugActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".home.drawer_layout.give_suggestion.GiveSuggestionsActivity"
             android:exported="false">
             <meta-data
@@ -68,25 +75,25 @@
         </activity>
         <activity
             android:name=".home.category.pronunciation.categories.ben_franklin.BenFranklinVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.homophones.HomophonesVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.idioms.IdiomsVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.phrasal_verbs.PhrasalVerbsVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.pronunciation.PronunciationVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.slang.SlangVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".home.category.pronunciation.categories.useful_tips.UsefulTipsVideos"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
