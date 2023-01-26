@@ -21,7 +21,7 @@ class GiveSuggestionsActivity : AppCompatActivity() {
 
             val title = binding.tvTitle.text
             getter = "mahkamov.nodirbek.95@gmail.com"
-            val message = binding.etMessage.text.toString().trim()
+            val message = binding.etMessage.text.toString()
 
             sendEmail(title, message)
         }

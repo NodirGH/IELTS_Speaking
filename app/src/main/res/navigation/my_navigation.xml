@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <!--    region Part 1-->
     <fragment
@@ -240,5 +240,20 @@
         android:name="my.application.ieltsspeaking.home.category.vocabulary.categories.VocabularyCategoriesFragment"
         android:label="fragment_vocabulary_categories"
         tools:layout="@layout/fragment_vocabulary_categories" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="my.application.ieltsspeaking.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

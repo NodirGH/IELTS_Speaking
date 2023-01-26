@@ -46,7 +46,7 @@ class VocabularyResultFragment : Fragment() {
             incorrectAnswers = it
 
             val resultPercent = ((correctAnswers.toFloat() / questionSize.toFloat()) * 100)
-            binding.tvResultPercent.text = resultPercent.toInt().toString()
+            binding.tvResultPercent.text = "${resultPercent.toInt().toString()}%"
 
             binding.cpbResultProgressBar.apply {
                 progressMax = 100f

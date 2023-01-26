@@ -1,6 +1,8 @@
 package my.application.ieltsspeaking.home
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,12 +72,12 @@ class HomeFragment : Fragment() {
 
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.navRate -> requireContext().toast("")
+                R.id.navRate -> rateUs()
                 R.id.contactUsFragment -> {
                     findNavController().navigateSafe(R.id.contactUsFragment)
                     binding.drawerLayoutHome.close()
                 }
-                R.id.navShare -> requireContext().toast("Share it")
+                R.id.navShare -> shareApp()
                 R.id.navSuggestions -> navigateToGiveSuggestion()
                 R.id.navReportBugs -> navigateToReportBug()
             }
@@ -117,5 +119,37 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(), ReportBugActivity::class.java)
         startActivity(intent)
         binding.drawerLayoutHome.close()
+    }
+
+    private fun rateUs(){
+        val uri: Uri = Uri.parse("market://details?id=my.first.tasbeeh&hl=en&gl=US")
+        val goToMarket = Intent(Intent.ACTION_VIEW, uri)
+
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
+                                Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                                Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+
+        try {
+            startActivity(goToMarket)
+        } catch (e: ActivityNotFoundException){
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=my.first.tasbeeh&hl=en&gl=US")))
+        }
+    }
+
+    private fun shareApp(){
+        val shareBody = "Download IELTS SPEAKING Master on Play Store : https://play.google.com/store/apps/details?id=my.first.tasbeeh&hl=en&gl=US"
+        val shareSubject = "IELTS Speaking Master helps improve your speaking skills"
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+
+        shareIntent.apply {
+            putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+            putExtra(Intent.EXTRA_TEXT, shareBody)
+
+            startActivity(shareIntent)
+        }
+
+//        val myIntent = Intent(Intent.ACTION_SEND)
     }
 }
