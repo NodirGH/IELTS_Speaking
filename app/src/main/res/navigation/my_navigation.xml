@@ -248,10 +248,10 @@
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"
+            app:enterAnim="@anim/from_right_splash"
+            app:exitAnim="@anim/to_left_splash"
+            app:popEnterAnim="@anim/from_left_splash"
+            app:popExitAnim="@anim/to_right_splash"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
