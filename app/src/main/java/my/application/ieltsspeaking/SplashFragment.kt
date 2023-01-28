@@ -26,7 +26,8 @@ class SplashFragment : Fragment() {
 
         binding.ivGmail.alpha = 0f
         binding.ivGmail.animate().setDuration(2000).alpha(1f).withEndAction{
-            findNavController().navigate(R.id.homeFragment)
+            val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+            findNavController().navigate(action)
         }
 
     }

@@ -11,6 +11,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
@@ -28,6 +34,7 @@ class VocabularyTestFragment : Fragment(), View.OnClickListener {
     var correctAnswers: Int = 0
     var incorrectAnswers: Int = 0
     var questionsSize: Int = 0
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +46,8 @@ class VocabularyTestFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadInterstitial()
 
         UtilsForApp.updateStatusBarColor(R.color.bg_vocabulary_test, requireContext(), requireActivity())
 
@@ -91,6 +100,7 @@ class VocabularyTestFragment : Fragment(), View.OnClickListener {
 
             R.id.btnCheck -> {
 
+                showInter()
                 if (isOptionSelected) {
 
                     if (!isCheckPressed) {
@@ -156,6 +166,34 @@ class VocabularyTestFragment : Fragment(), View.OnClickListener {
                 } else requireContext().toast("Please choose your option!")
             }
         }
+    }
+
+    private fun loadInterstitial() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(requireContext(),getString(R.string.ID_Interstitial), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
+
+    private fun showInter() {
+        if (mInterstitialAd != null){
+            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    super.onAdFailedToShowFullScreenContent(p0)
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    requireContext().toast("GREAT")
+                }
+            }
+            mInterstitialAd?.show(requireActivity())
+        } else requireContext().toast("else GREAT")
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {

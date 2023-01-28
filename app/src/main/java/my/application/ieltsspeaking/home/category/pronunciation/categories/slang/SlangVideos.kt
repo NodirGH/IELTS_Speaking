@@ -1,8 +1,12 @@
 package my.application.ieltsspeaking.home.category.pronunciation.categories.slang
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
 import my.application.ieltsspeaking.databinding.PronunciationLayoutBinding
 import my.application.ieltsspeaking.home.category.pronunciation.categories.adapter.PronunciationVideosAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.data.DataPronunciation
@@ -14,6 +18,9 @@ import my.application.ieltsspeaking.utils.snackBar
 class SlangVideos: YouTubeBaseActivity() {
 
     private lateinit var binding: PronunciationLayoutBinding
+    private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
+    private var youtubePlayer: YouTubePlayer? = null
+    private var youtubeVideoId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,28 +32,81 @@ class SlangVideos: YouTubeBaseActivity() {
         val adapter = PronunciationVideosAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
-        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick {
-            override fun onVideoClick(position: Int) {
+//        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick {
+//            override fun onVideoClick(position: Int) {
+//
+//                if (UtilsForYoutube().checkInternetConnection(this@SlangVideos)) {
+//                    binding.ivIcYoutube.manageVisibility(false)
+//                    UtilsForYoutube.playVideo(
+//                        videoId = when (position + 1) {
+//                            1 -> "A74fyukqzaU"
+//                            2 -> "R1Ge9NFSDyE"
+//                            3 -> "7fMKxYBNCfc"
+//                            4 -> "dxASJPr6LzY"
+//                            5 -> "ciM0UBHJEvs"
+//                            6 -> "G_tBYGaW5VA"
+//                            7 -> "vqHbav_fZZk"
+//                            else -> "vqHbav_fZZk"
+//                        }
+//                    )
+//                } else snackBar(binding.root, "No internet connection")
+//
+//                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
+//            }
+//        })
+//        UtilsForYoutube.youtubeInitializer(this)
 
+        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick{
+            override fun onVideoClick(position: Int) {
                 if (UtilsForYoutube().checkInternetConnection(this@SlangVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)
-                    UtilsForYoutube.playVideo(
-                        videoId = when (position + 1) {
-                            1 -> "A74fyukqzaU"
-                            2 -> "R1Ge9NFSDyE"
-                            3 -> "7fMKxYBNCfc"
-                            4 -> "dxASJPr6LzY"
-                            5 -> "ciM0UBHJEvs"
-                            6 -> "G_tBYGaW5VA"
-                            7 -> "vqHbav_fZZk"
-                            else -> "vqHbav_fZZk"
-                        }
-                    )
+                    youtubeVideoId = position + 1
+                    playVideo()
                 } else snackBar(binding.root, "No internet connection")
+                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
 
-                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
             }
         })
-        UtilsForYoutube.youtubeInitializer(this)
+    }
+
+    fun youtubeInitializer(context: Context) {
+
+        youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
+            override fun onInitializationSuccess(
+                p0: YouTubePlayer.Provider?,
+                youTubePlayer1: YouTubePlayer?,
+                p2: Boolean
+            ) {
+                if (!p2) {
+                    youtubePlayer = youTubePlayer1
+                    playVideo()
+                }
+            }
+
+            override fun onInitializationFailure(
+                p0: YouTubePlayer.Provider?,
+                p1: YouTubeInitializationResult?
+            ) {
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    fun playVideo() {
+        youtubeInitializer(this)
+        if (youtubePlayer != null) {
+            youtubePlayer!!.loadVideo(
+                when (youtubeVideoId) {
+                    1 -> "A74fyukqzaU"
+                    2 -> "R1Ge9NFSDyE"
+                    3 -> "7fMKxYBNCfc"
+                    4 -> "dxASJPr6LzY"
+                    5 -> "ciM0UBHJEvs"
+                    6 -> "G_tBYGaW5VA"
+                    7 -> "vqHbav_fZZk"
+                    else -> "vqHbav_fZZk"
+                }
+            )
+        }
     }
 }

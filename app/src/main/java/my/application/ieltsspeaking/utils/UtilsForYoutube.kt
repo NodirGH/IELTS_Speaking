@@ -13,8 +13,11 @@ class UtilsForYoutube: YouTubeBaseActivity() {
 
         lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
         var youtubePlayer: YouTubePlayer? = null
+        var youtubeVideoId = 0
+        var videoId = ""
+        lateinit var rContext: Context
 
-        fun youtubeInitializer(context: Context) {
+        fun youtubeInitializer() {
 
             youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
                 override fun onInitializationSuccess(
@@ -24,6 +27,7 @@ class UtilsForYoutube: YouTubeBaseActivity() {
                 ) {
                     if (!p2) {
                         youtubePlayer = youTubePlayer1
+                        playVideo()
                     }
                 }
 
@@ -31,21 +35,26 @@ class UtilsForYoutube: YouTubeBaseActivity() {
                     p0: YouTubePlayer.Provider?,
                     p1: YouTubeInitializationResult?
                 ) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    rContext.toast("Error")
                 }
             }
         }
 
-        fun playVideo(videoId: String) {
+//        fun playVideo(videoId: String) {
+//            if (youtubePlayer != null) {
+//                youtubePlayer!!.loadVideo(videoId)
+//            }
+//        }
+
+        fun playVideo() {
+            youtubeInitializer()
             if (youtubePlayer != null) {
                 youtubePlayer!!.loadVideo(videoId)
             }
         }
-
     }
 
     fun checkInternetConnection(context: Context): Boolean {
-
         val connectionManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
