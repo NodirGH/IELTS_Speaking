@@ -12,33 +12,21 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentHomeBinding
 import my.application.ieltsspeaking.home.adapter.HomeAdapter
-import my.application.ieltsspeaking.home.category.about.AboutFragment
-import my.application.ieltsspeaking.home.category.band_score.BandCalculationFragment
-import my.application.ieltsspeaking.home.category.info.InfoFragment
-import my.application.ieltsspeaking.home.category.part3Topic.Part3TopicFragment
-import my.application.ieltsspeaking.home.category.pronunciation.PronunciationFragment
-import my.application.ieltsspeaking.home.category.video_answer.VideoAnswerBandsFragment
-import my.application.ieltsspeaking.home.category.vocabulary.VocabularyFragment
 import my.application.ieltsspeaking.home.data.HomeData
 import my.application.ieltsspeaking.home.drawer_layout.give_suggestion.GiveSuggestionsActivity
 import my.application.ieltsspeaking.home.drawer_layout.report_bugs.ReportBugActivity
 import my.application.ieltsspeaking.utils.*
 
-class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var adapter: HomeAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private var database = FirebaseFirestore.getInstance()
+    private lateinit var linkDetail: String
+    private lateinit var linkAddress: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -83,6 +71,7 @@ class HomeFragment : Fragment() {
             }
             true
         }
+        getLinks()
     }
 
     private fun setDrawerLayout() {
@@ -122,7 +111,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun rateUs(){
-        val uri: Uri = Uri.parse("market://details?id=my.first.tasbeeh&hl=en&gl=US")
+        val uri: Uri = Uri.parse(linkDetail)
         val goToMarket = Intent(Intent.ACTION_VIEW, uri)
 
         goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
@@ -132,12 +121,13 @@ class HomeFragment : Fragment() {
         try {
             startActivity(goToMarket)
         } catch (e: ActivityNotFoundException){
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=my.first.tasbeeh&hl=en&gl=US")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(linkAddress)))
         }
+        binding.drawerLayoutHome.close()
     }
 
     private fun shareApp(){
-        val shareBody = "Download IELTS SPEAKING Master on Play Store : https://play.google.com/store/apps/details?id=my.first.tasbeeh&hl=en&gl=US"
+        val shareBody = "Download IELTS SPEAKING Master on Play Store : $linkAddress"
         val shareSubject = "IELTS Speaking Master helps improve your speaking skills"
 
         val shareIntent = Intent(Intent.ACTION_SEND)
@@ -148,8 +138,19 @@ class HomeFragment : Fragment() {
             putExtra(Intent.EXTRA_TEXT, shareBody)
 
             startActivity(shareIntent)
+            binding.drawerLayoutHome.close()
         }
+    }
 
-//        val myIntent = Intent(Intent.ACTION_SEND)
+    private fun getLinks(){
+        val fireStoreDatabase = database.collection("AppLink").document("mvWPdC9BfLibgIYbYU0Q")
+            fireStoreDatabase.get().addOnSuccessListener {
+
+            if (it != null){
+                linkDetail = it.data?.get("linkAfterDetails").toString()
+                linkAddress = it.data?.get("link").toString()
+            }
+
+        }.addOnFailureListener { requireContext().toast("Failed. Try again") }
     }
 }

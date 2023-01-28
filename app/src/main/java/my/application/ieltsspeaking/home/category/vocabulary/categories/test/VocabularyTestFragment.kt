@@ -19,13 +19,13 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
 import my.application.ieltsspeaking.utils.*
 
-class VocabularyTestFragment : Fragment(), View.OnClickListener {
-    private lateinit var binding: FragmentVocabularyTestBinding
+class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(FragmentVocabularyTestBinding::inflate), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
@@ -35,14 +35,6 @@ class VocabularyTestFragment : Fragment(), View.OnClickListener {
     var incorrectAnswers: Int = 0
     var questionsSize: Int = 0
     private var mInterstitialAd: InterstitialAd? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentVocabularyTestBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

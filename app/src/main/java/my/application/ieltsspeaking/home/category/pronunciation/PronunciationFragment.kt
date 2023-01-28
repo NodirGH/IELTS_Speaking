@@ -17,6 +17,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentPronunciationBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.pronunciation.adapter.PronunciationAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.ben_franklin.BenFranklinVideos
 import my.application.ieltsspeaking.home.category.pronunciation.categories.homophones.HomophonesVideos
@@ -30,18 +31,9 @@ import my.application.ieltsspeaking.home.category.video_answer.band_8.Band8Video
 import my.application.ieltsspeaking.home.category.video_answer.band_9.Band9VideoAnswerActivity
 import my.application.ieltsspeaking.utils.UtilsForApp
 
-class PronunciationFragment : Fragment() {
-    private lateinit var binding: FragmentPronunciationBinding
+class PronunciationFragment : BaseFragment<FragmentPronunciationBinding>(FragmentPronunciationBinding::inflate) {
     lateinit var mAdView: AdView
     private var mInterstitialAd: InterstitialAd? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentPronunciationBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -2,29 +2,18 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.result
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import my.application.ieltsspeaking.databinding.FragmentVocabularyResultBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.utils.SharedViewModel
 
-class VocabularyResultFragment : Fragment() {
+class VocabularyResultFragment : BaseFragment<FragmentVocabularyResultBinding>(FragmentVocabularyResultBinding::inflate) {
 
-    private lateinit var binding: FragmentVocabularyResultBinding
     private var questionSize: Int = 0
     private var correctAnswers: Int = 0
     private var incorrectAnswers: Int = 0
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentVocabularyResultBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,8 +45,6 @@ class VocabularyResultFragment : Fragment() {
                 progressBarColor = Color.GREEN
             }
         }
-
-
 
         binding.btnFinishResult.setOnClickListener {
             val action = VocabularyResultFragmentDirections.actionVocabularyResultFragmentToVocabularyFragment()

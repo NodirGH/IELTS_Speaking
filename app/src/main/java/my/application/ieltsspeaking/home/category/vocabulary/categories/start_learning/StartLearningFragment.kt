@@ -7,37 +7,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.DialogStartLearningBinding
 import my.application.ieltsspeaking.databinding.FragmentStartLearningBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.data.LearningWordsCollection
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.model.ModelStartLearning
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
 import my.application.ieltsspeaking.utils.manageVisibility
 
-class StartLearningFragment : Fragment(), OnClickListener {
+class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(FragmentStartLearningBinding::inflate), OnClickListener {
 
-    private lateinit var binding: FragmentStartLearningBinding
     private var currentPosition = 1
     private lateinit var wordList: ArrayList<ModelStartLearning>
     private lateinit var bindingFinishLearning: DialogStartLearningBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentStartLearningBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setLearningWords()
-
     }
 
     private fun setLearningWords() {

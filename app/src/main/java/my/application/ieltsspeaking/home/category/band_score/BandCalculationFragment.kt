@@ -1,31 +1,20 @@
 package my.application.ieltsspeaking.home.category.band_score
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentBandCalculationBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.utils.UtilsForApp
 
-class BandCalculationFragment : Fragment() {
-    private lateinit var binding: FragmentBandCalculationBinding
+class BandCalculationFragment : BaseFragment<FragmentBandCalculationBinding>(FragmentBandCalculationBinding::inflate) {
 
     private var readingScore: Double = 0.0
     private var speakingScore: Double = 0.0
     private var writingScore: Double = 0.0
     private var listeningScore: Double = 0.0
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentBandCalculationBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

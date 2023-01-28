@@ -9,21 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyBinding
+import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.adapter.VocabularyAdapter
 import my.application.ieltsspeaking.home.category.vocabulary.data.VocabularyData
 import my.application.ieltsspeaking.utils.navigateSafe
 
 var globalTopicId = 0
-class VocabularyFragment : Fragment() {
-    private lateinit var binding: FragmentVocabularyBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentVocabularyBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class VocabularyFragment : BaseFragment<FragmentVocabularyBinding>(FragmentVocabularyBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
