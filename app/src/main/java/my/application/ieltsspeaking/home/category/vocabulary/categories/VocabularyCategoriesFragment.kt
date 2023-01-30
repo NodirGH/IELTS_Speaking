@@ -17,6 +17,8 @@ import my.application.ieltsspeaking.utils.navigateSafe
 
 class VocabularyCategoriesFragment : BaseFragment<FragmentVocabularyCategoriesBinding>(FragmentVocabularyCategoriesBinding::inflate) {
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

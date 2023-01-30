@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.ActivityReportBugBinding
 import my.application.ieltsspeaking.utils.toast
@@ -20,28 +21,26 @@ class ReportBugActivity : AppCompatActivity() {
         binding.btnSend.setOnClickListener {
 
             val title = binding.tvTitle.text
-            getter = "mahkamov.nodirbek.95@gmail.com"
+            getter = "nodirbek.dev.95@gmail.com"
             val message = binding.etMessage.text.toString().trim()
 
-            sendEmail(title, message)
+            sendViaGmail(getter, title, message)
         }
     }
 
-    private fun sendEmail(title: CharSequence, message: String) {
+    private fun sendViaGmail(getter: String, title: CharSequence?, message: String) {
 
-        val mIntent = Intent(Intent.ACTION_SENDTO).apply {
-
-            type = "message/rfc822"
-            data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, getter)
-            putExtra(Intent.EXTRA_SUBJECT, title)
-            putExtra(Intent.EXTRA_EMAIL, message)
-        }
+        val mIntent = Intent(Intent.ACTION_SEND)
+        mIntent.data = Uri.parse("mailto:")
+        mIntent.type = "text/plain"
+        mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(getter))
+        mIntent.putExtra(Intent.EXTRA_SUBJECT, title)
+        mIntent.putExtra(Intent.EXTRA_TEXT, message)
 
         try {
-            startActivity(Intent.createChooser(mIntent, "Choose email..."))
+            startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
         } catch (e: Exception) {
-            toast(e.message.toString())
+            this.toast(e.toString(), length = Toast.LENGTH_LONG)
         }
     }
 }

@@ -19,6 +19,13 @@ class HomeAdapter(private val modelHome: List<ModelHome>) :
         homeListener = listener
     }
 
+//    private var modelHome: List<ModelHome> = emptyList()
+//
+//    fun submitHomeList(categories: List<ModelHome>){
+//        modelHome = categories
+//        notifyDataSetChanged()
+//    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.HomeViewHolder {
         val itemView =
             ItemsRvHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
