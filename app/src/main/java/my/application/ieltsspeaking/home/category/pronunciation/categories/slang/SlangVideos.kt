@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -17,6 +19,8 @@ import my.application.ieltsspeaking.utils.snackBar
 
 class SlangVideos: YouTubeBaseActivity() {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
     private lateinit var binding: PronunciationLayoutBinding
     private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
     private var youtubePlayer: YouTubePlayer? = null
@@ -27,34 +31,14 @@ class SlangVideos: YouTubeBaseActivity() {
         binding = PronunciationLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adView = AdView(this)
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataPronunciation.videoSlang()
         val adapter = PronunciationVideosAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
-
-//        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick {
-//            override fun onVideoClick(position: Int) {
-//
-//                if (UtilsForYoutube().checkInternetConnection(this@SlangVideos)) {
-//                    binding.ivIcYoutube.manageVisibility(false)
-//                    UtilsForYoutube.playVideo(
-//                        videoId = when (position + 1) {
-//                            1 -> "A74fyukqzaU"
-//                            2 -> "R1Ge9NFSDyE"
-//                            3 -> "7fMKxYBNCfc"
-//                            4 -> "dxASJPr6LzY"
-//                            5 -> "ciM0UBHJEvs"
-//                            6 -> "G_tBYGaW5VA"
-//                            7 -> "vqHbav_fZZk"
-//                            else -> "vqHbav_fZZk"
-//                        }
-//                    )
-//                } else snackBar(binding.root, "No internet connection")
-//
-//                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
-//            }
-//        })
-//        UtilsForYoutube.youtubeInitializer(this)
 
         adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick{
             override fun onVideoClick(position: Int) {

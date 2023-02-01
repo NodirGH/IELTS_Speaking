@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -17,6 +19,8 @@ import my.application.ieltsspeaking.utils.snackBar
 
 class Band8VideoAnswerActivity : YouTubeBaseActivity() {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
     private lateinit var binding: ActivityBand8VideoAnswerBinding
     private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
     private var youtubePlayer: YouTubePlayer? = null
@@ -27,36 +31,13 @@ class Band8VideoAnswerActivity : YouTubeBaseActivity() {
         binding = ActivityBand8VideoAnswerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adView = AdView(this)
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataVideoAnswer.videoAnswerBand8Data()
         val adapter = VideoAnswerAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
-
-//        adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
-//            override fun onVideoClick(position: Int) {
-//
-//                if (UtilsForYoutube().checkInternetConnection(this@Band8VideoAnswerActivity)) {
-//                    binding.ivIcYoutube.manageVisibility(false)
-//                        UtilsForYoutube.videoId = when (position + 1) {
-//                            1 -> "2blqaHXJ25w"
-//                            2 -> "eaCxcVX9dfI"
-//                            3 -> "eay1wXKPtws"
-//                            4 -> "MUj-UaHrHS8"
-//                            5 -> "FyUePxyZmSE"
-//                            6 -> "Z6xj1ElwjiI"
-//                            7 -> "sKugRINqAf0"
-//                            8 -> "1WPrNqAxFnA"
-//                            9 -> "DLdEdqx8d4g"
-//                            10 -> "cWOOU1laA7U"
-//                            else -> "cWOOU1laA7U"
-//                        }
-//                    UtilsForYoutube.playVideo()
-//                } else snackBar(binding.root, "No internet connection")
-//
-//                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
-//            }
-//        })
-//        UtilsForYoutube.youtubeInitializer()
 
         adapter.setOnVideoAnswerListener(object : VideoAnswerAdapter.OnVideoAnswerClickListener {
             override fun onVideoClick(position: Int) {

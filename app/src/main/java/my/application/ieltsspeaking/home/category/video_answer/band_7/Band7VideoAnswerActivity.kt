@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -17,6 +19,8 @@ import my.application.ieltsspeaking.utils.snackBar
 
 class Band7VideoAnswerActivity : YouTubeBaseActivity() {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
     private lateinit var binding: ActivityBand7VideoAnswerBinding
     lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
     var youtubePlayer: YouTubePlayer? = null
@@ -27,6 +31,9 @@ class Band7VideoAnswerActivity : YouTubeBaseActivity() {
         binding = ActivityBand7VideoAnswerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adView = AdView(this)
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataVideoAnswer.videoAnswerBand7Data()
         val adapter = VideoAnswerAdapter(data)

@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -15,8 +17,10 @@ import my.application.ieltsspeaking.utils.googleApi
 import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.snackBar
 
-class PhrasalVerbsVideos: YouTubeBaseActivity() {
+class PhrasalVerbsVideos : YouTubeBaseActivity() {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
     private lateinit var binding: PronunciationLayoutBinding
     private lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
     private var youtubePlayer: YouTubePlayer? = null
@@ -27,36 +31,17 @@ class PhrasalVerbsVideos: YouTubeBaseActivity() {
         binding = PronunciationLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adView = AdView(this)
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataPronunciation.videoPhrasalVerbs()
         val adapter = PronunciationVideosAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
-//        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick {
-//            override fun onVideoClick(position: Int) {
-//
-//                if (UtilsForYoutube().checkInternetConnection(this@PhrasalVerbsVideos)) {
-//                    binding.ivIcYoutube.manageVisibility(false)
-//                    UtilsForYoutube.playVideo(
-//                        videoId = when (position + 1) {
-//                            1 -> "MHKa48BWbPw"
-//                            2 -> "bNgCN3OPuIM"
-//                            3 -> "QXgeTOIYE1A"
-//                            4 -> "nIlnxm8m2ec"
-//                            5 -> "G2NwmcNKaHk"
-//                            6 -> "r7VKVXbaj_Y"
-//                            7 -> "wvxlX3kAsoU"
-//                            else -> "wvxlX3kAsoU"
-//                        }
-//                    )
-//                } else snackBar(binding.root, "No internet connection")
-//
-//                binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
-//            }
-//        })
-//        UtilsForYoutube.youtubeInitializer(this)
-
-        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick{
+        adapter.setOnPronunciationVideo(object :
+            PronunciationVideosAdapter.OnPronunciationVideoClick {
             override fun onVideoClick(position: Int) {
                 if (UtilsForYoutube().checkInternetConnection(this@PhrasalVerbsVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)

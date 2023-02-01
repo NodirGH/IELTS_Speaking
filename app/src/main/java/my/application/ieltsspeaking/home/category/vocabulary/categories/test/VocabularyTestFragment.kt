@@ -34,12 +34,9 @@ class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(Fragm
     var correctAnswers: Int = 0
     var incorrectAnswers: Int = 0
     var questionsSize: Int = 0
-    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        loadInterstitial()
 
         UtilsForApp.updateStatusBarColor(R.color.bg_vocabulary_test, requireContext(), requireActivity())
 
@@ -92,7 +89,6 @@ class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(Fragm
 
             R.id.btnCheck -> {
 
-                showInter()
                 if (isOptionSelected) {
 
                     if (!isCheckPressed) {
@@ -158,34 +154,6 @@ class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(Fragm
                 } else requireContext().toast("Please choose your option!")
             }
         }
-    }
-
-    private fun loadInterstitial() {
-        val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(requireContext(),getString(R.string.ID_Interstitial), adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                mInterstitialAd = interstitialAd
-            }
-        })
-    }
-
-    private fun showInter() {
-        if (mInterstitialAd != null){
-            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
-                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                    super.onAdFailedToShowFullScreenContent(p0)
-                }
-
-                override fun onAdDismissedFullScreenContent() {
-                    requireContext().toast("GREAT")
-                }
-            }
-            mInterstitialAd?.show(requireActivity())
-        } else requireContext().toast("else GREAT")
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {

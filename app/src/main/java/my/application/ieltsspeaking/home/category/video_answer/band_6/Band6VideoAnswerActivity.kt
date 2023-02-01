@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -17,6 +19,8 @@ import my.application.ieltsspeaking.utils.snackBar
 
 class Band6VideoAnswerActivity : YouTubeBaseActivity() {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
     private lateinit var binding: ActivityBand6VideoAnswerBinding
     lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
     var youtubePlayer: YouTubePlayer? = null
@@ -27,6 +31,9 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
         binding = ActivityBand6VideoAnswerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        adView = AdView(this)
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         binding.rvYoutubeVideoAnswer.layoutManager = LinearLayoutManager(this)
         val data = DataVideoAnswer.videoAnswerBand6Data()
         val adapter = VideoAnswerAdapter(data)
@@ -38,27 +45,12 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                 if (UtilsForYoutube().checkInternetConnection(this@Band6VideoAnswerActivity)) {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
-//                    UtilsForYoutube.playVideo(
-//                        videoId = when (position + 1) {
-//                            1 -> "MSoBQSoiIT8"
-//                            2 -> "1G-aYE5N-4o"
-//                            3 -> "4nt0W8qNLfE"
-//                            4 -> "A0Yl-C692Zg"
-//                            5 -> "X0SQAUJ0C5U"
-//                            6 -> "SAM9iLnCKx8"
-//                            else -> "SAM9iLnCKx8"
-//                        }
-//                    )
                     playVideo()
                 } else snackBar(binding.root, "No internet connection")
 
-//                if (UtilsForYoutube.youtubePlayer == null) {
-//                    binding.youtubePlayer.initialize(googleApi, UtilsForYoutube.youtubePlayerInit)
                     binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
-//                }
             }
         })
-//        UtilsForYoutube.youtubeInitializer(this)
     }
 
     fun youtubeInitializer(context: Context) {

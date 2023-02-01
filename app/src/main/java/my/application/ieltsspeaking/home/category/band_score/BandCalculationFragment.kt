@@ -1,16 +1,27 @@
 package my.application.ieltsspeaking.home.category.band_score
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentBandCalculationBinding
 import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.utils.UtilsForApp
 
-class BandCalculationFragment : BaseFragment<FragmentBandCalculationBinding>(FragmentBandCalculationBinding::inflate) {
+class BandCalculationFragment :
+    BaseFragment<FragmentBandCalculationBinding>(FragmentBandCalculationBinding::inflate) {
 
+    private lateinit var adRequest: AdRequest
+    private lateinit var adView: AdView
+    private var mRewardedAd: RewardedAd? = null
+    private var TAG = "BandCalculationFragment"
     private var readingScore: Double = 0.0
     private var speakingScore: Double = 0.0
     private var writingScore: Double = 0.0
@@ -19,7 +30,18 @@ class BandCalculationFragment : BaseFragment<FragmentBandCalculationBinding>(Fra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        UtilsForApp.updateStatusBarColor(R.color.background_light_blue, requireContext(), requireActivity())
+        adView = AdView(requireContext())
+        adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+
+        loadRewardedAdd()
+        showVideoAd()
+
+        UtilsForApp.updateStatusBarColor(
+            R.color.background_light_blue,
+            requireContext(),
+            requireActivity()
+        )
 
         val scoreList: MutableList<String> = mutableListOf(
             "1",
@@ -121,6 +143,41 @@ class BandCalculationFragment : BaseFragment<FragmentBandCalculationBinding>(Fra
 
             }
         }
+    }
+
+    private fun loadRewardedAdd() {
+        RewardedAd.load(
+            requireContext(),
+            getString(R.string.ID_AdRewarded),
+            adRequest,
+            object : RewardedAdLoadCallback() {
+                override fun onAdFailedToLoad(p0: LoadAdError) {
+                    Log.d(TAG, p0.toString())
+                    mRewardedAd = null
+                }
+
+                override fun onAdLoaded(rewardedAd: RewardedAd) {
+                    Log.d(TAG, "Ad was loaded")
+                    mRewardedAd = rewardedAd
+//                val options = ServerSideVerificationOptions.Builder()
+//                    .setCustomData("SAMPLE_CUSTOM_DATA_STRING")
+//                    .build()
+//                rewardedAd.setServerSideVerificationOptions(options)
+                    showVideoAd()
+                }
+            })
+    }
+
+    private fun showVideoAd() {
+        if (mRewardedAd != null) {
+            mRewardedAd?.show(requireActivity(), OnUserEarnedRewardListener() {
+                fun onUserEarnedReward(rewardItem: RewardItem) {
+                    var rewardAmount = rewardItem.amount
+                    var rewardType = rewardItem.type
+                    Log.d(TAG, "User earned the reward")
+                }
+            })
+        } else Log.d(TAG, "The rewarded ad wasn't ready yet")
     }
 
     private fun findAverage() {

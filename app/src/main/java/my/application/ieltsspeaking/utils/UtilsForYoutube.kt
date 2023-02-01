@@ -52,6 +52,13 @@ class UtilsForYoutube: YouTubeBaseActivity() {
                 youtubePlayer!!.loadVideo(videoId)
             }
         }
+
+        fun isInternetConnected(context: Context): Boolean {
+            val connectionManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetwork: NetworkInfo? = connectionManager.activeNetworkInfo
+            return activeNetwork?.isConnectedOrConnecting == true
+        }
     }
 
     fun checkInternetConnection(context: Context): Boolean {

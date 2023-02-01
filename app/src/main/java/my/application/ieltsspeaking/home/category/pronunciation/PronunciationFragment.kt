@@ -32,7 +32,6 @@ import my.application.ieltsspeaking.home.category.video_answer.band_9.Band9Video
 import my.application.ieltsspeaking.utils.UtilsForApp
 
 class PronunciationFragment : BaseFragment<FragmentPronunciationBinding>(FragmentPronunciationBinding::inflate) {
-    lateinit var mAdView: AdView
     private var mInterstitialAd: InterstitialAd? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,10 +39,6 @@ class PronunciationFragment : BaseFragment<FragmentPronunciationBinding>(Fragmen
 
         MobileAds.initialize(requireContext()) {}
 
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
-
-        loadInterstitial()
 
         UtilsForApp.updateStatusBarColor(R.color.bg_blue, requireContext(), requireActivity())
 
@@ -67,35 +62,12 @@ class PronunciationFragment : BaseFragment<FragmentPronunciationBinding>(Fragmen
         })
     }
 
-    private fun loadInterstitial() {
-        val adRequest = AdRequest.Builder().build()
-
-        InterstitialAd.load(requireContext(),"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                 mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                mInterstitialAd = interstitialAd
-            }
-        })
-    }
-
-    private fun showInter(){
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(requireActivity())
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.")
-        }
-    }
-
     private fun navigateToBenFranklinActivity(){
         val intent = Intent(requireContext(), BenFranklinVideos::class.java)
         startActivity(intent)
     }
 
     private fun navigateToIdiomsActivity(){
-        showInter()
         val intent = Intent(requireContext(), IdiomsVideos::class.java)
         startActivity(intent)
     }
