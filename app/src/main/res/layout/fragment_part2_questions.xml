@@ -25,7 +25,7 @@
         android:padding="10dp"
         android:layout_margin="10dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Heading part 2"
+        tools:text="Heading part 2"
         android:textColor="@color/background_dark_blue"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -45,5 +45,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeadingPart2Questions" />
+
+    <ProgressBar
+        android:id="@+id/pbPart2Question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

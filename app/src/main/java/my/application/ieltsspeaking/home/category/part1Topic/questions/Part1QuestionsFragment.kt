@@ -13,6 +13,7 @@ import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.PartsQuestionsAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 import my.application.ieltsspeaking.utils.UtilsForApp
+import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.navigateSafeAction
 import my.application.ieltsspeaking.utils.toast
 
@@ -64,6 +65,7 @@ class Part1QuestionsFragment :
                         document.toObject(ModelPartsQuestions::class.java)
                     if (question != null) {
                         userQuestionList.add(question)
+                        binding.pbPart1Question.manageVisibility(false)
                     }
                 }
 

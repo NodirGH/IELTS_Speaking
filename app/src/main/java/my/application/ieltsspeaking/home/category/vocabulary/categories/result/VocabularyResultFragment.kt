@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -13,7 +14,7 @@ import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyResultBinding
 import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.utils.SharedViewModel
-import my.application.ieltsspeaking.utils.UtilsForYoutube
+import my.application.ieltsspeaking.utils.UtilsForYoutube.Companion.isInternetConnected
 
 class VocabularyResultFragment :
     BaseFragment<FragmentVocabularyResultBinding>(FragmentVocabularyResultBinding::inflate) {
@@ -29,6 +30,7 @@ class VocabularyResultFragment :
         super.onViewCreated(view, savedInstanceState)
 
         adRequest = AdRequest.Builder().build()
+        loadInterstitialAd()
 
         val sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
@@ -59,12 +61,8 @@ class VocabularyResultFragment :
         }
 
         binding.btnFinishResult.setOnClickListener {
-            val action =
-                VocabularyResultFragmentDirections.actionVocabularyResultFragmentToVocabularyFragment()
-            if (UtilsForYoutube.isInternetConnected(requireContext())) {
-                loadInterstitialAd()
-                findNavController().navigate(action)
-            } else findNavController().navigate(action)
+            showInterstitialAd()
+
         }
     }
 
@@ -74,19 +72,61 @@ class VocabularyResultFragment :
             getString(R.string.ID_Interstitial),
             adRequest,
             object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(addError: LoadAdError) {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
                     mInterstitialAd = null
                 }
 
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     mInterstitialAd = interstitialAd
-
-                    mInterstitialAd?.show(requireActivity())
                 }
             })
+    }
 
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(requireActivity())
+    private fun showInterstitialAd() {
+        if (isInternetConnected(requireContext())) {
+            if (mInterstitialAd != null) {
+                mInterstitialAd?.show(requireActivity())
+
+                fullScreenCallback()
+            } else {
+                val action =
+                    VocabularyResultFragmentDirections.actionVocabularyResultFragmentToVocabularyFragment()
+                findNavController().navigate(action)
+            }
+//                    loadRewardedAdd()
+        } else {
+            val action =
+                VocabularyResultFragmentDirections.actionVocabularyResultFragmentToVocabularyFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun fullScreenCallback() {
+        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdClicked() {
+                // Called when a click is recorded for an ad.
+            }
+
+            override fun onAdDismissedFullScreenContent() {
+                // Called when ad is dismissed.
+                mInterstitialAd = null
+                val action =
+                    VocabularyResultFragmentDirections.actionVocabularyResultFragmentToVocabularyFragment()
+                findNavController().navigate(action)
+            }
+
+//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+//                // Called when ad fails to show.
+//                mInterstitialAd = null
+//            }
+
+            override fun onAdImpression() {
+                // Called when an impression is recorded for an ad.
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                // Called when ad is shown.
+            }
         }
     }
 }

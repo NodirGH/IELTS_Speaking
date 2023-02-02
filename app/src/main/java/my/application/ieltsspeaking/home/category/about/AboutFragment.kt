@@ -15,32 +15,8 @@ import my.application.ieltsspeaking.utils.UtilsForApp
 
 class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
 
-    private var mInterstitialAd: InterstitialAd? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val adRequest = AdRequest.Builder().build()
-
-        InterstitialAd.load(
-            requireContext(),
-            getString(R.string.ID_Interstitial),
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(addError: LoadAdError) {
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-
-                    mInterstitialAd?.show(requireActivity())
-                }
-            })
-
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(requireActivity())
-        }
 
         UtilsForApp.updateStatusBarColor(R.color.bg_blue, requireContext(), requireActivity())
     }

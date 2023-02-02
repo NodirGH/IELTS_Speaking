@@ -28,4 +28,9 @@
         android:title="Report bugs"
         android:icon="@drawable/ic_report_bugs"/>
 
+    <item
+        android:id="@+id/navSupportUs"
+        android:title="Support us"
+        android:icon="@drawable/ic_support_money"/>
+
 </menu>

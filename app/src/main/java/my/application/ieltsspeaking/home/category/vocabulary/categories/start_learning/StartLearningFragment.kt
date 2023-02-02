@@ -4,10 +4,15 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.app.AlertDialog
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.DialogStartLearningBinding
 import my.application.ieltsspeaking.databinding.FragmentStartLearningBinding
@@ -15,6 +20,7 @@ import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.data.LearningWordsCollection
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.model.ModelStartLearning
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
+import my.application.ieltsspeaking.utils.UtilsForYoutube
 import my.application.ieltsspeaking.utils.manageVisibility
 
 class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(FragmentStartLearningBinding::inflate), OnClickListener {
@@ -22,9 +28,13 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
     private var currentPosition = 1
     private lateinit var wordList: ArrayList<ModelStartLearning>
     private lateinit var bindingFinishLearning: DialogStartLearningBinding
+    private lateinit var adRequest: AdRequest
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adRequest = AdRequest.Builder().build()
 
         setLearningWords()
     }
@@ -43,7 +53,6 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
             9 -> LearningWordsCollection.getHobbyWords()
             10 -> LearningWordsCollection.getMixedWords()
             else -> LearningWordsCollection.getTravelWords()
-
         }
         binding.btnLearnedStartLearning.setOnClickListener(this)
         setWords()
@@ -58,6 +67,9 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
                     setWords()
                 } else {
                     alertDialog()
+                    if (UtilsForYoutube.isInternetConnected(requireContext())) {
+                        Handler().postDelayed({ loadInterstitialAd() }, 3000)
+                    }
                 }
             }
         }
@@ -126,6 +138,28 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
                 StartLearningFragmentDirections.actionVocabularyStartLearningFragmentToVocabularyCategoriesFragment()
             findNavController().navigate(action)
             mAlertDialog.dismiss()
+        }
+    }
+
+    private fun loadInterstitialAd() {
+        InterstitialAd.load(
+            requireContext(),
+            getString(R.string.ID_Interstitial),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(addError: LoadAdError) {
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+
+                    mInterstitialAd?.show(requireActivity())
+                }
+            })
+
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(requireActivity())
         }
     }
 }

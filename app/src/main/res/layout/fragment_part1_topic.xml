@@ -10,9 +10,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/part1"
-        android:layout_marginEnd="15dp"
         android:layout_margin="10dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/part1"
         app:layout_constraintBottom_toBottomOf="@+id/tvHeadingPart1"
         app:layout_constraintEnd_toStartOf="@+id/tvHeadingPart1"
         app:layout_constraintTop_toTopOf="@+id/tvHeadingPart1" />
@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/part_1_topics"
         android:textColor="@color/main_text_color"
-        android:fontFamily="@font/roboto_medium"
         android:textSize="26sp"
-        android:layout_marginBottom="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -44,5 +44,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeadingPart1" />
+
+    <ProgressBar
+        android:id="@+id/pbPart1Topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

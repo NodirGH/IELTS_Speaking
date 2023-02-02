@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.OnUserEarnedRewardListener
 import com.google.android.gms.ads.rewarded.RewardItem
@@ -30,20 +31,17 @@ class VocabularyCategoriesFragment :
 
     private var mRewardedAd: RewardedAd? = null
     private lateinit var adRequest: AdRequest
-    private var isAdShown: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         adRequest = AdRequest.Builder().build()
+        loadRewardedAds()
         setRecyclerView()
 
         binding.btnTest.setOnClickListener {
             if (isInternetConnected()) {
-                if (!isAdShown) {
-                    loadRewardedAdd()
-                    isAdShown = true
-                } else findNavController().navigateSafe(R.id.vocabularyTestFragment)
+                showVideoAd()
             } else {
                 requireContext().snackBar(
                     binding.root,
@@ -51,7 +49,7 @@ class VocabularyCategoriesFragment :
                 )
                 Handler().postDelayed({
                     requireContext().toast("Turn on Wi-Fi or Internet", Toast.LENGTH_LONG)
-                }, 2000)
+                }, 2500)
             }
         }
 
@@ -79,22 +77,20 @@ class VocabularyCategoriesFragment :
         binding.rvVocabularyAll.adapter = adapter
     }
 
-    private fun loadRewardedAdd() {
+    private fun loadRewardedAds() {
         RewardedAd.load(
             requireContext(),
             getString(R.string.ID_AdRewarded),
             adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(p0: LoadAdError) {
-//                    Log.d(TAG, p0.toString())
                     mRewardedAd = null
                 }
 
                 override fun onAdLoaded(rewardedAd: RewardedAd) {
-//                    Log.d(TAG, "Ad was loaded")
                     mRewardedAd = rewardedAd
-                    showVideoAd()
-                    isAdShown = true
+
+                    fullScreenCallbackReward()
                 }
             })
     }
@@ -105,11 +101,21 @@ class VocabularyCategoriesFragment :
                 fun onUserEarnedReward(rewardItem: RewardItem) {
                     var rewardAmount = rewardItem.amount
                     var rewardType = rewardItem.type
-//                    Log.d(TAG, "User earned the reward")
                 }
             })
+        } else {
+            findNavController().navigateSafe(R.id.vocabularyTestFragment)
         }
-//        else Log.d(TAG, "The rewarded ad wasn't ready yet")
+    }
+
+    private fun fullScreenCallbackReward() {
+        mRewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+
+            override fun onAdDismissedFullScreenContent() {
+                mRewardedAd = null
+                findNavController().navigateSafe(R.id.vocabularyTestFragment)
+            }
+        }
     }
 
     private fun isInternetConnected(): Boolean {

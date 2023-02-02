@@ -20,8 +20,6 @@ class BandCalculationFragment :
 
     private lateinit var adRequest: AdRequest
     private lateinit var adView: AdView
-    private var mRewardedAd: RewardedAd? = null
-    private var TAG = "BandCalculationFragment"
     private var readingScore: Double = 0.0
     private var speakingScore: Double = 0.0
     private var writingScore: Double = 0.0
@@ -33,9 +31,6 @@ class BandCalculationFragment :
         adView = AdView(requireContext())
         adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
-
-        loadRewardedAdd()
-        showVideoAd()
 
         UtilsForApp.updateStatusBarColor(
             R.color.background_light_blue,
@@ -143,41 +138,6 @@ class BandCalculationFragment :
 
             }
         }
-    }
-
-    private fun loadRewardedAdd() {
-        RewardedAd.load(
-            requireContext(),
-            getString(R.string.ID_AdRewarded),
-            adRequest,
-            object : RewardedAdLoadCallback() {
-                override fun onAdFailedToLoad(p0: LoadAdError) {
-                    Log.d(TAG, p0.toString())
-                    mRewardedAd = null
-                }
-
-                override fun onAdLoaded(rewardedAd: RewardedAd) {
-                    Log.d(TAG, "Ad was loaded")
-                    mRewardedAd = rewardedAd
-//                val options = ServerSideVerificationOptions.Builder()
-//                    .setCustomData("SAMPLE_CUSTOM_DATA_STRING")
-//                    .build()
-//                rewardedAd.setServerSideVerificationOptions(options)
-                    showVideoAd()
-                }
-            })
-    }
-
-    private fun showVideoAd() {
-        if (mRewardedAd != null) {
-            mRewardedAd?.show(requireActivity(), OnUserEarnedRewardListener() {
-                fun onUserEarnedReward(rewardItem: RewardItem) {
-                    var rewardAmount = rewardItem.amount
-                    var rewardType = rewardItem.type
-                    Log.d(TAG, "User earned the reward")
-                }
-            })
-        } else Log.d(TAG, "The rewarded ad wasn't ready yet")
     }
 
     private fun findAverage() {

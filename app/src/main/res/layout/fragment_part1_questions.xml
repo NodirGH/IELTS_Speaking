@@ -10,8 +10,8 @@
    <ImageView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:src="@drawable/part1"
        android:layout_margin="10dp"
+       android:src="@drawable/part1"
        app:layout_constraintEnd_toStartOf="@+id/tvHeadingPart1Questions"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
@@ -20,30 +20,41 @@
        android:id="@+id/tvHeadingPart1Questions"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:layout_margin="10dp"
        android:background="@color/background_light_blue"
+       android:fontFamily="@font/roboto_medium"
        android:gravity="center"
        android:padding="10dp"
-       android:layout_margin="10dp"
-       android:fontFamily="@font/roboto_medium"
-       android:text="Heading"
        android:textColor="@color/background_dark_blue"
        android:textSize="26sp"
        android:textStyle="bold"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" />
+       app:layout_constraintTop_toTopOf="parent"
+       tools:text="Heading" />
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rvPart1Questions"
        android:layout_width="match_parent"
        android:layout_height="0dp"
-       android:layoutAnimation="@anim/layout_animation_fall_down"
        android:background="@color/background_light_blue"
+       android:layoutAnimation="@anim/layout_animation_fall_down"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/tvHeadingPart1Questions" />
+
+   <ProgressBar
+       android:id="@+id/pbPart1Question"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

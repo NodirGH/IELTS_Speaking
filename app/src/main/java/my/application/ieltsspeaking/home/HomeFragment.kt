@@ -4,11 +4,8 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,7 +16,10 @@ import my.application.ieltsspeaking.home.adapter.HomeAdapter
 import my.application.ieltsspeaking.home.data.HomeData
 import my.application.ieltsspeaking.home.drawer_layout.give_suggestion.GiveSuggestionsActivity
 import my.application.ieltsspeaking.home.drawer_layout.report_bugs.ReportBugActivity
-import my.application.ieltsspeaking.utils.*
+import my.application.ieltsspeaking.utils.UtilsForApp
+import my.application.ieltsspeaking.utils.navigateSafe
+import my.application.ieltsspeaking.utils.snackBar
+import my.application.ieltsspeaking.utils.toast
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private lateinit var toggle: ActionBarDrawerToggle
@@ -68,6 +68,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 R.id.navShare -> shareApp()
                 R.id.navSuggestions -> navigateToGiveSuggestion()
                 R.id.navReportBugs -> navigateToReportBug()
+                R.id.navSupportUs -> {
+                    findNavController().navigateSafe(R.id.supportUsFragment)
+                    binding.drawerLayoutHome.close()
+                }
             }
             true
         }
@@ -110,23 +114,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.drawerLayoutHome.close()
     }
 
-    private fun rateUs(){
+    private fun rateUs() {
         val uri: Uri = Uri.parse(linkDetail)
         val goToMarket = Intent(Intent.ACTION_VIEW, uri)
 
-        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
-                                Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
-                                Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        goToMarket.addFlags(
+            Intent.FLAG_ACTIVITY_NO_HISTORY or
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+        )
 
         try {
             startActivity(goToMarket)
-        } catch (e: ActivityNotFoundException){
+        } catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(linkAddress)))
         }
         binding.drawerLayoutHome.close()
     }
 
-    private fun shareApp(){
+    private fun shareApp() {
         val shareBody = "Download IELTS SPEAKING Master on Play Store : $linkAddress"
         val shareSubject = "IELTS Speaking Master helps improve your speaking skills"
 
@@ -142,11 +148,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun getLinks(){
+    private fun getLinks() {
         val fireStoreDatabase = database.collection("AppLink").document("mvWPdC9BfLibgIYbYU0Q")
-            fireStoreDatabase.get().addOnSuccessListener {
+        fireStoreDatabase.get().addOnSuccessListener {
 
-            if (it != null){
+            if (it != null) {
                 linkDetail = it.data?.get("linkAfterDetails").toString()
                 linkAddress = it.data?.get("link").toString()
             }

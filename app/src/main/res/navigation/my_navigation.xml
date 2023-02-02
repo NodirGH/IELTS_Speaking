@@ -255,5 +255,10 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/supportUsFragment"
+        android:name="my.application.ieltsspeaking.home.drawer_layout.support_us.SupportUsFragment"
+        android:label="fragment_support_us"
+        tools:layout="@layout/fragment_support_us" />
 
 </navigation>

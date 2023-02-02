@@ -15,6 +15,7 @@ import my.application.ieltsspeaking.home.category.part1Topic.questions.adapter.P
 import my.application.ieltsspeaking.home.category.part1Topic.questions.model.ModelPartsQuestions
 import my.application.ieltsspeaking.home.category.part2Topic.question.answer.Part2AnswersFragment
 import my.application.ieltsspeaking.utils.UtilsForApp
+import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.toast
 
 class Part2QuestionsFragment : BaseFragment<FragmentPart2QuestionsBinding>(FragmentPart2QuestionsBinding::inflate) {
@@ -53,6 +54,7 @@ class Part2QuestionsFragment : BaseFragment<FragmentPart2QuestionsBinding>(Fragm
                     val question = document.toObject(ModelPartsQuestions::class.java)
                     if (question != null){
                         userQuestionList.add(question)
+                        binding.pbPart2Question.manageVisibility(false)
                     }
                 }
 

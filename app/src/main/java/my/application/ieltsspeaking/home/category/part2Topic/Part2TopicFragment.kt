@@ -12,6 +12,7 @@ import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.part1Topic.adapter.PartsTopicAdapter
 import my.application.ieltsspeaking.home.category.part1Topic.model.ModelPartsTopic
 import my.application.ieltsspeaking.utils.UtilsForApp
+import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.navigateSafeAction
 import my.application.ieltsspeaking.utils.toast
 
@@ -50,6 +51,7 @@ class Part2TopicFragment : BaseFragment<FragmentPart2TopicBinding>(FragmentPart2
                     topic?.hashId = document.id
                     if (topic != null){
                         userTopicList.add(topic)
+                        binding.pbPart2Topic.manageVisibility(false)
                     }
                 }
 
