@@ -5,10 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.View
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.OnUserEarnedRewardListener
+import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
@@ -24,14 +21,14 @@ class SupportUsFragment :
 
     private var mRewardedAd: RewardedAd? = null
     private lateinit var adRequest: AdRequest
-//    private lateinit var adView: AdView
+    private lateinit var adView: AdView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         adRequest = AdRequest.Builder().build()
-//        adView = AdView(requireContext())
-//        binding.adView.loadAd(adRequest)
+        adView = AdView(requireContext())
+        binding.adView.loadAd(adRequest)
 
         loadRewardedAdd()
 

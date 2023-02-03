@@ -9,6 +9,7 @@ import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayer.*
 import my.application.ieltsspeaking.databinding.ActivityBand6VideoAnswerBinding
 import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
 import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
@@ -65,6 +66,7 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                     youtubePlayer = youTubePlayer1
                     playVideo()
                 }
+                youTubePlayer1?.setShowFullscreenButton(false)
             }
 
             override fun onInitializationFailure(

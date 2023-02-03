@@ -65,6 +65,7 @@ class IdiomsVideos: YouTubeBaseActivity() {
                     youtubePlayer = youTubePlayer1
                     playVideo()
                 }
+                youTubePlayer1?.setShowFullscreenButton(false)
             }
 
             override fun onInitializationFailure(

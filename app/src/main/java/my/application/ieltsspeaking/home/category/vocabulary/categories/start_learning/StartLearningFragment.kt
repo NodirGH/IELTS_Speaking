@@ -4,12 +4,12 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -20,10 +20,11 @@ import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.data.LearningWordsCollection
 import my.application.ieltsspeaking.home.category.vocabulary.categories.start_learning.model.ModelStartLearning
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
-import my.application.ieltsspeaking.utils.UtilsForYoutube
 import my.application.ieltsspeaking.utils.manageVisibility
 
-class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(FragmentStartLearningBinding::inflate), OnClickListener {
+class StartLearningFragment :
+    BaseFragment<FragmentStartLearningBinding>(FragmentStartLearningBinding::inflate),
+    OnClickListener {
 
     private var currentPosition = 1
     private lateinit var wordList: ArrayList<ModelStartLearning>
@@ -35,8 +36,9 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
         super.onViewCreated(view, savedInstanceState)
 
         adRequest = AdRequest.Builder().build()
-
+        loadInterstitialAd()
         setLearningWords()
+
     }
 
     private fun setLearningWords() {
@@ -67,9 +69,6 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
                     setWords()
                 } else {
                     alertDialog()
-                    if (UtilsForYoutube.isInternetConnected(requireContext())) {
-                        Handler().postDelayed({ loadInterstitialAd() }, 3000)
-                    }
                 }
             }
         }
@@ -134,9 +133,7 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
         val mAlertDialog = mBuilder.show()
 
         bindingFinishLearning.btnFinish.setOnClickListener {
-            val action =
-                StartLearningFragmentDirections.actionVocabularyStartLearningFragmentToVocabularyCategoriesFragment()
-            findNavController().navigate(action)
+            showInterstitialAd()
             mAlertDialog.dismiss()
         }
     }
@@ -154,12 +151,43 @@ class StartLearningFragment : BaseFragment<FragmentStartLearningBinding>(Fragmen
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     mInterstitialAd = interstitialAd
 
-                    mInterstitialAd?.show(requireActivity())
+                    fullScreenCallback()
                 }
             })
+    }
 
+    private fun fullScreenCallback() {
+        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdClicked() {
+                // Called when a click is recorded for an ad.
+            }
+
+            override fun onAdDismissedFullScreenContent() {
+                // Called when ad is dismissed.
+                mInterstitialAd = null
+                val action =
+                    StartLearningFragmentDirections.actionVocabularyStartLearningFragmentToVocabularyCategoriesFragment()
+                findNavController().navigate(action)
+
+            }
+
+            override fun onAdImpression() {
+                // Called when an impression is recorded for an ad.
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                // Called when ad is shown.
+            }
+        }
+    }
+
+    private fun showInterstitialAd() {
         if (mInterstitialAd != null) {
             mInterstitialAd?.show(requireActivity())
+        } else {
+            val action =
+                StartLearningFragmentDirections.actionVocabularyStartLearningFragmentToVocabularyCategoriesFragment()
+            findNavController().navigate(action)
         }
     }
 }

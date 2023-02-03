@@ -80,8 +80,7 @@ class BandCalculationFragment :
                     findAverage()
                 }
 
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
+                override fun onNothingSelected(adapterView: AdapterView<*>?) {
                 }
             }
 

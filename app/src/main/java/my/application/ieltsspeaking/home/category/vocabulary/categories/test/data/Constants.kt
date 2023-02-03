@@ -1122,7 +1122,7 @@ object Constants {
             "The deliberate large-scale intervention in the Earth’s climate system, in order to try and control global warming",
             "Plants, animals or micro organisms that have changed through genetic engineering",
             "A plant or animal which has the same genes as the original from which it was produced",
-            "",
+            "An extra, usually bad, occurrence caused by taking a drug",
             3
         )
         val que10 = Question(
