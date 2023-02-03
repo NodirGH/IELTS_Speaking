@@ -9,7 +9,6 @@ import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.PronunciationLayoutBinding
 import my.application.ieltsspeaking.home.category.pronunciation.categories.adapter.PronunciationVideosAdapter
 import my.application.ieltsspeaking.home.category.pronunciation.categories.data.DataPronunciation
@@ -44,8 +43,10 @@ class  UsefulTipsVideos: YouTubeBaseActivity() {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
                     playVideo()
-                } else snackBar(binding.root, "No internet connection")
+
                 binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
+
+                } else snackBar(binding.root, "No internet connection")
 
             }
         })

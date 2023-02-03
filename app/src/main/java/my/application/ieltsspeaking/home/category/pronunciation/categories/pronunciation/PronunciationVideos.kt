@@ -17,7 +17,7 @@ import my.application.ieltsspeaking.utils.googleApi
 import my.application.ieltsspeaking.utils.manageVisibility
 import my.application.ieltsspeaking.utils.snackBar
 
-class PronunciationVideos: YouTubeBaseActivity() {
+class PronunciationVideos : YouTubeBaseActivity() {
 
     private lateinit var adRequest: AdRequest
     private lateinit var adView: AdView
@@ -40,14 +40,15 @@ class PronunciationVideos: YouTubeBaseActivity() {
         val adapter = PronunciationVideosAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
-        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick{
+        adapter.setOnPronunciationVideo(object :
+            PronunciationVideosAdapter.OnPronunciationVideoClick {
             override fun onVideoClick(position: Int) {
                 if (UtilsForYoutube().checkInternetConnection(this@PronunciationVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
                     playVideo()
+                    binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
                 } else snackBar(binding.root, "No internet connection")
-                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
 
             }
         })

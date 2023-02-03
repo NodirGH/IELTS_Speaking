@@ -46,9 +46,9 @@ class Band8VideoAnswerActivity : YouTubeBaseActivity() {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
                     playVideo()
+                    binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
                 } else snackBar(binding.root, "No internet connection")
 
-                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
             }
         })
     }

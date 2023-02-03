@@ -40,15 +40,16 @@ class BenFranklinVideos : YouTubeBaseActivity() {
         val adapter = PronunciationVideosAdapter(data)
         binding.rvYoutubeVideoAnswer.adapter = adapter
 
-        adapter.setOnPronunciationVideo(object : PronunciationVideosAdapter.OnPronunciationVideoClick{
+        adapter.setOnPronunciationVideo(object :
+            PronunciationVideosAdapter.OnPronunciationVideoClick {
             override fun onVideoClick(position: Int) {
                 if (UtilsForYoutube().checkInternetConnection(this@BenFranklinVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
                     playVideo()
+                    binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
                 } else snackBar(binding.root, "No internet connection")
 
-                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
             }
         })
     }

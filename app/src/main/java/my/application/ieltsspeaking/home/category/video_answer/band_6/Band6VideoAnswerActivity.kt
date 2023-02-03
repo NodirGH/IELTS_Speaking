@@ -9,7 +9,6 @@ import com.google.android.gms.ads.AdView
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayer.*
 import my.application.ieltsspeaking.databinding.ActivityBand6VideoAnswerBinding
 import my.application.ieltsspeaking.home.category.video_answer.adapter.VideoAnswerAdapter
 import my.application.ieltsspeaking.home.category.video_answer.data.DataVideoAnswer
@@ -47,9 +46,8 @@ class Band6VideoAnswerActivity : YouTubeBaseActivity() {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
                     playVideo()
-                } else snackBar(binding.root, "No internet connection")
-
                     binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
+                } else snackBar(binding.root, "No internet connection")
             }
         })
     }

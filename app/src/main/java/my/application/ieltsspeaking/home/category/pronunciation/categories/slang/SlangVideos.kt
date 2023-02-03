@@ -45,9 +45,9 @@ class SlangVideos: YouTubeBaseActivity() {
                 if (UtilsForYoutube().checkInternetConnection(this@SlangVideos)) {
                     binding.ivIcYoutube.manageVisibility(false)
                     youtubeVideoId = position + 1
+                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
                     playVideo()
                 } else snackBar(binding.root, "No internet connection")
-                binding.youtubePlayer.initialize(googleApi, youtubePlayerInit)
 
             }
         })
