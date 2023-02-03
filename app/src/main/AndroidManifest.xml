@@ -22,7 +22,7 @@
         android:theme="@style/Theme.IELTSSpeaking">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-4015748906062578~7367851959"/>
         <activity
             android:name=".home.drawer_layout.report_bugs.ReportBugActivity"
             android:exported="false">

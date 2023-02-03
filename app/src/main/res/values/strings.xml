@@ -36,10 +36,10 @@
     <string name="sample_answer_band_8">Sample answer\n Band 8</string>
     <string name="sample_answer_band_7">Sample answer\n Band 7</string>
     <string name="sample_answer_band_6">Sample answer\n Band 6</string>
-    <string name="ID_Banner">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="ID_Interstitial">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="ID_IntersVIDEO">ca-app-pub-3940256099942544/8691691433</string>
-    <string name="ID_AdRewarded">ca-app-pub-3940256099942544/5224354917</string>
+
+    <string name="ID_Banner">ca-app-pub-4015748906062578/2901901446</string>
+    <string name="ID_Interstitial">ca-app-pub-4015748906062578/6532372304</string>
+    <string name="ID_AdRewarded">ca-app-pub-4015748906062578/4397163554</string>
 
     <string name="sample_answer_part1">Sample answer is shown here. It doesn\'t matter how much line it requires, it should show all line</string>
     <string name="part_1_sample_answer">Part 1 answer</string>
