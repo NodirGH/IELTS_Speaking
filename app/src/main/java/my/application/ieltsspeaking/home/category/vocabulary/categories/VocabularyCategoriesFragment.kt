@@ -4,9 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdRequest
@@ -23,8 +21,6 @@ import my.application.ieltsspeaking.home.category.vocabulary.categories.adapter.
 import my.application.ieltsspeaking.home.category.vocabulary.categories.data.VocabularyDataForAll
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
 import my.application.ieltsspeaking.utils.navigateSafe
-import my.application.ieltsspeaking.utils.snackBar
-import my.application.ieltsspeaking.utils.toast
 
 class VocabularyCategoriesFragment :
     BaseFragment<FragmentVocabularyCategoriesBinding>(FragmentVocabularyCategoriesBinding::inflate) {
@@ -40,17 +36,18 @@ class VocabularyCategoriesFragment :
         setRecyclerView()
 
         binding.btnTest.setOnClickListener {
-            if (isInternetConnected()) {
-                showVideoAd()
-            } else {
-                requireContext().snackBar(
-                    binding.root,
-                    "You have to watch ads"
-                )
-                Handler().postDelayed({
-                    requireContext().toast("Turn on Wi-Fi or Internet", Toast.LENGTH_LONG)
-                }, 2500)
-            }
+            findNavController().navigateSafe(R.id.vocabularyTestFragment)
+//            if (isInternetConnected()) {
+//                showVideoAd()
+//            } else {
+//                requireContext().snackBar(
+//                    binding.root,
+//                    "You have to watch ads"
+//                )
+//                Handler().postDelayed({
+//                    requireContext().toast("Turn on Wi-Fi or Internet", Toast.LENGTH_LONG)
+//                }, 2500)
+//            }
         }
 
         binding.btnStartLearning.setOnClickListener {

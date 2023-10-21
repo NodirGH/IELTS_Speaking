@@ -3,27 +3,21 @@ package my.application.ieltsspeaking.home.category.vocabulary.categories.test
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import my.application.ieltsspeaking.R
 import my.application.ieltsspeaking.databinding.FragmentVocabularyTestBinding
 import my.application.ieltsspeaking.home.BaseFragment
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.data.Constants
 import my.application.ieltsspeaking.home.category.vocabulary.categories.test.model.Question
 import my.application.ieltsspeaking.home.category.vocabulary.globalTopicId
-import my.application.ieltsspeaking.utils.*
+import my.application.ieltsspeaking.utils.SharedViewModel
+import my.application.ieltsspeaking.utils.UtilsForApp
+import my.application.ieltsspeaking.utils.manageVisibility
+import my.application.ieltsspeaking.utils.toast
 
 class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(FragmentVocabularyTestBinding::inflate), View.OnClickListener {
     private var mCurrentPosition: Int = 1
@@ -131,7 +125,7 @@ class VocabularyTestFragment : BaseFragment<FragmentVocabularyTestBinding>(Fragm
                             binding.btnCheck.setOnClickListener {
 
                                 questionsSize = mQuestionsList!!.size
-                                val sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+                                    val sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
                                 sharedViewModel.sendAnswers(questionsSize, correctAnswers, incorrectAnswers)
                                 val action = VocabularyTestFragmentDirections.actionVocabularyTestFragmentToVocabularyResultFragment()
